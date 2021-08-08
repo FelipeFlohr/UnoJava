@@ -2,8 +2,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Cards {
-	
-	public ArrayList<String> sortNormalCard(){
+
+	public static ArrayList<String> sortNormalCard(){
 		Random random = new Random();
 		ArrayList<String> card = new ArrayList<>();
 		final String[] COLORS = {"blue", "yellow", "red", "green"};

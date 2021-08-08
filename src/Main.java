@@ -4,10 +4,10 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		new Frame();
-		Cards cards = new Cards();
+		//new Frame();
 
-		System.out.println(cards.sortNormalCard());
+		System.out.println(Cards.sortNormalCard());
+		System.out.println(Decks.generateDeck());
 
 	}
 
