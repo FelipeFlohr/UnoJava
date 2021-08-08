@@ -1,6 +1,8 @@
 package gui;
 
 import gui.panels.LeftPanel;
+import gui.panels.BottomPanel;
+import gui.panels.CenterPanel;
 
 import java.awt.BorderLayout;
 
@@ -16,9 +18,11 @@ public class Frame extends JFrame {
         // Initial setup for the frame
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(WIDTH, HEIGHT);
-        this.setLayout(new BorderLayout(10, 10));
+        this.setLayout(new BorderLayout());
 
+        new BottomPanel(this);
         new LeftPanel(this);
+        new CenterPanel(this);
 
         // Final setup for the frame
         this.setTitle("Uno - Java Edition");
