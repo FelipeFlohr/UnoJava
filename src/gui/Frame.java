@@ -8,8 +8,8 @@ import javax.swing.JFrame;
 
 public class Frame extends JFrame {
 
-    final int WIDTH = 1024;
-    final int HEIGHT = 768;
+    final int WIDTH = 1280;
+    final int HEIGHT = 720;
 
     public Frame(){
         
