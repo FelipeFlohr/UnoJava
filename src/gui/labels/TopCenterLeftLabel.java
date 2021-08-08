@@ -18,5 +18,5 @@ public class TopCenterLeftLabel extends JLabel {
         // Adding label to the panel
         panelMain.add(this);
     }
-    
+
 }

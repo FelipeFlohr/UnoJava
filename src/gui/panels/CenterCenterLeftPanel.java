@@ -2,27 +2,26 @@ package gui.panels;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 
 import javax.swing.JPanel;
 
-public class CenterLeftPanel extends JPanel {
+public class CenterCenterLeftPanel extends JPanel {
 
     JPanel panelMain;
 
-    CenterLeftPanel(JPanel panelMain){
+    CenterCenterLeftPanel(JPanel panelMain){
         this.panelMain = panelMain;
-        this.setLayout(new BorderLayout());
+        this.setPreferredSize(new Dimension(10, 50));
 
         // Initializing Panel
-        this.setBackground(Color.RED);
+        this.setBackground(Color.ORANGE);
         this.setOpaque(true);
 
         // Adding components to the panel
-        new TopCenterLeftPanel(this);
-        new CenterCenterLeftPanel(this);
 
         // Adding component to main panel
-        panelMain.add(this, BorderLayout.WEST);
+        panelMain.add(this, BorderLayout.CENTER);
     }
 
 }

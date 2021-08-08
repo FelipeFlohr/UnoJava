@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Decks {
 
@@ -7,9 +8,18 @@ public class Decks {
     // Will create a 2D ArrayList to store a player deck
     public static ArrayList<ArrayList<String>> generateDeck(){
         ArrayList<ArrayList<String>> deck = new ArrayList<ArrayList<String>>();
+        Random random = new Random();
+
         for(int i = 0; i < GlobalDefs.NUMBER_OF_INITIAL_CARDS; i++){
-            ArrayList<String> carta = Cards.sortNormalCard(); 
-            deck.add(carta);
+            int cardTypeGenerated = random.nextInt(100);
+            if(cardTypeGenerated <= GlobalDefs.CHANCE_OF_NORMAL_CARD){
+                ArrayList<String> carta = Cards.generateNormalCard(); 
+                deck.add(carta);
+            }
+            else{
+                ArrayList<String> carta = Cards.generateSpecialCard(); 
+                deck.add(carta);
+            }
         }
         return deck;
     }

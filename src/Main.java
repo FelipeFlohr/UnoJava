@@ -6,7 +6,6 @@ public class Main {
 
 		new Frame();
 
-		System.out.println(Cards.sortNormalCard());
 		System.out.println(Decks.gameDeck);
 
 	}
