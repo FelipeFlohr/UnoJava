@@ -2,8 +2,8 @@
 
 public class GlobalDefs {
 
-    public static int numberOfPlayers = 4;
-    public static int numberOfAiPlayers = 3;
-    public static int numberOfInitialCards = 7;
+    public final static int NUMBER_OF_PLAYERS = 4;
+    public final static int NUMBER_OF_AIPLAYERS = 3;
+    public final static int NUMBER_OF_INITIAL_CARDS = 7;
 
 }

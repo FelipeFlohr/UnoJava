@@ -19,5 +19,5 @@ public class CenterRightPanel extends JPanel {
         // Adding component to main panel
         panelMain.add(this, BorderLayout.EAST);
     }
-    
+
 }

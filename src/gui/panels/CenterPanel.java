@@ -25,5 +25,5 @@ public class CenterPanel extends JPanel {
         // Adding component to frame
         frame.add(this);
     }
-    
+
 }

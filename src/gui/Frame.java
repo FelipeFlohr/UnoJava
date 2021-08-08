@@ -19,7 +19,7 @@ public class Frame extends JFrame {
         this.setSize(WIDTH, HEIGHT);
         this.setLayout(new BorderLayout());
 
-        //new BottomPanel(this);
+        // Implementing the panels
         new LeftPanel(this);
         new CenterPanel(this);
 
