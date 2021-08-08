@@ -6,6 +6,9 @@ import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import gui.panels.centerpanel.CenterLeftPanel;
+import gui.panels.centerpanel.CenterRightPanel;
+
 public class CenterPanel extends JPanel {
 
     JFrame frame;

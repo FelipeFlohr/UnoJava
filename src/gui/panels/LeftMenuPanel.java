@@ -15,7 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class LeftPanel extends JPanel implements ActionListener {
+public class LeftMenuPanel extends JPanel implements ActionListener {
 
     int panel_width = 50;
     int panel_height = 100;
@@ -25,7 +25,7 @@ public class LeftPanel extends JPanel implements ActionListener {
     JButton settingsButton;
     JButton restartButton;
 
-    public LeftPanel(JFrame frame){
+    public LeftMenuPanel(JFrame frame){
         // Constructing variables
         this.frame = frame;
 

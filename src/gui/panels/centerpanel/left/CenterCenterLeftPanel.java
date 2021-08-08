@@ -1,4 +1,4 @@
-package gui.panels;
+package gui.panels.centerpanel.left;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -10,7 +10,7 @@ public class CenterCenterLeftPanel extends JPanel {
 
     JPanel panelMain;
 
-    CenterCenterLeftPanel(JPanel panelMain){
+    public CenterCenterLeftPanel(JPanel panelMain){
         this.panelMain = panelMain;
         this.setPreferredSize(new Dimension(10, 50));
 

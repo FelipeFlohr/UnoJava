@@ -1,6 +1,6 @@
 package gui;
 
-import gui.panels.LeftPanel;
+import gui.panels.LeftMenuPanel;
 import gui.panels.CenterPanel;
 
 import java.awt.BorderLayout;
@@ -20,7 +20,7 @@ public class Frame extends JFrame {
         this.setLayout(new BorderLayout());
 
         // Implementing the panels
-        new LeftPanel(this);
+        new LeftMenuPanel(this);
         new CenterPanel(this);
 
         // Final setup for the frame

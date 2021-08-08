@@ -1,4 +1,4 @@
-package gui.labels;
+package gui.panels.centerpanel.left.label;
 
 import java.awt.Color;
 import java.awt.Font;

@@ -1,6 +1,4 @@
-package gui.panels;
-
-import gui.labels.TopCenterLeftLabel;
+package gui.panels.centerpanel.left;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -8,11 +6,13 @@ import java.awt.Dimension;
 
 import javax.swing.JPanel;
 
+import gui.panels.centerpanel.left.label.TopCenterLeftLabel;
+
 public class TopCenterLeftPanel extends JPanel {
 
     JPanel panelMain;
 
-    TopCenterLeftPanel(JPanel panelMain){
+    public TopCenterLeftPanel(JPanel panelMain){
         this.panelMain = panelMain;
         this.setPreferredSize(new Dimension(10, 50));
 

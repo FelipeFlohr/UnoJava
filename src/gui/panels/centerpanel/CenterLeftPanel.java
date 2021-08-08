@@ -1,15 +1,18 @@
-package gui.panels;
+package gui.panels.centerpanel;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 
 import javax.swing.JPanel;
 
+import gui.panels.centerpanel.left.CenterCenterLeftPanel;
+import gui.panels.centerpanel.left.TopCenterLeftPanel;
+
 public class CenterLeftPanel extends JPanel {
 
     JPanel panelMain;
 
-    CenterLeftPanel(JPanel panelMain){
+    public CenterLeftPanel(JPanel panelMain){
         this.panelMain = panelMain;
         this.setLayout(new BorderLayout());
 
