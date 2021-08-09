@@ -1,7 +1,13 @@
+package cards;
+
 import java.util.ArrayList;
 import java.util.Random;
 
 public class Decks {
+
+    public static ArrayList<ArrayList<ArrayList<String>>> getGameDeck() {
+        return gameDeck;
+    }
 
     public static ArrayList<ArrayList<ArrayList<String>>> gameDeck = generateInitialDeck();
 
