@@ -1,4 +1,4 @@
-package cards;
+package functions;
 
 // This file will be responsible for defining some in-game configs
 public class GlobalDefs {

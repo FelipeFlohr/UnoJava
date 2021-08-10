@@ -1,4 +1,4 @@
-import cards.Decks;
+import functions.Decks;
 import gui.Frame;
 
 public class Main {
@@ -7,7 +7,7 @@ public class Main {
 
 		new Frame();
 
-		System.out.println(Decks.gameDeck);
+		System.out.println(Decks.getGameDeck().get(0));
 
 	}
 

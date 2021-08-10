@@ -1,16 +1,16 @@
-package cards;
+package functions;
 
 import tools.ResizeImage;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-import javax.swing.ImageIcon;
+import javax.swing.*;
 
-public class Cards {
+public class CardsMethods {
 
 	// Variables for each card
-	private static final int CARD_IMAGE_WIDTH = 128;
+	private static final int CARD_IMAGE_WIDTH = 96;
 	private static final int CARD_IMAGE_HEIGHT = 128;
 
 	public static final ImageIcon WILD_4 = new ImageIcon(ResizeImage.resizeImage("src/gui/images/cards/+4.PNG", CARD_IMAGE_WIDTH, CARD_IMAGE_HEIGHT));
