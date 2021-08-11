@@ -17,7 +17,7 @@ public class TopCenterLeftPanel extends JPanel {
         this.setPreferredSize(new Dimension(10, 50));
 
         // Initializing Panel
-        this.setBackground(Color.YELLOW);
+        this.setBackground(Color.WHITE);
         this.setOpaque(true);
 
         // Adding components to the panel

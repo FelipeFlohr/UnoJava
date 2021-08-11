@@ -14,6 +14,7 @@ public class RedReverse extends JButton implements ActionListener {
     public RedReverse(JPanel mainPanel){
         this.mainPanel = mainPanel;
 
+        this.setFocusable(false);
         this.setBorder(BorderFactory.createLineBorder(Color.RED));
         this.setContentAreaFilled(false);
         this.setIcon(CardsMethods.RED_REVERSE);

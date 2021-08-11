@@ -14,6 +14,7 @@ public class YellowReverse extends JButton implements ActionListener {
     public YellowReverse(JPanel mainPanel){
         this.mainPanel = mainPanel;
 
+        this.setFocusable(false);
         this.setBorder(BorderFactory.createLineBorder(Color.YELLOW));
         this.setContentAreaFilled(false);
         this.setIcon(CardsMethods.YELLOW_REVERSE);

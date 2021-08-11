@@ -10,15 +10,18 @@ import javax.swing.*;
 
 public class CenterCenterLeftPanel extends JPanel {
 
+    public final static int GRID_ROWS = 3;
+    public final static int GRID_COLS = 3;
     JPanel panelMain;
 
     public CenterCenterLeftPanel(JPanel panelMain){
+
         this.panelMain = panelMain;
         this.setPreferredSize(new Dimension(10, 50));
-        this.setLayout(new GridLayout(3, 3));
+        this.setLayout(new GridLayout(GRID_ROWS, GRID_COLS));
 
         // Initializing Panel
-        this.setBackground(Color.ORANGE);
+        this.setBackground(Color.LIGHT_GRAY);
         this.setOpaque(true);
 
         // Adding components to the panel

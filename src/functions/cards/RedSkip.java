@@ -14,6 +14,7 @@ public class RedSkip extends JButton implements ActionListener {
     public RedSkip(JPanel mainPanel){
         this.mainPanel = mainPanel;
 
+        this.setFocusable(false);
         this.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         this.setContentAreaFilled(false);
         this.setIcon(CardsMethods.RED_SKIP);

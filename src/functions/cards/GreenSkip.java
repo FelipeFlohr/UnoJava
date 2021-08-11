@@ -14,6 +14,7 @@ public class GreenSkip extends JButton implements ActionListener {
     public GreenSkip(JPanel mainPanel){
         this.mainPanel = mainPanel;
 
+        this.setFocusable(false);
         this.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         this.setContentAreaFilled(false);
         this.setIcon(CardsMethods.GREEN_SKIP);

@@ -14,6 +14,7 @@ public class Green9 extends JButton implements ActionListener {
     public Green9(JPanel mainPanel){
         this.mainPanel = mainPanel;
 
+        this.setFocusable(false);
         this.setBorder(BorderFactory.createLineBorder(Color.GREEN));
         this.setContentAreaFilled(false);
         this.setIcon(CardsMethods.GREEN_9);

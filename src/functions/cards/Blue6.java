@@ -14,6 +14,7 @@ public class Blue6 extends JButton implements ActionListener {
     public Blue6(JPanel mainPanel){
         this.mainPanel = mainPanel;
 
+        this.setFocusable(false);
         this.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         this.setContentAreaFilled(false);
         this.setIcon(CardsMethods.BLUE_6);

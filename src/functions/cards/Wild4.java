@@ -14,6 +14,7 @@ public class Wild4 extends JButton implements ActionListener {
     public Wild4(JPanel mainPanel){
         this.mainPanel = mainPanel;
 
+        this.setFocusable(false);
         this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         this.setContentAreaFilled(false);
         this.setIcon(CardsMethods.WILD_4);

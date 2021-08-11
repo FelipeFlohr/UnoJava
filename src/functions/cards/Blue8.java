@@ -14,6 +14,7 @@ public class Blue8 extends JButton implements ActionListener {
     public Blue8(JPanel mainPanel){
         this.mainPanel = mainPanel;
 
+        this.setFocusable(false);
         this.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         this.setContentAreaFilled(false);
         this.setIcon(CardsMethods.BLUE_8);

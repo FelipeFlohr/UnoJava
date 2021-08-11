@@ -5,6 +5,7 @@ import java.awt.Color;
 
 import javax.swing.JPanel;
 
+import gui.panels.centerpanel.left.BottomCenterLeftPanel;
 import gui.panels.centerpanel.left.CenterCenterLeftPanel;
 import gui.panels.centerpanel.left.TopCenterLeftPanel;
 
@@ -23,6 +24,7 @@ public class CenterLeftPanel extends JPanel {
         // Adding components to the panel
         new TopCenterLeftPanel(this);
         new CenterCenterLeftPanel(this);
+        new BottomCenterLeftPanel(this);
 
         // Adding component to main panel
         panelMain.add(this, BorderLayout.WEST);

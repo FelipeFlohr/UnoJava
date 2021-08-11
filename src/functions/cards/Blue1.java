@@ -14,6 +14,7 @@ public class Blue1 extends JButton implements ActionListener {
     public Blue1(JPanel mainPanel){
         this.mainPanel = mainPanel;
 
+        this.setFocusable(false);
         this.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         this.setContentAreaFilled(false);
         this.setIcon(CardsMethods.BLUE_1);

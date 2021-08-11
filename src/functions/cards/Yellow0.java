@@ -14,6 +14,7 @@ public class Yellow0 extends JButton implements ActionListener {
     public Yellow0(JPanel mainPanel){
         this.mainPanel = mainPanel;
 
+        this.setFocusable(false);
         this.setBorder(BorderFactory.createLineBorder(Color.YELLOW));
         this.setContentAreaFilled(false);
         this.setIcon(CardsMethods.YELLOW_0);

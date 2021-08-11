@@ -14,6 +14,7 @@ public class Red2 extends JButton implements ActionListener {
     public Red2(JPanel mainPanel){
         this.mainPanel = mainPanel;
 
+        this.setFocusable(false);
         this.setBorder(BorderFactory.createLineBorder(Color.RED));
         this.setContentAreaFilled(false);
         this.setIcon(CardsMethods.RED_2);

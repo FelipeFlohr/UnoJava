@@ -14,6 +14,7 @@ public class YellowWild2 extends JButton implements ActionListener {
     public YellowWild2(JPanel mainPanel){
         this.mainPanel = mainPanel;
 
+        this.setFocusable(false);
         this.setBorder(BorderFactory.createLineBorder(Color.YELLOW));
         this.setContentAreaFilled(false);
         this.setIcon(CardsMethods.YELLOW_PLUS2);

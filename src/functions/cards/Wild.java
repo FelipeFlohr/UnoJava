@@ -14,6 +14,7 @@ public class Wild extends JButton implements ActionListener {
     public Wild(JPanel mainPanel){
         this.mainPanel = mainPanel;
 
+        this.setFocusable(false);
         this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         this.setContentAreaFilled(false);
         this.setIcon(CardsMethods.WILD);
