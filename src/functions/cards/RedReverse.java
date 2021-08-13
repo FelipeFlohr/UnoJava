@@ -7,20 +7,18 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class RedReverse extends JButton implements ActionListener {
+public class RedReverse extends Button implements ActionListener {
 
     JPanel mainPanel;
 
     public RedReverse(JPanel mainPanel){
+        super(mainPanel);
         this.mainPanel = mainPanel;
 
-        this.setFocusable(false);
         this.setBorder(BorderFactory.createLineBorder(Color.RED));
-        this.setContentAreaFilled(false);
         this.setIcon(CardsMethods.RED_REVERSE);
         this.addActionListener(this);
 
-        mainPanel.add(this);
     }
 
     @Override

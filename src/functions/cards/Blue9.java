@@ -7,20 +7,18 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Blue9 extends JButton implements ActionListener {
+public class Blue9 extends Button implements ActionListener {
 
     JPanel mainPanel;
 
     public Blue9(JPanel mainPanel){
+        super(mainPanel);
         this.mainPanel = mainPanel;
 
-        this.setFocusable(false);
         this.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-        this.setContentAreaFilled(false);
         this.setIcon(CardsMethods.BLUE_9);
         this.addActionListener(this);
 
-        mainPanel.add(this);
     }
 
     @Override

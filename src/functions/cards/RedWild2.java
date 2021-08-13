@@ -7,20 +7,18 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class RedWild2 extends JButton implements ActionListener {
+public class RedWild2 extends Button implements ActionListener {
 
     JPanel mainPanel;
 
     public RedWild2(JPanel mainPanel){
+        super(mainPanel);
         this.mainPanel = mainPanel;
 
-        this.setFocusable(false);
         this.setBorder(BorderFactory.createLineBorder(Color.RED));
-        this.setContentAreaFilled(false);
         this.setIcon(CardsMethods.RED_PLUS2);
         this.addActionListener(this);
 
-        mainPanel.add(this);
     }
 
     @Override
