@@ -19,6 +19,7 @@ public class GreenWild2 extends Button implements ActionListener {
         this.setIcon(CardsMethods.GREEN_PLUS2);
         this.addActionListener(this);
 
+        mainPanel.add(this);
     }
 
     @Override

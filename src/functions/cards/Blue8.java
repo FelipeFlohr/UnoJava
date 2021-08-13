@@ -19,6 +19,7 @@ public class Blue8 extends Button implements ActionListener {
         this.setIcon(CardsMethods.BLUE_8);
         this.addActionListener(this);
 
+        mainPanel.add(this);
     }
 
     @Override

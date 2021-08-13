@@ -19,6 +19,7 @@ public class GreenSkip extends Button implements ActionListener {
         this.setIcon(CardsMethods.GREEN_SKIP);
         this.addActionListener(this);
 
+        mainPanel.add(this);
     }
 
     @Override

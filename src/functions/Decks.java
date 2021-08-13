@@ -1,7 +1,5 @@
 package functions;
 
-import gui.panels.centerpanel.left.CenterCenterLeftPanel;
-
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -45,7 +43,7 @@ public class Decks {
         int gridSize = GRID_ROWS * GRID_COLS;
         ArrayList<ArrayList<String>> currentPlayerDeck = getGameDeck().get(0);
         ArrayList<ArrayList<ArrayList<String>>> allDecks = new ArrayList<>();
-        int amountOfPages = GlobalDefs.totalAmountOfPages;
+        int amountOfPages = generateTotalAmountOfPages();
 
         for(int i = 0; i < amountOfPages; i++){
             ArrayList<ArrayList<String>> currentDeck = new ArrayList<>();
@@ -67,15 +65,16 @@ public class Decks {
             for(int j = (i * gridSize); j < iterationLimit; j++){
                 currentDeck.add(currentPlayerDeck.get(j));
             }
-            System.out.println(currentDeck);
             allDecks.add(currentDeck);
         }
-
         return allDecks;
     }
 
     public static int generateTotalAmountOfPages(){
-        return (int) Math.ceil((double) Decks.getGameDeck().get(GlobalDefs.PLAYER_ID).size() / (double) (CenterCenterLeftPanel.GRID_ROWS * CenterCenterLeftPanel.GRID_COLS));
+        int gridSize = GRID_ROWS * GRID_COLS;
+        int playerDeckSize = Decks.getGameDeck().get(GlobalDefs.PLAYER_ID).size();
+
+        return (int) Math.ceil((double) playerDeckSize / gridSize);
     }
 
     public static ArrayList<ArrayList<ArrayList<String>>> getGameDeck() {

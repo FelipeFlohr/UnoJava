@@ -11,8 +11,6 @@ public class Button extends JButton {
 
         this.setFocusable(false);
         this.setContentAreaFilled(false);
-
-        //mainPanel.add(this);
     }
 
 }

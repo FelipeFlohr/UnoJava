@@ -19,6 +19,7 @@ public class RedWild2 extends Button implements ActionListener {
         this.setIcon(CardsMethods.RED_PLUS2);
         this.addActionListener(this);
 
+        mainPanel.add(this);
     }
 
     @Override

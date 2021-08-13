@@ -19,6 +19,7 @@ public class Yellow1 extends Button implements ActionListener {
         this.setIcon(CardsMethods.YELLOW_1);
         this.addActionListener(this);
 
+        mainPanel.add(this);
     }
 
     @Override

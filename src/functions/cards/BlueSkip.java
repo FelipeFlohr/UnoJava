@@ -19,6 +19,7 @@ public class BlueSkip extends Button implements ActionListener {
         this.setIcon(CardsMethods.BLUE_SKIP);
         this.addActionListener(this);
 
+        mainPanel.add(this);
     }
 
     @Override

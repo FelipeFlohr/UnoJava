@@ -19,6 +19,7 @@ public class Wild extends Button implements ActionListener {
         this.setIcon(CardsMethods.WILD);
         this.addActionListener(this);
 
+        mainPanel.add(this);
     }
 
     @Override

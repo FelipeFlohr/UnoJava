@@ -12,6 +12,7 @@ import gui.panels.centerpanel.left.TopCenterLeftPanel;
 public class CenterLeftPanel extends JPanel {
 
     JPanel panelMain;
+    public static CenterCenterLeftPanel centerLeftPanel;
 
     public CenterLeftPanel(JPanel panelMain){
         this.panelMain = panelMain;
@@ -23,7 +24,7 @@ public class CenterLeftPanel extends JPanel {
 
         // Adding components to the panel
         new TopCenterLeftPanel(this);
-        new CenterCenterLeftPanel(this);
+        centerLeftPanel = new CenterCenterLeftPanel(this);
         new BottomCenterLeftPanel(this);
 
         // Adding component to main panel

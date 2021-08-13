@@ -19,6 +19,7 @@ public class BlueReverse extends Button implements ActionListener {
         this.setIcon(CardsMethods.BLUE_REVERSE);
         this.addActionListener(this);
 
+        mainPanel.add(this);
     }
 
     @Override

@@ -19,6 +19,7 @@ public class GreenReverse extends Button implements ActionListener {
         this.setIcon(CardsMethods.GREEN_REVERSE);
         this.addActionListener(this);
 
+        mainPanel.add(this);
     }
 
     @Override

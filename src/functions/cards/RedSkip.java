@@ -19,6 +19,7 @@ public class RedSkip extends Button implements ActionListener {
         this.setIcon(CardsMethods.RED_SKIP);
         this.addActionListener(this);
 
+        mainPanel.add(this);
     }
 
     @Override

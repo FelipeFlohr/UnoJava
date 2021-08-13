@@ -19,6 +19,7 @@ public class RedReverse extends Button implements ActionListener {
         this.setIcon(CardsMethods.RED_REVERSE);
         this.addActionListener(this);
 
+        mainPanel.add(this);
     }
 
     @Override

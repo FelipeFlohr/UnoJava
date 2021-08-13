@@ -19,6 +19,7 @@ public class YellowSkip extends Button implements ActionListener {
         this.setIcon(CardsMethods.YELLOW_SKIP);
         this.addActionListener(this);
 
+        mainPanel.add(this);
     }
 
     @Override

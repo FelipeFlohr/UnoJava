@@ -1,13 +1,11 @@
-import functions.Decks;
-import functions.GlobalDefs;
 import gui.Frame;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 
-		//new Frame();
-		System.out.println(Decks.getCurrentPlayerDecks());
+		new Frame();
+		Thread.sleep(1000);
 
 	}
 
