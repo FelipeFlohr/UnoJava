@@ -12,6 +12,10 @@ public class TopCenterLeftPanel extends JPanel {
 
     JPanel panelMain;
 
+    /**
+     * Panel responsible for holding information. WIP
+     * @param panelMain The panel where this panel is going to be added (Center Left Panel)
+     */
     public TopCenterLeftPanel(JPanel panelMain){
         this.panelMain = panelMain;
         this.setPreferredSize(new Dimension(10, 50));

@@ -6,6 +6,9 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * WIP
+ */
 public class TopCenterLeftLabel extends JLabel {
 
     JPanel panelMain;

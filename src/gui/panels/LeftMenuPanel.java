@@ -15,6 +15,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+/**
+ * The left panel that holds the menu buttons
+ */
 public class LeftMenuPanel extends JPanel implements ActionListener {
 
     int panel_width = 50;

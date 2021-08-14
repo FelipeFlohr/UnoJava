@@ -5,6 +5,11 @@ import java.awt.Color;
 
 import javax.swing.JPanel;
 
+/**
+ * Center right panel.
+ * Panel responsible for holding things such as the current card on the table and Uno Button.
+ * This panel is added to the Center Panel
+ */
 public class CenterRightPanel extends JPanel {
 
     JPanel panelMain;

@@ -5,10 +5,17 @@ import functions.GlobalDefs;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * The bottom center left label is responsible for displaying the current page the user is in.
+ */
 public class BottomCenterLeftLabel extends JLabel {
 
     JPanel panelMain;
 
+    /**
+     * Constructor of the class. Sets the values for the label
+     * @param panelMain The main panel where this label is going to be added (Bottom Center Left Panel)
+     */
     public BottomCenterLeftLabel(JPanel panelMain){
 
         this.setText("Current page: "+(GlobalDefs.currentPage+1));

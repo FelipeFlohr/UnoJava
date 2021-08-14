@@ -9,6 +9,9 @@ import javax.swing.JPanel;
 import gui.panels.centerpanel.CenterLeftPanel;
 import gui.panels.centerpanel.CenterRightPanel;
 
+/**
+ * Center panel of the window. Mainly responsible for holding the in-game objects
+ */
 public class CenterPanel extends JPanel {
 
     JFrame frame;

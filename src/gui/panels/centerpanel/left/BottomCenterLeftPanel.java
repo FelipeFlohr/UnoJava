@@ -8,12 +8,19 @@ import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 
+/**
+ * Panel responsible for holding the previous, current and next page buttons/label
+ */
 public class BottomCenterLeftPanel extends JPanel {
     JPanel panelMain;
     public static NextPageButton nextButton;
     public static BottomCenterLeftLabel currentPageLabel;
     public static PrevPageButton prevButton;
 
+    /**
+     * Constructor of the class. Sets the buttons and label accordingly to the buttons' methods
+     * @param panelMain The panel where this panel is going to be added (Center Left Panel)
+     */
     public BottomCenterLeftPanel(JPanel panelMain){
         // Initializing Panel
         this.panelMain = panelMain;

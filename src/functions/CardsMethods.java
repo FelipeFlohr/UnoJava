@@ -68,6 +68,10 @@ public class CardsMethods {
 	public static final ImageIcon YELLOW_SKIP = new ImageIcon(ResizeImage.resizeImage("src/gui/images/cards/yellowskip.PNG", CARD_IMAGE_WIDTH, CARD_IMAGE_HEIGHT));
 	public static final ImageIcon YELLOW_PLUS2 = new ImageIcon(ResizeImage.resizeImage("src/gui/images/cards/yellow+2.PNG", CARD_IMAGE_WIDTH, CARD_IMAGE_HEIGHT));
 
+	/**
+	 * Generates a normal card
+	 * @return Returns a ArrayList containing the card number and color
+	 */
 	public static ArrayList<String> generateNormalCard(){
 		Random random = new Random();
 		ArrayList<String> card = new ArrayList<>();
@@ -82,6 +86,10 @@ public class CardsMethods {
 		return card;
 	}
 
+	/**
+	 * Generates a special card
+	 * @return Returns a ArrayList containing the card number and color
+	 */
 	public static ArrayList<String> generateSpecialCard(){
 		Random random = new Random();
 		ArrayList<String> card = new ArrayList<>();

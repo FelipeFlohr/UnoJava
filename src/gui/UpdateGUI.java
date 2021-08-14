@@ -12,6 +12,10 @@ import javax.swing.*;
 
 import static gui.panels.centerpanel.left.CenterCenterLeftPanel.renderCard;
 
+/**
+ * @author Felipe Flohr
+ * The class responsible for updating the GUI
+ */
 public class UpdateGUI {
 
     NextPageButton nextPageButton;
@@ -19,6 +23,12 @@ public class UpdateGUI {
     BottomCenterLeftLabel currentPageLabel;
     JPanel buttonsPanel;
 
+    /**
+     * @param nextPageButton The next page button
+     * @param prevPageButton The previous page button
+     * @param currentPageLabel The label that shows the current page
+     * @param buttonsPanel The panel where the buttons are placed within
+     */
     UpdateGUI(NextPageButton nextPageButton, PrevPageButton prevPageButton, BottomCenterLeftLabel currentPageLabel, JPanel buttonsPanel){
         this.nextPageButton = nextPageButton;
         this.prevPageButton = prevPageButton;
@@ -26,6 +36,9 @@ public class UpdateGUI {
         this.buttonsPanel = buttonsPanel;
     }
 
+    /**
+     * Method responsible for updating all the GUI. No params are needed
+     */
     public void updateAllGUI(){
         updateButtons(this.buttonsPanel);
         updatePrevPageButton(this.prevPageButton);
@@ -33,11 +46,19 @@ public class UpdateGUI {
         updateCurrentPageLabel(this.currentPageLabel);
     }
 
+    /**
+     * A static variable for holding a "UpdateGUI" class. Useful for updating the GUI
+     * in other classes
+     */
     public static UpdateGUI updateGUI = new UpdateGUI(BottomCenterLeftPanel.nextButton,
                                                      BottomCenterLeftPanel.prevButton,
                                                      BottomCenterLeftPanel.currentPageLabel,
                                                      CenterLeftPanel.centerLeftPanel);
 
+    /**
+     * Updates the next page button
+     * @param nextPageButton The next page button
+     */
     public static void updateNextPageButton(NextPageButton nextPageButton){
         if(GlobalDefs.totalAmountOfPages == 1){
             String buttonText = "Next page 1/1";
@@ -58,6 +79,10 @@ public class UpdateGUI {
         }
     }
 
+    /**
+     * Updates the previous page button
+     * @param prevPageButton The previous page button
+     */
     public static void updatePrevPageButton(PrevPageButton prevPageButton){
         String buttonText;
         if(GlobalDefs.totalAmountOfPages == 1){
@@ -79,12 +104,20 @@ public class UpdateGUI {
         }
     }
 
+    /**
+     * Updates the label which displays the current page
+     * @param currentPageLabel label where displays the current page
+     */
     public static void updateCurrentPageLabel(BottomCenterLeftLabel currentPageLabel){
         int currentPage = GlobalDefs.currentPage + 1;
         String text = "Current page: "+currentPage;
         currentPageLabel.setText(text);
     }
 
+    /**
+     * Updates all buttons inside the button's label
+     * @param buttonsPanel Label where the buttons will be placed
+     */
     public static void updateButtons(JPanel buttonsPanel){
         // Remove section
         try{

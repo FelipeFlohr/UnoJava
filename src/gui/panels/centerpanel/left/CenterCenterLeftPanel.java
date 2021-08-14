@@ -10,6 +10,9 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
+/**
+ * Panel responsible for holding the cards buttons. There's 9 buttons in total, because of the 3x3 card's grid
+ */
 public class CenterCenterLeftPanel extends JPanel {
 
     public final static int GRID_ROWS = 3;
@@ -25,6 +28,10 @@ public class CenterCenterLeftPanel extends JPanel {
     public static Button button8;
     public static Button button9;
 
+    /**
+     * Constructor of the class. Renders the 9 buttons
+     * @param panelMain The panel where this panel is going to be added (Center Left Panel)
+     */
     public CenterCenterLeftPanel(JPanel panelMain){
 
         this.panelMain = panelMain;
@@ -50,6 +57,12 @@ public class CenterCenterLeftPanel extends JPanel {
         panelMain.add(this, BorderLayout.CENTER);
     }
 
+    /**
+     * Renders a card based on the buttonID and the current page
+     * @param mainPanel The panel where the button is going to be added (Center-Center Left Panel)
+     * @param buttonID The ID of the button. Represents the index value on the current page's player deck
+     * @return Returns a new class based on the card on the deck
+     */
     public static Button renderCard(JPanel mainPanel, int buttonID){
         try{
             ArrayList<String> card = Decks.getCurrentPlayerDecks().get(GlobalDefs.currentPage).get(buttonID);

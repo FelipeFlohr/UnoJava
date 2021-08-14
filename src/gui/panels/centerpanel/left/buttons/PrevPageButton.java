@@ -9,12 +9,20 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Creates the previous page button
+ */
 public class PrevPageButton extends JButton implements ActionListener {
 
     static String buttonText;
     JPanel mainPanel;
     NextPageButton nextPageButton;
 
+    /**
+     * Constructor of the class. Creates the next page button
+     * @param mainPanel The panel where this button is going to be added (Bottom Center Left Panel)
+     * @param nextPageButton The instance for the next page button
+     */
     public PrevPageButton(JPanel mainPanel, NextPageButton nextPageButton){
         // Construction
         this.mainPanel = mainPanel;
