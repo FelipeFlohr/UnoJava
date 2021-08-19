@@ -188,7 +188,7 @@ public class CenterCenterLeftPanel extends JPanel {
                     }
                     break;
                 default:
-                    if (card.get(0).equals("wild4")) {
+                    if (card.get(0).equals("+4")) {
                         return new Wild4(mainPanel);
                     } else {
                         return new Wild(mainPanel);
