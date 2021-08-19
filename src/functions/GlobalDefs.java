@@ -14,5 +14,10 @@ public class GlobalDefs {
     public final static int PLAYER_ID = 0; // Will define the Player Number within the ArrayList
     public static int currentPage = 0; // Will define the current player's deck page
     public static int totalAmountOfPages = Decks.generateTotalAmountOfPages();
+    public static int currentPlayer = 0; // Will define the turn's current player
+
+    public static void setTotalAmountOfPages(){
+        totalAmountOfPages = Decks.generateTotalAmountOfPages();
+    }
 
 }

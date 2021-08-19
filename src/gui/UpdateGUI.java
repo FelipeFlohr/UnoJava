@@ -1,5 +1,6 @@
 package gui;
 
+import functions.Decks;
 import functions.GlobalDefs;
 import gui.panels.centerpanel.CenterLeftPanel;
 import gui.panels.centerpanel.left.BottomCenterLeftPanel;
@@ -40,10 +41,12 @@ public class UpdateGUI {
      * Method responsible for updating all the GUI. No params are needed
      */
     public void updateAllGUI(){
-        updateButtons(this.buttonsPanel);
+        GlobalDefs.setTotalAmountOfPages();
+        Decks.setCurrentPlayerDecks(Decks.generateCurrentPlayerDividedDecks());
         updatePrevPageButton(this.prevPageButton);
         updateNextPageButton(this.nextPageButton);
         updateCurrentPageLabel(this.currentPageLabel);
+        updateButtons(this.buttonsPanel);
     }
 
     /**

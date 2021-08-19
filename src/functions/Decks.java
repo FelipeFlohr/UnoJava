@@ -100,6 +100,26 @@ public class Decks {
         return (int) Math.ceil((double) playerDeckSize / gridSize);
     }
 
+    public static void removeCard(int playerID, String cardNumber, String cardColor){
+        var deck = getGameDeck();
+        int cardIndex = 0;
+
+        for(int i = 0; i < deck.get(playerID).size(); i++){
+            if(deck.get(playerID).get(i).get(0).equals(cardNumber) &&
+               deck.get(playerID).get(i).get(1).equals(cardColor)){
+                cardIndex = Integer.parseInt(Integer.toString(i));
+                break;
+            }
+        }
+
+        // Removing the card
+        deck.get(playerID).remove(cardIndex);
+
+        // Setting the deck
+        setGameDeck(deck);
+    }
+
+    // Getters
     /**
      * Getter for the game deck
      * @return returns the game deck

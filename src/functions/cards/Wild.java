@@ -1,6 +1,9 @@
 package functions.cards;
 
 import functions.CardsMethods;
+import functions.Decks;
+import functions.GlobalDefs;
+import gui.UpdateGUI;
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,6 +27,9 @@ public class Wild extends Button implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        Decks.removeCard(0, "wild", "black");
+        GlobalDefs.currentPage = 0;
+        UpdateGUI.updateGUI.updateAllGUI();
         System.out.println("You pressed a Wild card");
     }
 }
