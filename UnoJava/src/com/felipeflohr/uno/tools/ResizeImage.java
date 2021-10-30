@@ -5,10 +5,10 @@ import java.awt.Image;
 
 public class ResizeImage {
 
-    public static Image resizeImage(String imagePath, int w, int h) {
+    public static Image resizeImage(String imagePath, int width, int height) {
         ImageIcon imageIcon = new ImageIcon(imagePath);
         Image image = imageIcon.getImage();
-        return image.getScaledInstance(w, h, Image.SCALE_SMOOTH);
+        return image.getScaledInstance(width, height, Image.SCALE_SMOOTH);
     }
 
 }
