@@ -38,21 +38,21 @@ public class LeftMenuPanel extends JPanel implements ActionListener {
         restartButton = new JButton();
         restartButton.setBorder(BorderFactory.createEmptyBorder());
         restartButton.setContentAreaFilled(false);
-        restartButton.setIcon(new ImageIcon(ResizeImage.resizeImage("res/restart.png", 32, 32))); // Placeholder
+        restartButton.setIcon(new ImageIcon(ResizeImage.resizeImage("res/restart.png", 32, 32)));
         restartButton.setFocusable(false);
         restartButton.addActionListener(this);
 
         leaderButton = new JButton();
         leaderButton.setBorder(BorderFactory.createEmptyBorder());
         leaderButton.setContentAreaFilled(false);
-        leaderButton.setIcon(new ImageIcon(ResizeImage.resizeImage("res/trophy.png", 50, 50))); // Placeholder
+        leaderButton.setIcon(new ImageIcon(ResizeImage.resizeImage("res/trophy.png", 50, 50)));
         leaderButton.setFocusable(false);
         leaderButton.addActionListener(this);
 
         settingsButton = new JButton();
         settingsButton.setBorder(BorderFactory.createEmptyBorder());
         settingsButton.setContentAreaFilled(false);
-        settingsButton.setIcon(new ImageIcon(ResizeImage.resizeImage("res/settings.png", 32, 32))); // Placeholder
+        settingsButton.setIcon(new ImageIcon(ResizeImage.resizeImage("res/settings.png", 32, 32)));
         settingsButton.setFocusable(false);
         settingsButton.addActionListener(this);
 

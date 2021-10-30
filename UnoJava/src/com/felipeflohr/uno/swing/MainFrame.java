@@ -17,7 +17,7 @@ public class MainFrame extends JFrame {
         setLayout(new BorderLayout());
 
         add(new LeftMenuPanel(), BorderLayout.WEST);
-        add(new CenterPanel());
+        add(new CenterPanel(), BorderLayout.CENTER);
 
         setTitle("2flps' Uno - Java Edition");
         setLocationRelativeTo(null);
