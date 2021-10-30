@@ -3,6 +3,11 @@ package com.felipeflohr.uno.logic;
 import com.felipeflohr.uno.exception.InvalidColorException;
 import com.felipeflohr.uno.exception.InvalidNumberException;
 
+import java.util.Random;
+
+import static com.felipeflohr.uno.globaldefs.GlobalDefinitions.getChanceOfBlackSpecialCard;
+import static com.felipeflohr.uno.globaldefs.GlobalDefinitions.getChanceOfSpecialCard;
+
 public class Card {
 
     private final String number;
@@ -34,6 +39,44 @@ public class Card {
                 && !color.equals("green")) {
             throw new InvalidColorException();
         }
+    }
+
+    public static Card generateRandomCard() throws InvalidNumberException, InvalidColorException {
+        String sortedColor;
+        String sortedNumber;
+
+        final String BLACK_COLOR = "black";
+        final String[] COLORS = { "red", "blue", "green", "yellow" };
+        final String[] NORMAL_NUMBERS = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+        final String[] SPECIAL_NUMBERS = { "wild2", "reverse", "skip" };
+        final String[] BLACK_NUMBERS = { "wild4", "wild" };
+
+        Random random = new Random();
+        boolean isCardSpecial = random.nextInt(100) >= (100 - getChanceOfSpecialCard());
+
+        if (isCardSpecial) {
+            boolean isBlackCard = random.nextInt(100) >= (100 - getChanceOfBlackSpecialCard());
+
+            if (isBlackCard) {
+                int cardNumberIndex = random.nextInt(0, BLACK_NUMBERS.length);
+                sortedNumber = BLACK_NUMBERS[cardNumberIndex];
+                sortedColor = BLACK_COLOR;
+            } else {
+                int cardNumberIndex = random.nextInt(0, SPECIAL_NUMBERS.length);
+                int cardColorIndex = random.nextInt(0, COLORS.length);
+
+                sortedNumber = SPECIAL_NUMBERS[cardNumberIndex];
+                sortedColor = COLORS[cardColorIndex];
+            }
+        } else {
+            int cardNumberIndex = random.nextInt(0, NORMAL_NUMBERS.length);
+            int cardColorIndex = random.nextInt(0, COLORS.length);
+
+            sortedNumber = NORMAL_NUMBERS[cardNumberIndex];
+            sortedColor = COLORS[cardColorIndex];
+        }
+
+        return new Card(sortedNumber, sortedColor);
     }
 
     // Equals and HashCode
