@@ -4,15 +4,18 @@ import javax.swing.JComponent;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.felipeflohr.uno.globaldefs.GlobalDefinitions.getTable;
+
 public class UpdatableElements {
 
-    private static List<JComponent> uiElements = new ArrayList<>();
+    private static final List<JComponent> uiElements = new ArrayList<>();
 
     public static void updateUIElements() {
         uiElements.parallelStream().forEach(element -> {
             element.repaint();
             element.validate();
             System.out.println("Updatable element updated: " + element.getUIClassID());
+            getTable().checkPlayersAmountOfCards();
         });
     }
 

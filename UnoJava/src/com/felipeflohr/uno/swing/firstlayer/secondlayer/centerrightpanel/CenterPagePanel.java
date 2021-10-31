@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static com.felipeflohr.uno.globaldefs.GlobalDefinitions.*;
@@ -20,6 +21,7 @@ public class CenterPagePanel extends JPanel {
 
         addButtons();
         addUIElement(this);
+        setCenterPagePanel(this);
     }
 
     private void addButtons() {
@@ -35,9 +37,7 @@ public class CenterPagePanel extends JPanel {
                 for (int j = 0; j < gridSize; j++) {
                     playerDeck.add(getTable().getPlayerByIndex(getCurrentPlayer()).getDeck().get(j));
                 }
-            } catch (IndexOutOfBoundsException ignored) {
-
-            }
+            } catch (IndexOutOfBoundsException ignored) {}
 
             playerDecks.add(playerDeck);
         }
@@ -46,4 +46,9 @@ public class CenterPagePanel extends JPanel {
             add(new CardButton(playerDecks.get(getCurrentPage()).get(i), getTable()));
         }
     }
+
+    private void removeAllButtons() {
+        Arrays.stream(getComponents()).forEach(this::remove);
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.felipeflohr.uno.logic;
 
+import com.felipeflohr.uno.exception.PlayerNoCardsException;
 import com.felipeflohr.uno.logic.ailogic.AIBehaviour;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ public class Table {
     private int buyTurnAmount;
     private String colorSelected;
     private boolean skip;
+    private int playerTurn;
     private List<Player> players = new ArrayList<>();
 
     public Table() {
@@ -25,8 +27,18 @@ public class Table {
         buyTurnAmount = 0;
         skip = false;
         colorSelected = null;
+        playerTurn = 0;
 
         generatePlayers();
+        checkPlayersAmountOfCards();
+    }
+
+    public void checkPlayersAmountOfCards() {
+        players.parallelStream().forEach(p -> {
+            if (p.getDeck().size() == 0) {
+                throw new PlayerNoCardsException("Player ID" + p.getId() + "has no cards");
+            }
+        });
     }
 
     private void generatePlayers() {
@@ -37,6 +49,21 @@ public class Table {
                 players.add(new Player(i, true, new AIBehaviour()));
             }
         }
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("--Table--\n")
+                .append("Current card: " + currentCard + "\n")
+                .append("Is reverse: " + reverse + "\n")
+                .append("Buy turn card: " + buyTurnCard + "\n")
+                .append("Buy turn amount: " + buyTurnAmount + "\n")
+                .append("Is skip: " + skip + "\n")
+                .append("Color selected: " + colorSelected + "\n")
+                .append("Player turn: " + playerTurn + "\n");
+
+        return sb.toString();
     }
 
     // Getters and Setters
@@ -90,5 +117,13 @@ public class Table {
 
     public Player getPlayerByIndex(int index) {
         return players.get(index);
+    }
+
+    public int getPlayerTurn() {
+        return playerTurn;
+    }
+
+    public void setPlayerTurn(int id) {
+        playerTurn = id;
     }
 }

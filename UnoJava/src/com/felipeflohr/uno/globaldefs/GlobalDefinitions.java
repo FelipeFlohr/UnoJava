@@ -1,13 +1,14 @@
 package com.felipeflohr.uno.globaldefs;
 
 import com.felipeflohr.uno.logic.Table;
+import com.felipeflohr.uno.swing.firstlayer.secondlayer.centerrightpanel.CenterPagePanel;
 
 import static com.felipeflohr.uno.swing.UpdatableElements.updateUIElements;
 
 public class GlobalDefinitions {
 
     private static final int TOTAL_AMOUNT_OF_PLAYERS = 4;
-    private static final int INITIAL_CARDS = 7;
+    private static final int INITIAL_CARDS = 12;
     private static final boolean AI_ENABLED = true;
     private static final int CHANCE_OF_SPECIAL_CARD = 40;
     private static final int CHANCE_OF_BLACK_SPECIAL_CARD = 35;
@@ -19,6 +20,7 @@ public class GlobalDefinitions {
     private static int currentPlayer = 0;
     private static int nonAiPlayer = 0;
     private static int currentPage = 0;
+    private static CenterPagePanel centerPagePanel; // The panel where the buttons are being hold
 
     // Static getters
     public static int getTotalAmountOfPlayers() {
@@ -84,5 +86,13 @@ public class GlobalDefinitions {
 
     public static void setCurrentPage(int currentPage) {
         GlobalDefinitions.currentPage = currentPage;
+    }
+
+    public static CenterPagePanel getCenterPagePanel() {
+        return centerPagePanel;
+    }
+
+    public static void setCenterPagePanel(CenterPagePanel centerPagePanel) {
+        GlobalDefinitions.centerPagePanel = centerPagePanel;
     }
 }

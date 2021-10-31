@@ -15,6 +15,7 @@ public class Player {
 
     private List<Card> deck = new ArrayList<>();
     private final int id;
+    private boolean isPlayerTurn;
     private final boolean aiEnabled;
     private final AIBehaviour ai;
 
@@ -65,6 +66,15 @@ public class Player {
 
     public List<Card> getDeck() {
         return deck;
+    }
+
+    // Getters & Setters
+    public boolean isPlayerTurn() {
+        return isPlayerTurn;
+    }
+
+    public void setPlayerTurn(boolean t) {
+        isPlayerTurn = t;
     }
 
     @Override
