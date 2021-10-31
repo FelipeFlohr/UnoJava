@@ -2,7 +2,6 @@ package com.felipeflohr.uno.swing;
 
 import com.felipeflohr.uno.swing.firstlayer.CenterPanel;
 import com.felipeflohr.uno.swing.firstlayer.LeftMenuPanel;
-import com.felipeflohr.uno.tools.ResizeImage;
 
 import javax.swing.JFrame;
 import java.awt.BorderLayout;
