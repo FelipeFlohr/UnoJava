@@ -24,7 +24,12 @@ public class CenterPagePanel extends JPanel {
         setCenterPagePanel(this);
     }
 
-    private void addButtons() {
+    public void redrawButtons() {
+        removeAllButtons();
+        addButtons();
+    }
+
+    private List<List<Card>> getSeparatedPlayerDecks() {
         List<List<Card>> playerDecks = new ArrayList<>();
         double gridSize = getCardGridRows() * getCardGridColumns();
         double amountOfCards = getTable().getPlayerByIndex(getCurrentPlayer()).getAmountOfCards();
@@ -34,7 +39,7 @@ public class CenterPagePanel extends JPanel {
             List<Card> playerDeck = new ArrayList<>();
 
             try {
-                for (int j = 0; j < gridSize; j++) {
+                for (int j = (int) gridSize * i; j < gridSize * (i + 1); j++) {
                     playerDeck.add(getTable().getPlayerByIndex(getCurrentPlayer()).getDeck().get(j));
                 }
             } catch (IndexOutOfBoundsException ignored) {}
@@ -42,9 +47,13 @@ public class CenterPagePanel extends JPanel {
             playerDecks.add(playerDeck);
         }
 
-        for (int i = 0; i < playerDecks.get(getCurrentPage()).size(); i++) {
-            add(new CardButton(playerDecks.get(getCurrentPage()).get(i), getTable()));
-        }
+        return playerDecks;
+    }
+
+    private void addButtons() {
+        getSeparatedPlayerDecks()
+                .get(getCurrentPage())
+                .forEach(c -> add(new CardButton(c, getTable())));
     }
 
     private void removeAllButtons() {

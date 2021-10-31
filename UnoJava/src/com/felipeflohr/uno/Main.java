@@ -7,7 +7,6 @@ import static com.felipeflohr.uno.globaldefs.GlobalDefinitions.getTable;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println(getTable());
         new MainFrame();
     }
 

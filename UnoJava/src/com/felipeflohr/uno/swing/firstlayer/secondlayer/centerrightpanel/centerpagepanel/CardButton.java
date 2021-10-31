@@ -122,28 +122,14 @@ public class CardButton extends JButton implements ActionListener {
     }
 
     private Color getCardColor() {
-        Color cardColor;
 
-        switch(this.cardColor) {
-            case "black":
-                cardColor = new Color(45, 41, 41);
-                break;
-            case "red":
-                cardColor = new Color(245, 55, 32);
-                break;
-            case "blue":
-                cardColor = new Color(85, 85, 255);
-                break;
-            case "green":
-                cardColor = new Color(97, 197, 97);
-                break;
-            case "yellow":
-                cardColor = new Color(233, 246, 86);
-                break;
-            default:
-                throw new InvalidColorException();
-        }
-
-        return cardColor;
+        return switch (this.cardColor) {
+            case "black" -> new Color(45, 41, 41);
+            case "red" -> new Color(245, 55, 32);
+            case "blue" -> new Color(85, 85, 255);
+            case "green" -> new Color(97, 197, 97);
+            case "yellow" -> new Color(233, 246, 86);
+            default -> throw new InvalidColorException();
+        };
     }
 }

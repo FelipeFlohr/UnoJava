@@ -1,5 +1,7 @@
 package com.felipeflohr.uno.swing.firstlayer.secondlayer.centerrightpanel;
 
+import com.felipeflohr.uno.globaldefs.GlobalDefinitions;
+
 import javax.swing.*;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -79,6 +81,8 @@ public class SkipPagePanel extends JPanel implements ActionListener, SkipPageLis
         currentPage.setText("Current Page: " + getCurrentPage() + "/" + getTotalAmountOfPages());
         prevPageBtn.setEnabled(isPreviousPageAllowed());
         nextPageBtn.setEnabled(isNextPageAllowed());
+
+        GlobalDefinitions.getCenterPagePanel().redrawButtons();
     }
 
     @Override
@@ -87,14 +91,15 @@ public class SkipPagePanel extends JPanel implements ActionListener, SkipPageLis
         currentPage.setText("Current Page: " + getCurrentPage() + "/" + getTotalAmountOfPages());
         prevPageBtn.setEnabled(isPreviousPageAllowed());
         nextPageBtn.setEnabled(isNextPageAllowed());
+
+        GlobalDefinitions.getCenterPagePanel().redrawButtons();
     }
 
     private int getTotalAmountOfPages() {
         double gridSize = getCardGridRows() * getCardGridColumns();
         double amountOfCards = getTable().getPlayerByIndex(getCurrentPlayer()).getAmountOfCards();
-        int amountOfPages = (int) Math.ceil(amountOfCards / gridSize);
 
-        return amountOfPages;
+        return ((int) Math.ceil(amountOfCards / gridSize)) - 1;
     }
 
     private boolean isPreviousPageAllowed() {

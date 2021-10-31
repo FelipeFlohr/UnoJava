@@ -132,6 +132,6 @@ public class Card {
 
     @Override
     public String toString() {
-        return "Number: " + number + "\nColor: " + color + "\nIs special: " + special;
+        return "[ " + number + ", " + color + " ]";
     }
 }
