@@ -3,7 +3,6 @@ package com.felipeflohr.uno.swing.firstlayer.secondlayer.centerrightpanel;
 import com.felipeflohr.uno.logic.Card;
 import com.felipeflohr.uno.swing.firstlayer.secondlayer.centerrightpanel.centerpagepanel.CardButton;
 
-import javax.swing.JButton;
 import javax.swing.JPanel;
 import java.awt.Color;
 import java.awt.GridLayout;
