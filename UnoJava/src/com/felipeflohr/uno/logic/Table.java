@@ -1,0 +1,94 @@
+package com.felipeflohr.uno.logic;
+
+import com.felipeflohr.uno.logic.ailogic.AIBehaviour;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.felipeflohr.uno.globaldefs.GlobalDefinitions.getNonAiPlayer;
+import static com.felipeflohr.uno.globaldefs.GlobalDefinitions.getTotalAmountOfPlayers;
+
+public class Table {
+
+    private Card currentCard;
+    private boolean reverse;
+    private Card buyTurnCard;
+    private int buyTurnAmount;
+    private String colorSelected;
+    private boolean skip;
+    private List<Player> players = new ArrayList<>();
+
+    public Table() {
+        currentCard = Card.generateRandomCard();
+        reverse = false;
+        buyTurnCard = null;
+        buyTurnAmount = 0;
+        skip = false;
+        colorSelected = null;
+
+        generatePlayers();
+    }
+
+    private void generatePlayers() {
+        for (int i = 0; i < getTotalAmountOfPlayers(); i++) {
+            if (i != getNonAiPlayer()) {
+                players.add(new Player(i, false, null));
+            } else {
+                players.add(new Player(i, true, new AIBehaviour()));
+            }
+        }
+    }
+
+    // Getters and Setters
+    public Card getCurrentCard() {
+        return currentCard;
+    }
+
+    public void setCurrentCard(Card currentCard) {
+        this.currentCard = currentCard;
+    }
+
+    public boolean isReverse() {
+        return reverse;
+    }
+
+    public void setReverse(boolean reverse) {
+        this.reverse = reverse;
+    }
+
+    public Card getBuyTurnCard() {
+        return buyTurnCard;
+    }
+
+    public void setBuyTurnCard(Card buyTurnCard) {
+        this.buyTurnCard = buyTurnCard;
+    }
+
+    public int getBuyTurnAmount() {
+        return buyTurnAmount;
+    }
+
+    public void setBuyTurnAmount(int buyTurnAmount) {
+        this.buyTurnAmount = buyTurnAmount;
+    }
+
+    public String getColorSelected() {
+        return colorSelected;
+    }
+
+    public void setColorSelected(String colorSelected) {
+        this.colorSelected = colorSelected;
+    }
+
+    public boolean isSkip() {
+        return skip;
+    }
+
+    public void setSkip(boolean skip) {
+        this.skip = skip;
+    }
+
+    public Player getPlayerByIndex(int index) {
+        return players.get(index);
+    }
+}

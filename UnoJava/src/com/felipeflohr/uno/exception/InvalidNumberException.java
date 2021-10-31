@@ -1,6 +1,6 @@
 package com.felipeflohr.uno.exception;
 
-public class InvalidNumberException extends Exception {
+public class InvalidNumberException extends RuntimeException {
 
     public InvalidNumberException() {}
 

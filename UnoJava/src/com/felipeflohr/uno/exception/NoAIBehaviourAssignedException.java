@@ -1,6 +1,6 @@
 package com.felipeflohr.uno.exception;
 
-public class NoAIBehaviourAssignedException extends Exception {
+public class NoAIBehaviourAssignedException extends RuntimeException {
 
     public NoAIBehaviourAssignedException() {}
 

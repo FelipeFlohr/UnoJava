@@ -79,6 +79,25 @@ public class Card {
         return new Card(sortedNumber, sortedColor);
     }
 
+    public boolean isCardPlayable(Table table) {
+        boolean isPlayable;
+
+        // If there is a buying card only
+        if(table.getBuyTurnCard() != null) {
+            isPlayable = switch (this.getNumber()) {
+                case "wild2", "wild4" -> table.getCurrentCard().equals(this);
+                default -> false;
+            };
+        } else if (table.getColorSelected() != null) {
+            isPlayable = this.getColor().equals(table.getColorSelected());
+        } else {
+            isPlayable = this.getColor().equals(table.getCurrentCard().getColor())
+                    || this.getNumber().equals(table.getCurrentCard().getNumber());
+        }
+
+        return isPlayable;
+    }
+
     // Equals and HashCode
     @Override
     public boolean equals(Object o) {
@@ -87,9 +106,7 @@ public class Card {
 
         Card card = (Card) o;
 
-        if (special != card.special) return false;
-        if (!number.equals(card.number)) return false;
-        return color.equals(card.color);
+        return number.equals(card.number);
     }
 
     @Override

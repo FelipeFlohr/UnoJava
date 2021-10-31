@@ -1,6 +1,6 @@
 package com.felipeflohr.uno.exception;
 
-public class InvalidColorException extends Exception {
+public class InvalidColorException extends RuntimeException {
 
     public InvalidColorException() {}
 

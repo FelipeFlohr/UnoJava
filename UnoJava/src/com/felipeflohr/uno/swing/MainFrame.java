@@ -2,9 +2,12 @@ package com.felipeflohr.uno.swing;
 
 import com.felipeflohr.uno.swing.firstlayer.CenterPanel;
 import com.felipeflohr.uno.swing.firstlayer.LeftMenuPanel;
+import com.felipeflohr.uno.tools.ResizeImage;
 
 import javax.swing.JFrame;
 import java.awt.BorderLayout;
+
+import static com.felipeflohr.uno.tools.ResizeImage.resizeImage;
 
 public class MainFrame extends JFrame {
 
@@ -15,6 +18,7 @@ public class MainFrame extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(WIDTH, HEIGHT);
         setLayout(new BorderLayout());
+        setIconImage(resizeImage("res/cards/+4.PNG", 24, 32));
 
         add(new LeftMenuPanel(), BorderLayout.WEST);
         add(new CenterPanel(), BorderLayout.CENTER);
