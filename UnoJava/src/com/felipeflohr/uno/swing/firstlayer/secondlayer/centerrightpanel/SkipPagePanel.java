@@ -1,6 +1,7 @@
 package com.felipeflohr.uno.swing.firstlayer.secondlayer.centerrightpanel;
 
 import com.felipeflohr.uno.globaldefs.GlobalDefinitions;
+import com.felipeflohr.uno.swing.CustomGUIUpdate;
 
 import javax.swing.*;
 import java.awt.Color;
@@ -13,7 +14,7 @@ import static com.felipeflohr.uno.globaldefs.GlobalDefinitions.*;
 import static com.felipeflohr.uno.globaldefs.GlobalDefinitions.getCurrentPlayer;
 import static com.felipeflohr.uno.swing.UpdatableElements.*;
 
-public class SkipPagePanel extends JPanel implements ActionListener, SkipPageListener {
+public class SkipPagePanel extends JPanel implements ActionListener, SkipPageListener, CustomGUIUpdate {
 
     private JButton prevPageBtn;
     private JLabel currentPage;
@@ -29,6 +30,7 @@ public class SkipPagePanel extends JPanel implements ActionListener, SkipPageLis
 
         // Previous Page button
         prevPageBtn = new JButton();
+        prevPageBtn.setName("Previous Page Button");
         prevPageBtn.setText("Previous Page");
         prevPageBtn.addActionListener(this);
         prevPageBtn.setBorder(BorderFactory.createEmptyBorder());
@@ -38,11 +40,13 @@ public class SkipPagePanel extends JPanel implements ActionListener, SkipPageLis
 
         // Current Page
         currentPage = new JLabel();
+        currentPage.setName("Current Page Label");
         currentPage.setText("Current Page: " + getCurrentPage() + "/" + getTotalAmountOfPages());
         currentPage.setHorizontalAlignment(SwingConstants.CENTER);
 
         // Next Page button
         nextPageBtn = new JButton();
+        nextPageBtn.setName("Next Page Button");
         nextPageBtn.setText("Next Page");
         nextPageBtn.addActionListener(this);
         nextPageBtn.setBorder(BorderFactory.createEmptyBorder());
@@ -57,6 +61,7 @@ public class SkipPagePanel extends JPanel implements ActionListener, SkipPageLis
         addUIElement(prevPageBtn);
         addUIElement(currentPage);
         addUIElement(nextPageBtn);
+        addUIElement((CustomGUIUpdate) this);
     }
 
     @Override
@@ -77,22 +82,22 @@ public class SkipPagePanel extends JPanel implements ActionListener, SkipPageLis
 
     @Override
     public void onPreviousPage() {
-        setCurrentPage(getCurrentPage() - 1);
         currentPage.setText("Current Page: " + getCurrentPage() + "/" + getTotalAmountOfPages());
         prevPageBtn.setEnabled(isPreviousPageAllowed());
         nextPageBtn.setEnabled(isNextPageAllowed());
 
         GlobalDefinitions.getCenterPagePanel().redrawButtons();
+        setCurrentPage(getCurrentPage() - 1);
     }
 
     @Override
     public void onNextPage() {
-        setCurrentPage(getCurrentPage() + 1);
         currentPage.setText("Current Page: " + getCurrentPage() + "/" + getTotalAmountOfPages());
         prevPageBtn.setEnabled(isPreviousPageAllowed());
         nextPageBtn.setEnabled(isNextPageAllowed());
 
         GlobalDefinitions.getCenterPagePanel().redrawButtons();
+        setCurrentPage(getCurrentPage() + 1);
     }
 
     private int getTotalAmountOfPages() {
@@ -110,5 +115,17 @@ public class SkipPagePanel extends JPanel implements ActionListener, SkipPageLis
     private boolean isNextPageAllowed() {
         int currentPage = getCurrentPage();
         return currentPage + 1 <= getTotalAmountOfPages();
+    }
+
+    @Override
+    public void update() {
+        currentPage.setText("Current Page: " + getCurrentPage() + "/" + getTotalAmountOfPages());
+        prevPageBtn.setEnabled(isPreviousPageAllowed());
+        nextPageBtn.setEnabled(isNextPageAllowed());
+    }
+
+    @Override
+    public String getComponentName() {
+        return "Skip Page Panel";
     }
 }

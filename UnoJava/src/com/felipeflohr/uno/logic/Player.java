@@ -1,49 +1,34 @@
 package com.felipeflohr.uno.logic;
 
-import com.felipeflohr.uno.exception.InvalidColorException;
-import com.felipeflohr.uno.exception.InvalidNumberException;
-import com.felipeflohr.uno.exception.NoAIBehaviourAssignedException;
-import com.felipeflohr.uno.logic.ailogic.AIBehaviour;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.felipeflohr.uno.globaldefs.GlobalDefinitions.*;
 import static com.felipeflohr.uno.logic.Card.generateRandomCard;
 
-public class Player {
+public class Player implements PlayerChangeListener {
 
-    private List<Card> deck = new ArrayList<>();
+    private final List<Card> deck = new ArrayList<>();
     private final int id;
-    private boolean isPlayerTurn;
-    private final boolean aiEnabled;
-    private final AIBehaviour ai;
+    private boolean uno = false;
+    protected boolean isPlayerTurn;
+    protected boolean aiEnabled = false;
 
-    public Player(int id, boolean aiEnabled, AIBehaviour ai) throws InvalidNumberException, InvalidColorException, NoAIBehaviourAssignedException {
+    public Player(int id) {
         this.id = id;
-        this.aiEnabled = aiEnabled;
-        this.ai = ai;
 
         for (int i = 0; i < getInitialCardsAmount(); i++) {
             deck.add(generateRandomCard());
         }
 
-        if (aiEnabled && ai == null) {
-            throw new NoAIBehaviourAssignedException();
-        }
+        uno = isUnoAllowed();
     }
 
-    public Player(int id, int initialAmountOfCards, boolean aiEnabled, AIBehaviour ai) throws InvalidNumberException, InvalidColorException, NoAIBehaviourAssignedException {
+    public Player(int id, int initialAmountOfCards) {
         this.id = id;
-        this.aiEnabled = aiEnabled;
-        this.ai = ai;
 
         for (int i = 0; i < initialAmountOfCards; i++) {
             deck.add(generateRandomCard());
-        }
-
-        if (aiEnabled && ai == null) {
-            throw new NoAIBehaviourAssignedException();
         }
     }
 
@@ -53,6 +38,20 @@ public class Player {
 
     public void addCard(Card card) {
         deck.add(card);
+    }
+
+    public void buyCard() {
+        deck.add(generateRandomCard());
+    }
+
+    public void buyCard(int quantity) {
+        for (int i = 0; i < quantity; i++) {
+            deck.add(generateRandomCard());
+        }
+    }
+
+    public boolean isUnoAllowed() {
+        return deck.size() < 2;
     }
 
     // Getters
@@ -77,6 +76,14 @@ public class Player {
         isPlayerTurn = t;
     }
 
+    public void setUno(boolean u) {
+        uno = u;
+    }
+
+    public boolean isUno() {
+        return uno;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -87,5 +94,14 @@ public class Player {
         sb.append("}");
 
         return sb.toString();
+    }
+
+    @Override
+    public void onPlayerChange() {
+        if (getCurrentPlayer() == getId()) {
+            if (isAiEnabled()) {
+                // TODO AI Behaviour
+            }
+        }
     }
 }

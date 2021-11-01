@@ -1,8 +1,10 @@
 package com.felipeflohr.uno.swing.firstlayer.secondlayer.centerrightpanel;
 
 import com.felipeflohr.uno.logic.Card;
+import com.felipeflohr.uno.swing.CustomGUIUpdate;
 import com.felipeflohr.uno.swing.firstlayer.secondlayer.centerrightpanel.centerpagepanel.CardButton;
 
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -13,14 +15,15 @@ import java.util.List;
 import static com.felipeflohr.uno.globaldefs.GlobalDefinitions.*;
 import static com.felipeflohr.uno.swing.UpdatableElements.addUIElement;
 
-public class CenterPagePanel extends JPanel {
+public class CenterPagePanel extends JPanel implements CustomGUIUpdate {
 
     public CenterPagePanel() {
         setLayout(new GridLayout(getCardGridRows(), getCardGridColumns()));
         setBackground(new Color(119, 5, 5));
 
         addButtons();
-        addUIElement(this);
+        addUIElement((JComponent) this);
+        addUIElement((CustomGUIUpdate) this);
         setCenterPagePanel(this);
     }
 
@@ -60,4 +63,13 @@ public class CenterPagePanel extends JPanel {
         Arrays.stream(getComponents()).forEach(this::remove);
     }
 
+    @Override
+    public void update() {
+        redrawButtons();
+    }
+
+    @Override
+    public String getComponentName() {
+        return "Center Page Panel";
+    }
 }

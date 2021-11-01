@@ -1,7 +1,7 @@
 package com.felipeflohr.uno.logic;
 
 import com.felipeflohr.uno.exception.PlayerNoCardsException;
-import com.felipeflohr.uno.logic.ailogic.AIBehaviour;
+import com.felipeflohr.uno.logic.ailogic.AIPlayer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ public class Table {
     private String colorSelected;
     private boolean skip;
     private int playerTurn;
-    private List<Player> players = new ArrayList<>();
+    private final List<Player> players = new ArrayList<>();
 
     public Table() {
         currentCard = Card.generateRandomCard();
@@ -44,9 +44,9 @@ public class Table {
     private void generatePlayers() {
         for (int i = 0; i < getTotalAmountOfPlayers(); i++) {
             if (i != getNonAiPlayer()) {
-                players.add(new Player(i, false, null));
+                players.add(new Player(i));
             } else {
-                players.add(new Player(i, true, new AIBehaviour()));
+                players.add(new AIPlayer(i));
             }
         }
     }
@@ -64,6 +64,38 @@ public class Table {
                 .append("Player turn: " + playerTurn + "\n");
 
         return sb.toString();
+    }
+
+    public void updateAllPlayers() {
+        players.forEach(Player::onPlayerChange);
+    }
+
+    public int getPlayerIdWithLeastCards() {
+        int id = -1;
+        int cards = -1;
+
+        for (Player player : players) {
+            if (id == -1 & cards == -1) {
+                id = player.getId();
+                cards = player.getDeck().size();
+            } else {
+                if (player.getDeck().size() < cards) {
+                    cards = player.getDeck().size();
+                    id = player.getId();
+                }
+            }
+        }
+
+        return id;
+    }
+
+    public boolean everyoneHasTheSameAmountOfCards() {
+        return players.parallelStream()
+                .allMatch(p -> p.getDeck().size() == players.get(getPlayerIdWithLeastCards()).getDeck().size());
+    }
+
+    public Player getPlayerByIndex(int index) {
+        return players.get(index);
     }
 
     // Getters and Setters
@@ -115,15 +147,15 @@ public class Table {
         this.skip = skip;
     }
 
-    public Player getPlayerByIndex(int index) {
-        return players.get(index);
-    }
-
     public int getPlayerTurn() {
         return playerTurn;
     }
 
-    public void setPlayerTurn(int id) {
-        playerTurn = id;
+    public void setPlayerTurn(int playerTurn) {
+        this.playerTurn = playerTurn;
+    }
+
+    public List<Player> getPlayers() {
+        return players;
     }
 }
