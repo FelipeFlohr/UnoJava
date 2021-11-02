@@ -15,6 +15,7 @@ public class BottomPagePanel extends JPanel implements ActionListener, CustomGUI
 
     JButton unoBtn;
     JLabel unoLabel;
+    JButton buyCardBtn;
 
     public BottomPagePanel() {
         setLayout(new GridLayout());
@@ -38,10 +39,21 @@ public class BottomPagePanel extends JPanel implements ActionListener, CustomGUI
         unoLabel.setBackground(new Color(0xD5D5DE));
         unoLabel.setOpaque(true);
 
+        // Buy card button
+        buyCardBtn = new JButton();
+        buyCardBtn.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        buyCardBtn.setFocusable(false);
+        buyCardBtn.setBackground(new Color(0xF1F1F6));
+        buyCardBtn.addActionListener(this);
+        buyCardBtn.setFont(new Font("Arial", Font.PLAIN, 20));
+        setBuyCardButtonName();
+
         add(unoBtn);
         add(unoLabel);
+        add(buyCardBtn);
 
         addUIElement(unoBtn);
+        addUIElement(buyCardBtn);
         addUIElement((CustomGUIUpdate) this);
     }
 
@@ -53,6 +65,15 @@ public class BottomPagePanel extends JPanel implements ActionListener, CustomGUI
             } else {
                 getTable().getPlayers().get(getCurrentPlayer()).setUno(false);
                 getTable().getPlayers().get(getCurrentPlayer()).buyCard(getUnoMisclickAmountOfCards());
+            }
+        }
+
+        if (e.getSource() == buyCardBtn) {
+            if (getTable().getBuyTurnAmount() > 1) {
+                // Cards will be bought accordingly to the current turn amount
+                getTable().getPlayerByIndex(getCurrentPlayer()).buyCard(getTable().getBuyTurnAmount());
+            } else {
+                getTable().getPlayerByIndex(getCurrentPlayer()).buyCard();
             }
         }
         updateUIElements();
@@ -73,6 +94,14 @@ public class BottomPagePanel extends JPanel implements ActionListener, CustomGUI
             unoLabel.setText("You are Uno!");
         } else {
             unoLabel.setText("You are not Uno");
+        }
+    }
+
+    private void setBuyCardButtonName() {
+        if (getTable().getBuyTurnAmount() > 1) {
+            buyCardBtn.setText("Buy " + getTable().getBuyTurnAmount() + " cards");
+        } else {
+            buyCardBtn.setText("Buy one card");
         }
     }
 }
