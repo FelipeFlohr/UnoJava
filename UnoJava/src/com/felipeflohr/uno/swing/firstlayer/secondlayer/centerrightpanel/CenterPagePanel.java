@@ -19,7 +19,7 @@ public class CenterPagePanel extends JPanel implements CustomGUIUpdate {
 
     public CenterPagePanel() {
         setLayout(new GridLayout(getCardGridRows(), getCardGridColumns()));
-        setBackground(new Color(119, 5, 5));
+        setBackground(new Color(115, 111, 111));
 
         addButtons();
         addUIElement((JComponent) this);

@@ -7,7 +7,8 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
 
 import static com.felipeflohr.uno.globaldefs.GlobalDefinitions.getTable;
 import static com.felipeflohr.uno.swing.UpdatableElements.addUIElement;
@@ -17,13 +18,14 @@ public class TopPagePanel extends JPanel implements CustomGUIUpdate {
     JLabel amountOfCards;
 
     public TopPagePanel() {
-        setLayout(new FlowLayout());
+        setLayout(new GridLayout());
         setBackground(new Color(245, 236, 236));
         setPreferredSize(new Dimension(0, 50));
 
         amountOfCards = new JLabel();
         amountOfCards.setVerticalAlignment(SwingConstants.CENTER);
         amountOfCards.setHorizontalAlignment(SwingConstants.CENTER);
+        amountOfCards.setFont(new Font("Arial", Font.PLAIN, 20));
 
         add(amountOfCards);
         setPanelText();

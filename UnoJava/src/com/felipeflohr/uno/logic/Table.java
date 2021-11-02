@@ -21,7 +21,7 @@ public class Table {
     private final List<Player> players = new ArrayList<>();
 
     public Table() {
-        currentCard = Card.generateRandomCard();
+        currentCard = Card.generateRandomNormalCard();
         reverse = false;
         buyTurnCard = null;
         buyTurnAmount = 0;
@@ -55,13 +55,27 @@ public class Table {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("--Table--\n")
-                .append("Current card: " + currentCard + "\n")
-                .append("Is reverse: " + reverse + "\n")
-                .append("Buy turn card: " + buyTurnCard + "\n")
-                .append("Buy turn amount: " + buyTurnAmount + "\n")
-                .append("Is skip: " + skip + "\n")
-                .append("Color selected: " + colorSelected + "\n")
-                .append("Player turn: " + playerTurn + "\n");
+                .append("Current card: ")
+                .append(currentCard)
+                .append("\n")
+                .append("Is reverse: ")
+                .append(reverse)
+                .append("\n")
+                .append("Buy turn card: ")
+                .append(buyTurnCard)
+                .append("\n")
+                .append("Buy turn amount: ")
+                .append(buyTurnAmount)
+                .append("\n")
+                .append("Is skip: ")
+                .append(skip)
+                .append("\n")
+                .append("Color selected: ")
+                .append(colorSelected)
+                .append("\n")
+                .append("Player turn: ")
+                .append(playerTurn)
+                .append("\n");
 
         return sb.toString();
     }

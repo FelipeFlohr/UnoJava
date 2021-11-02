@@ -79,7 +79,25 @@ public class Card {
         return new Card(sortedNumber, sortedColor);
     }
 
+    public static Card generateRandomNormalCard() {
+        String sortedColor;
+        String sortedNumber;
+
+        final String[] COLORS = { "red", "blue", "green", "yellow" };
+        final String[] NORMAL_NUMBERS = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+
+        Random random = new Random();
+        int cardNumberIndex = random.nextInt(0, NORMAL_NUMBERS.length);
+        int cardColorIndex = random.nextInt(0, COLORS.length);
+
+        sortedNumber = NORMAL_NUMBERS[cardNumberIndex];
+        sortedColor = COLORS[cardColorIndex];
+
+        return new Card(sortedNumber, sortedColor);
+    }
+
     public boolean isCardPlayable(Table table) {
+        // FIXME This is not working as supposed to
         boolean isPlayable;
 
         // If there is a buying card only

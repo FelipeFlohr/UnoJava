@@ -12,7 +12,7 @@ public class GlobalDefinitions {
     private static final boolean AI_ENABLED = true;
     private static final int CHANCE_OF_SPECIAL_CARD = 40;
     private static final int CHANCE_OF_BLACK_SPECIAL_CARD = 35;
-    private static final int CARD_ICON_WIDTH = 96;
+    private static final int CARD_ICON_WIDTH = 86;
     private static final int CARD_ICON_HEIGHT = 128;
     private static final Table TABLE = new Table();
     private static final int CARD_GRID_ROWS = 3;
@@ -22,6 +22,8 @@ public class GlobalDefinitions {
     private static int currentPage = 0;
     private static CenterPagePanel centerPagePanel; // The panel where the buttons are being hold
     private static final int UNO_MISCLICK_AMOUNT_OF_CARDS = 2;
+    private static final int CURRENT_CARD_IMAGE_WIDTH = 256;
+    private static final int CURRENT_CARD_IMAGE_HEIGHT = 400;
 
     // Static getters
     public static int getTotalAmountOfPlayers() {
@@ -100,5 +102,13 @@ public class GlobalDefinitions {
 
     public static int getUnoMisclickAmountOfCards() {
         return UNO_MISCLICK_AMOUNT_OF_CARDS;
+    }
+
+    public static int getCurrentCardImageWidth() {
+        return CURRENT_CARD_IMAGE_WIDTH;
+    }
+
+    public static int getCurrentCardImageHeight() {
+        return CURRENT_CARD_IMAGE_HEIGHT;
     }
 }

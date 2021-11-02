@@ -14,12 +14,12 @@ import static com.felipeflohr.uno.globaldefs.GlobalDefinitions.*;
 import static com.felipeflohr.uno.globaldefs.GlobalDefinitions.getCurrentPlayer;
 import static com.felipeflohr.uno.swing.UpdatableElements.*;
 
-public class SkipPagePanel extends JPanel implements ActionListener, SkipPageListener, CustomGUIUpdate {
+public class SkipPagePanel extends JPanel implements ActionListener, CustomGUIUpdate {
 
-    private JButton prevPageBtn;
-    private JLabel currentPage;
-    private JButton nextPageBtn;
-    private final int WIDTH = 100; // Can be any number
+    private final JButton prevPageBtn;
+    private final JLabel currentPage;
+    private final JButton nextPageBtn;
+    private final int WIDTH = 0; // Can be any number
     private final int HEIGHT = 50;
 
     public SkipPagePanel() {
@@ -80,7 +80,6 @@ public class SkipPagePanel extends JPanel implements ActionListener, SkipPageLis
         }
     }
 
-    @Override
     public void onPreviousPage() {
         currentPage.setText("Current Page: " + getCurrentPage() + "/" + getTotalAmountOfPages());
         prevPageBtn.setEnabled(isPreviousPageAllowed());
@@ -90,7 +89,6 @@ public class SkipPagePanel extends JPanel implements ActionListener, SkipPageLis
         setCurrentPage(getCurrentPage() - 1);
     }
 
-    @Override
     public void onNextPage() {
         currentPage.setText("Current Page: " + getCurrentPage() + "/" + getTotalAmountOfPages());
         prevPageBtn.setEnabled(isPreviousPageAllowed());
