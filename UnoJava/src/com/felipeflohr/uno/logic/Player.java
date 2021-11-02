@@ -54,6 +54,20 @@ public class Player implements PlayerChangeListener {
         return deck.size() < 2;
     }
 
+    public void removeCard(Card card) {
+        int cardIndex = -1;
+
+        for (int i = 0; i < getDeck().size(); i++) {
+            if (card.equals(getDeck().get(i))) {
+                if (cardIndex == -1) {
+                    cardIndex = i;
+                }
+            }
+        }
+
+        removeCardByIndex(cardIndex);
+    }
+
     // Getters
     public int getId() {
         return id;

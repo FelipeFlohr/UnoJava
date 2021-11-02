@@ -5,8 +5,7 @@ import com.felipeflohr.uno.exception.InvalidNumberException;
 
 import java.util.Random;
 
-import static com.felipeflohr.uno.globaldefs.GlobalDefinitions.getChanceOfBlackSpecialCard;
-import static com.felipeflohr.uno.globaldefs.GlobalDefinitions.getChanceOfSpecialCard;
+import static com.felipeflohr.uno.globaldefs.GlobalDefinitions.*;
 
 public class Card {
 
@@ -118,6 +117,12 @@ public class Card {
         }
 
         return isPlayable;
+    }
+
+    public void playCard() {
+        getTable().setCurrentCard(this);
+        getTable().getPlayerByIndex(getCurrentPlayer()).removeCard(this);
+        getTable().applyCardChangeEffects();
     }
 
     // Equals and HashCode

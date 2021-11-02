@@ -15,17 +15,19 @@ import java.awt.event.ActionListener;
 
 import static com.felipeflohr.uno.globaldefs.GlobalDefinitions.getCardIconHeight;
 import static com.felipeflohr.uno.globaldefs.GlobalDefinitions.getCardIconWidth;
-import static com.felipeflohr.uno.swing.UpdatableElements.addUIElement;
+import static com.felipeflohr.uno.swing.UpdatableElements.*;
 import static com.felipeflohr.uno.tools.ResizeImage.resizeImage;
 
-public class CardButton extends JButton implements ActionListener {
+public class CardButton extends JButton implements ActionListener, CustomCardGUI {
 
     private final Card card;
+    private final Table table;
     private final String cardNumber;
     private final String cardColor;
 
     public CardButton(Card card, Table table) {
         this.card = card;
+        this.table = table;
         cardNumber = card.getNumber();
         cardColor = card.getColor();
 
@@ -37,11 +39,25 @@ public class CardButton extends JButton implements ActionListener {
         addActionListener(this);
 
         addUIElement(this);
+        addCardElement(this);
+    }
+
+    @Override
+    public void onCardClick() {
+        setEnabled(card.isCardPlayable(table));
+    }
+
+    @Override
+    public String getCardName() {
+        return "Card button ([" + cardNumber + ", " + cardColor + "])";
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Add card behaviour
+        setEnabled(card.isCardPlayable(table));
+
+        card.playCard();
+        updateUIElements();
     }
 
     private Image getCardIcon() {

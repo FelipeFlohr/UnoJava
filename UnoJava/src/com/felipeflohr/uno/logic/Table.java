@@ -8,6 +8,7 @@ import java.util.List;
 
 import static com.felipeflohr.uno.globaldefs.GlobalDefinitions.getNonAiPlayer;
 import static com.felipeflohr.uno.globaldefs.GlobalDefinitions.getTotalAmountOfPlayers;
+import static com.felipeflohr.uno.swing.UpdatableElements.updateUIElements;
 
 public class Table {
 
@@ -106,6 +107,11 @@ public class Table {
     public boolean everyoneHasTheSameAmountOfCards() {
         return players.parallelStream()
                 .allMatch(p -> p.getDeck().size() == players.get(getPlayerIdWithLeastCards()).getDeck().size());
+    }
+
+    public void applyCardChangeEffects() {
+        // TODO Card change effects
+        updateUIElements();
     }
 
     public Player getPlayerByIndex(int index) {
