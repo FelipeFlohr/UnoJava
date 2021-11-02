@@ -2,13 +2,8 @@ package com.felipeflohr.uno.swing.firstlayer.secondlayer.centerleftpanel;
 
 import com.felipeflohr.uno.swing.CustomGUIUpdate;
 
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -22,21 +17,26 @@ public class BottomPagePanel extends JPanel implements ActionListener, CustomGUI
     JLabel unoLabel;
 
     public BottomPagePanel() {
-        setLayout(new FlowLayout());
+        setLayout(new GridLayout());
         setBackground(new Color(245, 236, 236));
         setPreferredSize(new Dimension(0, 50));
 
         // Uno button
         unoBtn = new JButton();
         unoBtn.setText("UNO!");
-        unoBtn.setBorder(BorderFactory.createEmptyBorder());
+        unoBtn.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         unoBtn.setFocusable(false);
         unoBtn.setBackground(new Color(0xF1F1F6));
         unoBtn.addActionListener(this);
+        unoBtn.setFont(new Font("Arial", Font.PLAIN, 25));
 
         // Uno label
         unoLabel = new JLabel();
         setLabelName();
+        unoLabel.setFont(new Font("Arial", Font.PLAIN, 20));
+        unoLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        unoLabel.setBackground(new Color(0xD5D5DE));
+        unoLabel.setOpaque(true);
 
         add(unoBtn);
         add(unoLabel);
