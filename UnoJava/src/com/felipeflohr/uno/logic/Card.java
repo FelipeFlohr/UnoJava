@@ -97,20 +97,24 @@ public class Card {
     }
 
     public boolean isCardPlayable(Table table) {
-        // FIXME This is not working as supposed to
         boolean isPlayable;
 
-        // If there is a buying card only
+        // If there is a buying card only turn
         if(table.getBuyTurnCard() != null) {
             isPlayable = switch (this.getNumber()) {
                 case "wild2", "wild4" -> table.getCurrentCard().equals(this);
                 default -> false;
             };
+
+        // If there's a color selected turn
         } else if (table.getColorSelected() != null) {
             isPlayable = this.getColor().equals(table.getColorSelected());
+
+        // If there's no matching conditions as these above
         } else {
             isPlayable = this.getColor().equals(table.getCurrentCard().getColor())
-                    || this.getNumber().equals(table.getCurrentCard().getNumber());
+                    || this.getNumber().equals(table.getCurrentCard().getNumber())
+                    || this.getColor().equals("black");
         }
 
         return isPlayable;
