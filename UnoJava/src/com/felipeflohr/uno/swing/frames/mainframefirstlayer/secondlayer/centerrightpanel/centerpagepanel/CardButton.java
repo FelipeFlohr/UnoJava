@@ -1,9 +1,10 @@
-package com.felipeflohr.uno.swing.firstlayer.secondlayer.centerrightpanel.centerpagepanel;
+package com.felipeflohr.uno.swing.frames.mainframefirstlayer.secondlayer.centerrightpanel.centerpagepanel;
 
 import com.felipeflohr.uno.exception.InvalidCardIconNumber;
 import com.felipeflohr.uno.exception.InvalidColorException;
 import com.felipeflohr.uno.logic.Card;
 import com.felipeflohr.uno.logic.Table;
+import com.felipeflohr.uno.swing.frames.colorselectorframe.SelectColorFrame;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -45,6 +46,10 @@ public class CardButton extends JButton implements ActionListener, CustomCardGUI
     @Override
     public void onCardClick() {
         setEnabled(card.isCardPlayable(table));
+
+        if(getCardName().equals("wild") || getCardName().equals("wild4")) {
+            new SelectColorFrame();
+        }
     }
 
     @Override
@@ -54,7 +59,7 @@ public class CardButton extends JButton implements ActionListener, CustomCardGUI
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        setEnabled(card.isCardPlayable(table));
+        onCardClick();
 
         card.playCard();
         updateUIElements();

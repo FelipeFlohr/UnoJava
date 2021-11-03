@@ -1,4 +1,4 @@
-package com.felipeflohr.uno.swing.firstlayer.secondlayer.centerleftpanel;
+package com.felipeflohr.uno.swing.frames.mainframefirstlayer.secondlayer.centerleftpanel;
 
 import com.felipeflohr.uno.swing.CustomGUIUpdate;
 
@@ -60,6 +60,7 @@ public class BottomPagePanel extends JPanel implements ActionListener, CustomGUI
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == unoBtn) {
+            // TODO Better Uno Button implementation
             if (getTable().getPlayers().get(getCurrentPlayer()).isUnoAllowed()) {
                 getTable().getPlayers().get(getCurrentPlayer()).setUno(true);
             } else {
@@ -75,6 +76,8 @@ public class BottomPagePanel extends JPanel implements ActionListener, CustomGUI
             } else {
                 getTable().getPlayerByIndex(getCurrentPlayer()).buyCard();
             }
+
+            getTable().cardBoughtEffect();
         }
         updateUIElements();
     }
@@ -82,6 +85,7 @@ public class BottomPagePanel extends JPanel implements ActionListener, CustomGUI
     @Override
     public void update() {
         setLabelName();
+        setBuyCardButtonName();
     }
 
     @Override

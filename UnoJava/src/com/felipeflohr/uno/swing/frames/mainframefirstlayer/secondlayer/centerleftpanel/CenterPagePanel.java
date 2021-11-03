@@ -1,4 +1,4 @@
-package com.felipeflohr.uno.swing.firstlayer.secondlayer.centerleftpanel;
+package com.felipeflohr.uno.swing.frames.mainframefirstlayer.secondlayer.centerleftpanel;
 
 import com.felipeflohr.uno.exception.InvalidCardIconNumber;
 import com.felipeflohr.uno.exception.InvalidColorException;

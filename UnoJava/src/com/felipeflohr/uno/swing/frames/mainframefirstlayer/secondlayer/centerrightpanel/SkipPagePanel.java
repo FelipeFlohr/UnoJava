@@ -1,4 +1,4 @@
-package com.felipeflohr.uno.swing.firstlayer.secondlayer.centerrightpanel;
+package com.felipeflohr.uno.swing.frames.mainframefirstlayer.secondlayer.centerrightpanel;
 
 import com.felipeflohr.uno.globaldefs.GlobalDefinitions;
 import com.felipeflohr.uno.swing.CustomGUIUpdate;

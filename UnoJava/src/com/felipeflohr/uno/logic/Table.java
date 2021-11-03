@@ -54,35 +54,14 @@ public class Table {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("--Table--\n")
-                .append("Current card: ")
-                .append(currentCard)
-                .append("\n")
-                .append("Is reverse: ")
-                .append(reverse)
-                .append("\n")
-                .append("Buy turn card: ")
-                .append(buyTurnCard)
-                .append("\n")
-                .append("Buy turn amount: ")
-                .append(buyTurnAmount)
-                .append("\n")
-                .append("Is skip: ")
-                .append(skip)
-                .append("\n")
-                .append("Color selected: ")
-                .append(colorSelected)
-                .append("\n")
-                .append("Player turn: ")
-                .append(playerTurn)
-                .append("\n");
-
-        return sb.toString();
-    }
-
-    public void updateAllPlayers() {
-        players.forEach(Player::onPlayerChange);
+        return "--Table--\n" +
+                "Current card: " + currentCard + "\n" +
+                "Is reverse: " + reverse + "\n" +
+                "Buy turn card: " + buyTurnCard + "\n" +
+                "Buy turn amount: " + buyTurnAmount + "\n" +
+                "Is skip: " + skip + "\n" +
+                "Color selected: " + colorSelected + "\n" +
+                "Player turn: " + playerTurn + "\n";
     }
 
     public int getPlayerIdWithLeastCards() {
@@ -110,15 +89,50 @@ public class Table {
     }
 
     public void applyCardChangeEffects() {
-        // TODO Card change effects
+        if (getCurrentCard().isSpecial()) {
+            // TODO Wild effect
+            switch (currentCard.getNumber()) {
+                case "skip" -> skipEffect();
+                case "reverse" -> reverseEffect();
+                case "wild2" -> wild2Effect();
+                case "wild4" -> wild4Effect();
+            }
+        }
+
         updateUIElements();
     }
 
+    // Card effects
+    public void cardBoughtEffect() {
+        if (buyTurnAmount > 0) {
+            buyTurnAmount = 0;
+            buyTurnCard = null;
+        }
+    }
+
+    private void skipEffect() {
+        setSkip(!this.skip);
+    }
+
+    private void reverseEffect() {
+        setReverse(!this.reverse);
+    }
+
+    private void wild2Effect() {
+        setBuyTurnAmount(buyTurnAmount += 2);
+        setBuyTurnCard(getCurrentCard());
+    }
+
+    private void wild4Effect() {
+        setBuyTurnAmount(buyTurnAmount += 4);
+        setBuyTurnCard(getCurrentCard());
+    }
+
+    // Getters and Setters
     public Player getPlayerByIndex(int index) {
         return players.get(index);
     }
 
-    // Getters and Setters
     public Card getCurrentCard() {
         return currentCard;
     }

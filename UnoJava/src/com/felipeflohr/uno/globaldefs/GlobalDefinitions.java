@@ -1,7 +1,7 @@
 package com.felipeflohr.uno.globaldefs;
 
 import com.felipeflohr.uno.logic.Table;
-import com.felipeflohr.uno.swing.firstlayer.secondlayer.centerrightpanel.CenterPagePanel;
+import com.felipeflohr.uno.swing.frames.mainframefirstlayer.secondlayer.centerrightpanel.CenterPagePanel;
 
 import static com.felipeflohr.uno.swing.UpdatableElements.updateUIElements;
 
@@ -24,6 +24,8 @@ public class GlobalDefinitions {
     private static final int UNO_MISCLICK_AMOUNT_OF_CARDS = 2;
     private static final int CURRENT_CARD_IMAGE_WIDTH = 256;
     private static final int CURRENT_CARD_IMAGE_HEIGHT = 400;
+    private static final boolean PRINT_UPDATE_MESSAGES = false;
+    private static final boolean PRINT_ADDED_ELEMENT_MESSAGES = false;
 
     // Static getters
     public static int getTotalAmountOfPlayers() {
@@ -110,5 +112,13 @@ public class GlobalDefinitions {
 
     public static int getCurrentCardImageHeight() {
         return CURRENT_CARD_IMAGE_HEIGHT;
+    }
+
+    public static boolean isPrintUpdateMessages() {
+        return PRINT_UPDATE_MESSAGES;
+    }
+
+    public static boolean isPrintAddedElementMessages() {
+        return PRINT_ADDED_ELEMENT_MESSAGES;
     }
 }

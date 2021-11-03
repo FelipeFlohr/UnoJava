@@ -1,6 +1,6 @@
 package com.felipeflohr.uno;
 
-import com.felipeflohr.uno.swing.MainFrame;
+import com.felipeflohr.uno.swing.frames.MainFrame;
 
 public class Main {
 

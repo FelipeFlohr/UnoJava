@@ -1,8 +1,8 @@
-package com.felipeflohr.uno.swing.firstlayer.secondlayer.centerrightpanel;
+package com.felipeflohr.uno.swing.frames.mainframefirstlayer.secondlayer.centerrightpanel;
 
 import com.felipeflohr.uno.logic.Card;
 import com.felipeflohr.uno.swing.CustomGUIUpdate;
-import com.felipeflohr.uno.swing.firstlayer.secondlayer.centerrightpanel.centerpagepanel.CardButton;
+import com.felipeflohr.uno.swing.frames.mainframefirstlayer.secondlayer.centerrightpanel.centerpagepanel.CardButton;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;

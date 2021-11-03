@@ -1,7 +1,7 @@
-package com.felipeflohr.uno.swing.firstlayer;
+package com.felipeflohr.uno.swing.frames.mainframefirstlayer;
 
-import com.felipeflohr.uno.swing.firstlayer.secondlayer.CenterLeftPanel;
-import com.felipeflohr.uno.swing.firstlayer.secondlayer.CenterRightPanel;
+import com.felipeflohr.uno.swing.frames.mainframefirstlayer.secondlayer.CenterLeftPanel;
+import com.felipeflohr.uno.swing.frames.mainframefirstlayer.secondlayer.CenterRightPanel;
 
 import javax.swing.JPanel;
 import java.awt.Color;

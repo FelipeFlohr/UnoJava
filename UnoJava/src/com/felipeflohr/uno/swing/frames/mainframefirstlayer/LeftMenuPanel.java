@@ -1,4 +1,4 @@
-package com.felipeflohr.uno.swing.firstlayer;
+package com.felipeflohr.uno.swing.frames.mainframefirstlayer;
 
 import com.felipeflohr.uno.tools.ResizeImage;
 

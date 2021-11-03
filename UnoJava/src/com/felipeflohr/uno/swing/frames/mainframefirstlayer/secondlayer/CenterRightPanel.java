@@ -1,7 +1,7 @@
-package com.felipeflohr.uno.swing.firstlayer.secondlayer;
+package com.felipeflohr.uno.swing.frames.mainframefirstlayer.secondlayer;
 
-import com.felipeflohr.uno.swing.firstlayer.secondlayer.centerrightpanel.CenterPagePanel;
-import com.felipeflohr.uno.swing.firstlayer.secondlayer.centerrightpanel.SkipPagePanel;
+import com.felipeflohr.uno.swing.frames.mainframefirstlayer.secondlayer.centerrightpanel.CenterPagePanel;
+import com.felipeflohr.uno.swing.frames.mainframefirstlayer.secondlayer.centerrightpanel.SkipPagePanel;
 
 import javax.swing.JPanel;
 import java.awt.BorderLayout;

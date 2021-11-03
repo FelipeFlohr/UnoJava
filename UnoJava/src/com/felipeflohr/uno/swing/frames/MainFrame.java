@@ -1,7 +1,7 @@
-package com.felipeflohr.uno.swing;
+package com.felipeflohr.uno.swing.frames;
 
-import com.felipeflohr.uno.swing.firstlayer.CenterPanel;
-import com.felipeflohr.uno.swing.firstlayer.LeftMenuPanel;
+import com.felipeflohr.uno.swing.frames.mainframefirstlayer.CenterPanel;
+import com.felipeflohr.uno.swing.frames.mainframefirstlayer.LeftMenuPanel;
 
 import javax.swing.JFrame;
 import java.awt.BorderLayout;
