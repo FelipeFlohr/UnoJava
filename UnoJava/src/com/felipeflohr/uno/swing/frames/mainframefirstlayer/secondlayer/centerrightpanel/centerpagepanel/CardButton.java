@@ -4,19 +4,20 @@ import com.felipeflohr.uno.exception.InvalidCardIconNumber;
 import com.felipeflohr.uno.exception.InvalidColorException;
 import com.felipeflohr.uno.logic.Card;
 import com.felipeflohr.uno.logic.Table;
-import com.felipeflohr.uno.swing.frames.colorselectorframe.SelectColorFrame;
+import com.felipeflohr.uno.swing.frames.colorselectorframe.SelectColorDialog;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static com.felipeflohr.uno.globaldefs.GlobalDefinitions.getCardIconHeight;
-import static com.felipeflohr.uno.globaldefs.GlobalDefinitions.getCardIconWidth;
+import static com.felipeflohr.uno.globaldefs.GlobalDefinitions.*;
 import static com.felipeflohr.uno.swing.UpdatableElements.*;
+import static com.felipeflohr.uno.swing.frames.mainframefirstlayer.secondlayer.centerrightpanel.CenterPagePanel.getSeparatedPlayerDecks;
 import static com.felipeflohr.uno.tools.ResizeImage.resizeImage;
 
 public class CardButton extends JButton implements ActionListener, CustomCardGUI {
@@ -45,11 +46,11 @@ public class CardButton extends JButton implements ActionListener, CustomCardGUI
 
     @Override
     public void onCardClick() {
-        setEnabled(card.isCardPlayable(table));
-
-        if(getCardName().equals("wild") || getCardName().equals("wild4")) {
-            new SelectColorFrame();
+        if (getSeparatedPlayerDecks().get(getCurrentPage()).size() <= 1) {
+            setCurrentPage(getCurrentPage() - 1);
         }
+
+        setEnabled(card.isCardPlayable(table));
     }
 
     @Override
@@ -59,7 +60,9 @@ public class CardButton extends JButton implements ActionListener, CustomCardGUI
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        checkColorSelected();
         onCardClick();
+        colorSelectorDialog();
 
         card.playCard();
         updateUIElements();
@@ -152,5 +155,19 @@ public class CardButton extends JButton implements ActionListener, CustomCardGUI
             case "yellow" -> new Color(233, 246, 86);
             default -> throw new InvalidColorException();
         };
+    }
+
+    private void colorSelectorDialog() {
+        if (this.card.getNumber().equals("wild") || this.card.getNumber().equals("wild4")) {
+            var colorDialog = new SelectColorDialog();
+            colorDialog.pack();
+            colorDialog.setVisible(true);
+        }
+    }
+
+    private void checkColorSelected() {
+        if (getTable().getColorSelected() != null) {
+            getTable().setColorSelected(null);
+        }
     }
 }

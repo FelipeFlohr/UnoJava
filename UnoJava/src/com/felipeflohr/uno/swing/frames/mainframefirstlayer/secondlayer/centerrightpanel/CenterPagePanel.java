@@ -32,7 +32,7 @@ public class CenterPagePanel extends JPanel implements CustomGUIUpdate {
         addButtons();
     }
 
-    private List<List<Card>> getSeparatedPlayerDecks() {
+    public static List<List<Card>> getSeparatedPlayerDecks() {
         List<List<Card>> playerDecks = new ArrayList<>();
         double gridSize = getCardGridRows() * getCardGridColumns();
         double amountOfCards = getTable().getPlayerByIndex(getCurrentPlayer()).getAmountOfCards();

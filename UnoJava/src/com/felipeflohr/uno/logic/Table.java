@@ -6,8 +6,7 @@ import com.felipeflohr.uno.logic.ailogic.AIPlayer;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.felipeflohr.uno.globaldefs.GlobalDefinitions.getNonAiPlayer;
-import static com.felipeflohr.uno.globaldefs.GlobalDefinitions.getTotalAmountOfPlayers;
+import static com.felipeflohr.uno.globaldefs.GlobalDefinitions.*;
 import static com.felipeflohr.uno.swing.UpdatableElements.updateUIElements;
 
 public class Table {
@@ -90,7 +89,6 @@ public class Table {
 
     public void applyCardChangeEffects() {
         if (getCurrentCard().isSpecial()) {
-            // TODO Wild effect
             switch (currentCard.getNumber()) {
                 case "skip" -> skipEffect();
                 case "reverse" -> reverseEffect();
