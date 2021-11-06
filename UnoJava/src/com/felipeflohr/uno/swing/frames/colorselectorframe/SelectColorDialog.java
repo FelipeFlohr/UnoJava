@@ -21,33 +21,21 @@ public class SelectColorDialog extends JDialog {
         setLocationRelativeTo(null);
         setModal(true);
         getRootPane().setDefaultButton(null);
-        blueBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                getTable().setColorSelected("blue");
-                dispose();
-            }
+        blueBtn.addActionListener(e -> {
+            getTable().setColorSelected("blue");
+            dispose();
         });
-        greenBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                getTable().setColorSelected("green");
-                dispose();
-            }
+        greenBtn.addActionListener(e -> {
+            getTable().setColorSelected("green");
+            dispose();
         });
-        redBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                getTable().setColorSelected("red");
-                dispose();
-            }
+        redBtn.addActionListener(e -> {
+            getTable().setColorSelected("red");
+            dispose();
         });
-        yellowBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                getTable().setColorSelected("yellow");
-                dispose();
-            }
+        yellowBtn.addActionListener(e -> {
+            getTable().setColorSelected("yellow");
+            dispose();
         });
     }
 }

@@ -10,10 +10,10 @@ import static com.felipeflohr.uno.tools.ResizeImage.resizeImage;
 
 public class MainFrame extends JFrame {
 
-    private final int WIDTH = 1280;
-    private final int HEIGHT = 720;
-
     public MainFrame() {
+        final int WIDTH = 1280;
+        final int HEIGHT = 720;
+
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(WIDTH, HEIGHT);
         setLayout(new BorderLayout());

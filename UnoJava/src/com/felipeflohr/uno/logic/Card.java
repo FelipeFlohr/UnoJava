@@ -105,7 +105,7 @@ public class Card {
                 default -> false;
             };
 
-        // If there's a color selected turn
+        // If it's a color selected turn
         } else if (table.getColorSelected() != null) {
             isPlayable = this.getColor().equals(table.getColorSelected());
 

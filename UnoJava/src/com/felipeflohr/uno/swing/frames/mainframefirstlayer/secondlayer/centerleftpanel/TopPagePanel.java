@@ -15,7 +15,7 @@ import static com.felipeflohr.uno.swing.UpdatableElements.addUIElement;
 
 public class TopPagePanel extends JPanel implements CustomGUIUpdate {
 
-    JLabel amountOfCards;
+    private final JLabel amountOfCards;
 
     public TopPagePanel() {
         setLayout(new GridLayout());

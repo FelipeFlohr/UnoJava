@@ -2,6 +2,6 @@ package com.felipeflohr.uno.swing.frames.mainframefirstlayer.secondlayer.centerr
 
 public interface CustomCardGUI {
 
-    public void onCardClick();
-    public String getCardName();
+    void onCardClick();
+    String getCardName();
 }

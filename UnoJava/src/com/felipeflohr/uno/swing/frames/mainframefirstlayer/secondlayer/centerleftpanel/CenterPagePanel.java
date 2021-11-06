@@ -16,8 +16,8 @@ import static com.felipeflohr.uno.tools.ResizeImage.resizeImage;
 
 public class CenterPagePanel extends JPanel implements CustomGUIUpdate {
 
-    JLabel chosenColorLabel;
-    JLabel currentCardImage;
+    private final JLabel chosenColorLabel;
+    private final JLabel currentCardImage;
 
     public CenterPagePanel() {
         setLayout(new BorderLayout());

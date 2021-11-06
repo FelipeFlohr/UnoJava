@@ -24,14 +24,6 @@ public class Player implements PlayerChangeListener {
         uno = isUnoAllowed();
     }
 
-    public Player(int id, int initialAmountOfCards) {
-        this.id = id;
-
-        for (int i = 0; i < initialAmountOfCards; i++) {
-            deck.add(generateRandomCard());
-        }
-    }
-
     public void removeCardByIndex(int i) {
         deck.remove(i);
     }

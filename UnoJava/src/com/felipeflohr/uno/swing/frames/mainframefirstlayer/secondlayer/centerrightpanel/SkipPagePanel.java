@@ -11,7 +11,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import static com.felipeflohr.uno.globaldefs.GlobalDefinitions.*;
-import static com.felipeflohr.uno.globaldefs.GlobalDefinitions.getCurrentPlayer;
 import static com.felipeflohr.uno.swing.UpdatableElements.*;
 
 public class SkipPagePanel extends JPanel implements ActionListener, CustomGUIUpdate {
@@ -19,10 +18,11 @@ public class SkipPagePanel extends JPanel implements ActionListener, CustomGUIUp
     private final JButton prevPageBtn;
     private final JLabel currentPage;
     private final JButton nextPageBtn;
-    private final int WIDTH = 0; // Can be any number
-    private final int HEIGHT = 50;
 
     public SkipPagePanel() {
+        final int WIDTH = 0; // Can be any number
+        final int HEIGHT = 50;
+
         setLayout(new GridLayout(1, 3));
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
 

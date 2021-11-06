@@ -14,15 +14,15 @@ import java.awt.event.ActionListener;
 
 public class LeftMenuPanel extends JPanel implements ActionListener {
 
-    private final int PANEL_WIDTH = 50;
-    private final int PANEL_HEIGHT = 100;
-
-    JButton leaderButton;
-    JButton startButton;
-    JButton settingsButton;
-    JButton restartButton;
+    private final JButton leaderButton;
+    private final JButton startButton;
+    private final JButton settingsButton;
+    private final JButton restartButton;
 
     public LeftMenuPanel() {
+        final int PANEL_WIDTH = 50;
+        final int PANEL_HEIGHT = 100;
+
         setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
         setBackground(new Color(176, 193, 255));
         setOpaque(true);

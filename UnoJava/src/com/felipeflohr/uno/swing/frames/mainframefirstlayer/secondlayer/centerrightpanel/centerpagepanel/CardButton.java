@@ -9,7 +9,6 @@ import com.felipeflohr.uno.swing.frames.colorselectorframe.SelectColorDialog;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -69,7 +68,7 @@ public class CardButton extends JButton implements ActionListener, CustomCardGUI
     }
 
     private Image getCardIcon() {
-        Image cardIcon = switch (cardColor) {
+        return switch (cardColor) {
             case "black" -> switch (cardNumber) {
                 case "wild4" -> resizeImage("res/cards/+4.PNG", getCardIconWidth(), getCardIconHeight());
                 case "wild" -> resizeImage("res/cards/wild.PNG", getCardIconWidth(), getCardIconHeight());
@@ -141,8 +140,6 @@ public class CardButton extends JButton implements ActionListener, CustomCardGUI
             };
             default -> throw new InvalidColorException();
         };
-
-        return cardIcon;
     }
 
     private Color getCardColor() {

@@ -13,9 +13,9 @@ import static com.felipeflohr.uno.swing.UpdatableElements.updateUIElements;
 
 public class BottomPagePanel extends JPanel implements ActionListener, CustomGUIUpdate {
 
-    JButton unoBtn;
-    JLabel unoLabel;
-    JButton buyCardBtn;
+    private final JButton unoBtn;
+    private final JLabel unoLabel;
+    private final JButton buyCardBtn;
 
     public BottomPagePanel() {
         setLayout(new GridLayout());
