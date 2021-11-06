@@ -24,6 +24,14 @@ public class Player implements PlayerChangeListener {
         uno = isUnoAllowed();
     }
 
+    public Player(int id, int initialAmountOfCards) {
+        this.id = id;
+
+        for (int i = 0; i < initialAmountOfCards; i++) {
+            deck.add(generateRandomCard());
+        }
+    }
+
     public void removeCardByIndex(int i) {
         deck.remove(i);
     }
@@ -94,9 +102,7 @@ public class Player implements PlayerChangeListener {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Player ").append(getId()).append(": { ");
-        deck.forEach(card -> {
-            sb.append("[").append(card.getColor()).append(", ").append(card.getNumber()).append("] ");
-        });
+        deck.forEach(card -> sb.append("[").append(card.getColor()).append(", ").append(card.getNumber()).append("] "));
         sb.append("}");
 
         return sb.toString();

@@ -90,6 +90,7 @@ public class GlobalDefinitions {
     }
 
     public static void setCurrentPage(int currentPage) {
+        System.out.println("Chamado");
         GlobalDefinitions.currentPage = currentPage;
     }
 

@@ -20,7 +20,7 @@ public class SkipPagePanel extends JPanel implements ActionListener, CustomGUIUp
     private final JButton nextPageBtn;
 
     public SkipPagePanel() {
-        final int WIDTH = 0; // Can be any number
+        final int WIDTH = 0;
         final int HEIGHT = 50;
 
         setLayout(new GridLayout(1, 3));
