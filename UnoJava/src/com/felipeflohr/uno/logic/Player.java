@@ -6,7 +6,7 @@ import java.util.List;
 import static com.felipeflohr.uno.globaldefs.GlobalDefinitions.*;
 import static com.felipeflohr.uno.logic.Card.generateRandomCard;
 
-public class Player implements PlayerChangeListener {
+public class Player {
 
     private final List<Card> deck = new ArrayList<>();
     private final int id;
@@ -24,14 +24,6 @@ public class Player implements PlayerChangeListener {
         uno = isUnoAllowed();
     }
 
-    public Player(int id, int initialAmountOfCards) {
-        this.id = id;
-
-        for (int i = 0; i < initialAmountOfCards; i++) {
-            deck.add(generateRandomCard());
-        }
-    }
-
     public void removeCardByIndex(int i) {
         deck.remove(i);
     }
@@ -46,7 +38,7 @@ public class Player implements PlayerChangeListener {
 
     public void buyCard(int quantity) {
         for (int i = 0; i < quantity; i++) {
-            deck.add(generateRandomCard());
+            addCard(generateRandomCard());
         }
     }
 
@@ -106,14 +98,5 @@ public class Player implements PlayerChangeListener {
         sb.append("}");
 
         return sb.toString();
-    }
-
-    @Override
-    public void onPlayerChange() {
-        if (getCurrentPlayer() == getId()) {
-            if (isAiEnabled()) {
-                // TODO AI Behaviour
-            }
-        }
     }
 }

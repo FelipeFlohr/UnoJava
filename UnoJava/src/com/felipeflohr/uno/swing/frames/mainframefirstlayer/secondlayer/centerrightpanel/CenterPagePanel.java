@@ -35,7 +35,7 @@ public class CenterPagePanel extends JPanel implements CustomGUIUpdate {
     public static List<List<Card>> getSeparatedPlayerDecks() {
         List<List<Card>> playerDecks = new ArrayList<>();
         double gridSize = getCardGridRows() * getCardGridColumns();
-        double amountOfCards = getTable().getPlayerByIndex(getCurrentPlayer()).getAmountOfCards();
+        double amountOfCards = getTable().getPlayerByIndex(getCurrentLocalPlayer()).getAmountOfCards();
         int amountOfPages = (int) Math.ceil(amountOfCards / gridSize);
 
         for (int i = 0; i < amountOfPages; i++) {
@@ -43,7 +43,7 @@ public class CenterPagePanel extends JPanel implements CustomGUIUpdate {
 
             try {
                 for (int j = (int) gridSize * i; j < gridSize * (i + 1); j++) {
-                    playerDeck.add(getTable().getPlayerByIndex(getCurrentPlayer()).getDeck().get(j));
+                    playerDeck.add(getTable().getPlayerByIndex(getCurrentLocalPlayer()).getDeck().get(j));
                 }
             } catch (IndexOutOfBoundsException ignored) {}
 

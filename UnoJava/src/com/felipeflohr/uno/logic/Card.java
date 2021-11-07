@@ -2,6 +2,7 @@ package com.felipeflohr.uno.logic;
 
 import com.felipeflohr.uno.exception.InvalidColorException;
 import com.felipeflohr.uno.exception.InvalidNumberException;
+import com.felipeflohr.uno.globaldefs.GlobalDefinitions;
 
 import java.util.Random;
 
@@ -98,22 +99,27 @@ public class Card {
     public boolean isCardPlayable(Table table) {
         boolean isPlayable;
 
-        // If there is a buying card only turn
-        if(table.getBuyTurnCard() != null) {
-            isPlayable = switch (this.getNumber()) {
-                case "wild2", "wild4" -> table.getCurrentCard().equals(this);
-                default -> false;
-            };
+        if (getTable().getPlayerTurn() == GlobalDefinitions.getCurrentLocalPlayer()) {
+            // If there is a buying card only turn
+            if(table.getBuyTurnCard() != null) {
+                isPlayable = switch (this.getNumber()) {
+                    case "wild2", "wild4" -> table.getCurrentCard().equals(this);
+                    default -> false;
+                };
 
-        // If there's a color selected turn
-        } else if (table.getColorSelected() != null) {
-            isPlayable = this.getColor().equals(table.getColorSelected());
-
-        // If there's no matching conditions as these above
+                // If there's a color selected turn
+            } else if (table.getColorSelected() != null) {
+                isPlayable = getColor().equals(table.getColorSelected()) || getColor().equals("black");
+            } else if (table.getCurrentCard().getColor().equals("black") && table.getColorSelected() == null) { // If there's a black card on table no color selected
+                isPlayable = true;
+            } // If there's no matching conditions as these above
+            else {
+                isPlayable = this.getColor().equals(table.getCurrentCard().getColor())
+                        || this.getNumber().equals(table.getCurrentCard().getNumber())
+                        || this.getColor().equals("black");
+            }
         } else {
-            isPlayable = this.getColor().equals(table.getCurrentCard().getColor())
-                    || this.getNumber().equals(table.getCurrentCard().getNumber())
-                    || this.getColor().equals("black");
+            isPlayable = false;
         }
 
         return isPlayable;
@@ -121,7 +127,7 @@ public class Card {
 
     public void playCard() {
         getTable().setCurrentCard(this);
-        getTable().getPlayerByIndex(getCurrentPlayer()).removeCard(this);
+        getTable().getPlayerByIndex(getCurrentLocalPlayer()).removeCard(this);
         getTable().applyCardChangeEffects();
     }
 

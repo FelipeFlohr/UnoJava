@@ -1,5 +1,6 @@
 package com.felipeflohr.uno.logic;
 
+import com.felipeflohr.uno.exception.InvalidNextPlayer;
 import com.felipeflohr.uno.exception.PlayerNoCardsException;
 import com.felipeflohr.uno.logic.ailogic.AIPlayer;
 
@@ -9,7 +10,7 @@ import java.util.List;
 import static com.felipeflohr.uno.globaldefs.GlobalDefinitions.*;
 import static com.felipeflohr.uno.swing.UpdatableElements.updateUIElements;
 
-public class Table {
+public class Table implements PlayerChangeListener {
 
     private Card currentCard;
     private boolean reverse;
@@ -183,11 +184,49 @@ public class Table {
         return playerTurn;
     }
 
-    public void setPlayerTurn(int playerTurn) {
-        this.playerTurn = playerTurn;
+    public void setPlayerTurn(int pTurn) {
+        this.playerTurn = pTurn;
     }
 
     public List<Player> getPlayers() {
         return players;
+    }
+
+    @Override
+    public void onPlayerChange() {
+
+    }
+
+    @Override
+    public int getNextPlayer() {
+        int amountOfSkips = isSkip() ? 2 : 1;
+        int nextPlayer = -1;
+        final int INDEX_AMOUNT_OF_PLAYERS = getPlayers().size() - 1;
+
+        if (!isReverse()) {
+            if (getPlayerTurn() + amountOfSkips >= INDEX_AMOUNT_OF_PLAYERS) {
+                nextPlayer = (getPlayerTurn() + amountOfSkips) - (INDEX_AMOUNT_OF_PLAYERS) - 1;
+            } else {
+                nextPlayer = getPlayerTurn() + amountOfSkips;
+            }
+        } else {
+            if (getPlayerTurn() - amountOfSkips < 0) {
+                int skips = Math.abs(getPlayerTurn() - amountOfSkips);
+                nextPlayer = INDEX_AMOUNT_OF_PLAYERS - skips;
+            } else {
+                nextPlayer = getPlayerTurn() - amountOfSkips;
+            }
+        }
+
+        if (nextPlayer < 0 || nextPlayer > getTable().getPlayers().size()) {
+            throw new InvalidNextPlayer();
+        }
+
+        return nextPlayer;
+    }
+
+    @Override
+    public void instantiateNextPlayer() {
+        setPlayerTurn(getNextPlayer());
     }
 }

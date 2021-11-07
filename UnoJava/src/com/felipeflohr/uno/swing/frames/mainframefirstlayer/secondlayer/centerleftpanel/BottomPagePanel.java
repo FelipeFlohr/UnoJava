@@ -55,29 +55,35 @@ public class BottomPagePanel extends JPanel implements ActionListener, CustomGUI
         addUIElement(unoBtn);
         addUIElement(buyCardBtn);
         addUIElement((CustomGUIUpdate) this);
+
+        setButtonsEnabled();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == unoBtn) {
             // TODO Better Uno Button implementation
-            if (getTable().getPlayers().get(getCurrentPlayer()).isUnoAllowed()) {
-                getTable().getPlayers().get(getCurrentPlayer()).setUno(true);
+            if (getTable().getPlayers().get(getCurrentLocalPlayer()).isUnoAllowed()) {
+                getTable().getPlayers().get(getCurrentLocalPlayer()).setUno(true);
             } else {
-                getTable().getPlayers().get(getCurrentPlayer()).setUno(false);
-                getTable().getPlayers().get(getCurrentPlayer()).buyCard(getUnoMisclickAmountOfCards());
+                getTable().getPlayers().get(getCurrentLocalPlayer()).setUno(false);
+                getTable().getPlayers().get(getCurrentLocalPlayer()).buyCard(getUnoMisclickAmountOfCards());
             }
         }
 
         if (e.getSource() == buyCardBtn) {
+            System.out.println("1: " + getTable().getPlayerTurn());
             if (getTable().getBuyTurnAmount() > 1) {
                 // Cards will be bought accordingly to the current turn amount
-                getTable().getPlayerByIndex(getCurrentPlayer()).buyCard(getTable().getBuyTurnAmount());
+                getTable().getPlayerByIndex(getCurrentLocalPlayer()).buyCard(getTable().getBuyTurnAmount());
             } else {
-                getTable().getPlayerByIndex(getCurrentPlayer()).buyCard();
+                getTable().getPlayerByIndex(getCurrentLocalPlayer()).buyCard();
             }
 
             getTable().cardBoughtEffect();
+            getTable().instantiateNextPlayer();
+
+            System.out.println("2: " + getTable().getPlayerTurn());
         }
         updateUIElements();
     }
@@ -86,6 +92,7 @@ public class BottomPagePanel extends JPanel implements ActionListener, CustomGUI
     public void update() {
         setLabelName();
         setBuyCardButtonName();
+        setButtonsEnabled();
     }
 
     @Override
@@ -94,7 +101,7 @@ public class BottomPagePanel extends JPanel implements ActionListener, CustomGUI
     }
 
     private void setLabelName() {
-        if (getTable().getPlayers().get(getCurrentPlayer()).isUno()) {
+        if (getTable().getPlayers().get(getCurrentLocalPlayer()).isUno()) {
             unoLabel.setText("You are Uno!");
         } else {
             unoLabel.setText("You are not Uno");
@@ -106,6 +113,16 @@ public class BottomPagePanel extends JPanel implements ActionListener, CustomGUI
             buyCardBtn.setText("Buy " + getTable().getBuyTurnAmount() + " cards");
         } else {
             buyCardBtn.setText("Buy one card");
+        }
+    }
+
+    private void setButtonsEnabled() {
+        if (getCurrentLocalPlayer() == getTable().getPlayerTurn()) {
+            buyCardBtn.setEnabled(true);
+            unoBtn.setEnabled(true);
+        } else {
+            buyCardBtn.setEnabled(false);
+            unoBtn.setEnabled(false);
         }
     }
 }

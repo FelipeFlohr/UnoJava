@@ -100,7 +100,7 @@ public class SkipPagePanel extends JPanel implements ActionListener, CustomGUIUp
 
     private int getTotalAmountOfPages() {
         double gridSize = getCardGridRows() * getCardGridColumns();
-        double amountOfCards = getTable().getPlayerByIndex(getCurrentPlayer()).getAmountOfCards();
+        double amountOfCards = getTable().getPlayerByIndex(getCurrentLocalPlayer()).getAmountOfCards();
 
         return ((int) Math.ceil(amountOfCards / gridSize)) - 1;
     }

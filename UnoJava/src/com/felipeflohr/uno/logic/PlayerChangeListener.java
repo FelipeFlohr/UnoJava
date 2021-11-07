@@ -1,6 +1,8 @@
 package com.felipeflohr.uno.logic;
 
-public interface PlayerChangeListener {
+interface PlayerChangeListener {
 
     void onPlayerChange();
+    int getNextPlayer();
+    void instantiateNextPlayer();
 }

@@ -17,7 +17,7 @@ public class GlobalDefinitions {
     private static final Table TABLE = new Table();
     private static final int CARD_GRID_ROWS = 3;
     private static final int CARD_GRID_COLUMNS = 3;
-    private static int currentPlayer = 0;
+    private static int currentLocalPlayer = 0;
     private static int nonAiPlayer = 0;
     private static int currentPage = 0;
     private static CenterPagePanel centerPagePanel; // The panel where the buttons are being hold
@@ -60,12 +60,12 @@ public class GlobalDefinitions {
         return CARD_ICON_HEIGHT;
     }
 
-    public static int getCurrentPlayer() {
-        return currentPlayer;
+    public static int getCurrentLocalPlayer() {
+        return currentLocalPlayer;
     }
 
-    public static void setCurrentPlayer(int playerID) {
-        currentPlayer = playerID;
+    public static void setCurrentLocalPlayer(int playerID) {
+        currentLocalPlayer = playerID;
         updateUIElements();
     }
 
@@ -90,7 +90,6 @@ public class GlobalDefinitions {
     }
 
     public static void setCurrentPage(int currentPage) {
-        System.out.println("Chamado");
         GlobalDefinitions.currentPage = currentPage;
     }
 
