@@ -72,7 +72,6 @@ public class BottomPagePanel extends JPanel implements ActionListener, CustomGUI
         }
 
         if (e.getSource() == buyCardBtn) {
-            System.out.println("1: " + getTable().getPlayerTurn());
             if (getTable().getBuyTurnAmount() > 1) {
                 // Cards will be bought accordingly to the current turn amount
                 getTable().getPlayerByIndex(getCurrentLocalPlayer()).buyCard(getTable().getBuyTurnAmount());
@@ -82,8 +81,6 @@ public class BottomPagePanel extends JPanel implements ActionListener, CustomGUI
 
             getTable().cardBoughtEffect();
             getTable().instantiateNextPlayer();
-
-            System.out.println("2: " + getTable().getPlayerTurn());
         }
         updateUIElements();
     }

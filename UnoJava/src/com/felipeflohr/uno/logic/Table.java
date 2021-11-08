@@ -44,7 +44,7 @@ public class Table implements PlayerChangeListener {
 
     private void generatePlayers() {
         for (int i = 0; i < getTotalAmountOfPlayers(); i++) {
-            if (i != getNonAiPlayer()) {
+            if (i == getNonAiPlayer()) {
                 players.add(new Player(i));
             } else {
                 players.add(new AIPlayer(i));
@@ -65,6 +65,7 @@ public class Table implements PlayerChangeListener {
     }
 
     public int getPlayerIdWithLeastCards() {
+        // FIXME Showing the wrong player ID
         int id = -1;
         int cards = -1;
 
@@ -204,7 +205,7 @@ public class Table implements PlayerChangeListener {
         final int INDEX_AMOUNT_OF_PLAYERS = getPlayers().size() - 1;
 
         if (!isReverse()) {
-            if (getPlayerTurn() + amountOfSkips >= INDEX_AMOUNT_OF_PLAYERS) {
+            if (getPlayerTurn() + amountOfSkips > INDEX_AMOUNT_OF_PLAYERS) {
                 nextPlayer = (getPlayerTurn() + amountOfSkips) - (INDEX_AMOUNT_OF_PLAYERS) - 1;
             } else {
                 nextPlayer = getPlayerTurn() + amountOfSkips;
@@ -212,7 +213,7 @@ public class Table implements PlayerChangeListener {
         } else {
             if (getPlayerTurn() - amountOfSkips < 0) {
                 int skips = Math.abs(getPlayerTurn() - amountOfSkips);
-                nextPlayer = INDEX_AMOUNT_OF_PLAYERS - skips;
+                nextPlayer = getPlayers().size() - skips;
             } else {
                 nextPlayer = getPlayerTurn() - amountOfSkips;
             }
@@ -228,5 +229,10 @@ public class Table implements PlayerChangeListener {
     @Override
     public void instantiateNextPlayer() {
         setPlayerTurn(getNextPlayer());
+
+        // TODO Remove this placeholder and implement a proper AI
+        if (getPlayerByIndex(getPlayerTurn()).isAiEnabled()) {
+            instantiateNextPlayer();
+        }
     }
 }

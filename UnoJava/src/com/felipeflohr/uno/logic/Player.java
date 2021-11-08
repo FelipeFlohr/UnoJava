@@ -73,6 +73,10 @@ public class Player {
         return deck;
     }
 
+    public boolean isAiEnabled() {
+        return aiEnabled;
+    }
+
     // Getters & Setters
     public boolean isPlayerTurn() {
         return isPlayerTurn;
