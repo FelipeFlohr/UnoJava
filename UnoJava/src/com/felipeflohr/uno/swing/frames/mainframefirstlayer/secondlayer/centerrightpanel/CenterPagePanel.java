@@ -27,6 +27,17 @@ public class CenterPagePanel extends JPanel implements CustomGUIUpdate {
         setCenterPagePanel(this);
     }
 
+    // Public Methods
+    @Override
+    public void update() {
+        redrawButtons();
+    }
+
+    @Override
+    public String getComponentName() {
+        return "Center Page Panel";
+    }
+
     public void redrawButtons() {
         removeAllButtons();
         addButtons();
@@ -53,6 +64,7 @@ public class CenterPagePanel extends JPanel implements CustomGUIUpdate {
         return playerDecks;
     }
 
+    // Private Methods
     private void addButtons() {
         getSeparatedPlayerDecks()
                 .get(getCurrentPage())
@@ -61,15 +73,5 @@ public class CenterPagePanel extends JPanel implements CustomGUIUpdate {
 
     private void removeAllButtons() {
         Arrays.stream(getComponents()).forEach(this::remove);
-    }
-
-    @Override
-    public void update() {
-        redrawButtons();
-    }
-
-    @Override
-    public String getComponentName() {
-        return "Center Page Panel";
     }
 }

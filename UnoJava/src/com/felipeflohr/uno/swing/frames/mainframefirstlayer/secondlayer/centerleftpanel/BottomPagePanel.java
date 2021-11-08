@@ -85,6 +85,7 @@ public class BottomPagePanel extends JPanel implements ActionListener, CustomGUI
         updateUIElements();
     }
 
+    // Public methods
     @Override
     public void update() {
         setLabelName();
@@ -97,6 +98,7 @@ public class BottomPagePanel extends JPanel implements ActionListener, CustomGUI
         return "Bottom Page Panel";
     }
 
+    // Private methods
     private void setLabelName() {
         if (getTable().getPlayers().get(getCurrentLocalPlayer()).isUno()) {
             unoLabel.setText("You are Uno!");

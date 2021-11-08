@@ -37,6 +37,8 @@ public class UpdatableElements {
             element.onCardClick();
             if (isPrintUpdateMessages()) System.out.println("Card status updated: " + element.getCardName());
         });
+
+        getTable().checkPlayersAmountOfCards();
     }
 
     public static void addUIElement(JComponent element) {

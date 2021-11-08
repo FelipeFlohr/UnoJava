@@ -41,6 +41,7 @@ public class Card {
         }
     }
 
+    // Static methods
     public static Card generateRandomCard() throws InvalidNumberException, InvalidColorException {
         String sortedColor;
         String sortedNumber;
@@ -96,6 +97,7 @@ public class Card {
         return new Card(sortedNumber, sortedColor);
     }
 
+    // Public methods
     public boolean isCardPlayable(Table table) {
         boolean isPlayable;
 

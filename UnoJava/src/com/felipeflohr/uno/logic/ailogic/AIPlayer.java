@@ -6,6 +6,6 @@ public class AIPlayer extends Player {
 
     public AIPlayer(int id) {
         super(id);
-        this.aiEnabled = true;
+        this.setAiEnabled(true);
     }
 }

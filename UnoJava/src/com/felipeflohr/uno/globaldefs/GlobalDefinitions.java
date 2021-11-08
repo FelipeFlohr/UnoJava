@@ -27,7 +27,7 @@ public class GlobalDefinitions {
     private static final boolean PRINT_UPDATE_MESSAGES = false;
     private static final boolean PRINT_ADDED_ELEMENT_MESSAGES = false;
 
-    // Static getters
+    // Static getters & setters
     public static int getTotalAmountOfPlayers() {
         return TOTAL_AMOUNT_OF_PLAYERS;
     }

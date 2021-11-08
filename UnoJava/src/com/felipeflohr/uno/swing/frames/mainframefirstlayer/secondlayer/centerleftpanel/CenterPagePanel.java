@@ -53,6 +53,7 @@ public class CenterPagePanel extends JPanel implements CustomGUIUpdate {
         addUIElement(currentCardImage);
     }
 
+    // Public methods
     @Override
     public void update() {
         setChosenColorText();
@@ -65,6 +66,7 @@ public class CenterPagePanel extends JPanel implements CustomGUIUpdate {
         return "Center Page Panel";
     }
 
+    // Private methods
     private void setChosenColorText() {
         String text;
 

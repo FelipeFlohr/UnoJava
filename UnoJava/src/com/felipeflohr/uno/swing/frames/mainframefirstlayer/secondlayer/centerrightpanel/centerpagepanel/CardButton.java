@@ -43,6 +43,7 @@ public class CardButton extends JButton implements ActionListener, CustomCardGUI
         addCardElement(this);
     }
 
+    // Public Methods
     @Override
     public void onCardClick() {
         if (getSeparatedPlayerDecks().get(getCurrentPage()).size() <= 1) {
@@ -67,6 +68,7 @@ public class CardButton extends JButton implements ActionListener, CustomCardGUI
         updateUIElements();
     }
 
+    // Private Methods
     private Image getCardIcon() {
         return switch (cardColor) {
             case "black" -> switch (cardNumber) {

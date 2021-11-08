@@ -10,9 +10,9 @@ public class Player {
 
     private final List<Card> deck = new ArrayList<>();
     private final int id;
-    private boolean uno = false;
-    protected boolean isPlayerTurn;
-    protected boolean aiEnabled = false;
+    private boolean uno;
+    private boolean isPlayerTurn;
+    private boolean aiEnabled = false;
 
     public Player(int id) {
         this.id = id;
@@ -60,7 +60,18 @@ public class Player {
         removeCardByIndex(cardIndex);
     }
 
-    // Getters
+    // To String
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Player ").append(getId()).append(": { ");
+        deck.forEach(card -> sb.append("[").append(card.getColor()).append(", ").append(card.getNumber()).append("] "));
+        sb.append("}");
+
+        return sb.toString();
+    }
+
+    // Getters & Setters
     public int getId() {
         return id;
     }
@@ -77,7 +88,10 @@ public class Player {
         return aiEnabled;
     }
 
-    // Getters & Setters
+    public void setAiEnabled(boolean ai) {
+        aiEnabled = ai;
+    }
+
     public boolean isPlayerTurn() {
         return isPlayerTurn;
     }
@@ -92,15 +106,5 @@ public class Player {
 
     public boolean isUno() {
         return uno;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Player ").append(getId()).append(": { ");
-        deck.forEach(card -> sb.append("[").append(card.getColor()).append(", ").append(card.getNumber()).append("] "));
-        sb.append("}");
-
-        return sb.toString();
     }
 }

@@ -42,28 +42,6 @@ public class Table implements PlayerChangeListener {
         });
     }
 
-    private void generatePlayers() {
-        for (int i = 0; i < getTotalAmountOfPlayers(); i++) {
-            if (i == getNonAiPlayer()) {
-                players.add(new Player(i));
-            } else {
-                players.add(new AIPlayer(i));
-            }
-        }
-    }
-
-    @Override
-    public String toString() {
-        return "--Table--\n" +
-                "Current card: " + currentCard + "\n" +
-                "Is reverse: " + reverse + "\n" +
-                "Buy turn card: " + buyTurnCard + "\n" +
-                "Buy turn amount: " + buyTurnAmount + "\n" +
-                "Is skip: " + skip + "\n" +
-                "Color selected: " + colorSelected + "\n" +
-                "Player turn: " + playerTurn + "\n";
-    }
-
     public int getPlayerIdWithLeastCards() {
         // FIXME Showing the wrong player ID
         int id = -1;
@@ -102,6 +80,62 @@ public class Table implements PlayerChangeListener {
         updateUIElements();
     }
 
+    @Override
+    public void onPlayerChange() {
+
+    }
+
+    @Override
+    public int getNextPlayer() {
+        int amountOfSkips = isSkip() ? 2 : 1;
+        int nextPlayer = -1;
+        final int INDEX_AMOUNT_OF_PLAYERS = getPlayers().size() - 1;
+
+        if (!isReverse()) {
+            if (getPlayerTurn() + amountOfSkips > INDEX_AMOUNT_OF_PLAYERS) {
+                nextPlayer = (getPlayerTurn() + amountOfSkips) - (INDEX_AMOUNT_OF_PLAYERS) - 1;
+            } else {
+                nextPlayer = getPlayerTurn() + amountOfSkips;
+            }
+        } else {
+            if (getPlayerTurn() - amountOfSkips < 0) {
+                int skips = Math.abs(getPlayerTurn() - amountOfSkips);
+                nextPlayer = getPlayers().size() - skips;
+            } else {
+                nextPlayer = getPlayerTurn() - amountOfSkips;
+            }
+        }
+
+        if (nextPlayer < 0 || nextPlayer > getTable().getPlayers().size()) {
+            throw new InvalidNextPlayer();
+        }
+
+        return nextPlayer;
+    }
+
+    @Override
+    public void instantiateNextPlayer() {
+        setPlayerTurn(getNextPlayer());
+
+        // TODO Remove this placeholder and implement a proper AI
+        if (getPlayerByIndex(getPlayerTurn()).isAiEnabled()) {
+            instantiateNextPlayer();
+        }
+    }
+
+    // To String
+    @Override
+    public String toString() {
+        return "--Table--\n" +
+                "Current card: " + currentCard + "\n" +
+                "Is reverse: " + reverse + "\n" +
+                "Buy turn card: " + buyTurnCard + "\n" +
+                "Buy turn amount: " + buyTurnAmount + "\n" +
+                "Is skip: " + skip + "\n" +
+                "Color selected: " + colorSelected + "\n" +
+                "Player turn: " + playerTurn + "\n";
+    }
+
     // Card effects
     public void cardBoughtEffect() {
         if (buyTurnAmount > 0) {
@@ -126,6 +160,17 @@ public class Table implements PlayerChangeListener {
     private void wild4Effect() {
         setBuyTurnAmount(buyTurnAmount += 4);
         setBuyTurnCard(getCurrentCard());
+    }
+
+    // Private method(s)
+    private void generatePlayers() {
+        for (int i = 0; i < getTotalAmountOfPlayers(); i++) {
+            if (i == getNonAiPlayer()) {
+                players.add(new Player(i));
+            } else {
+                players.add(new AIPlayer(i));
+            }
+        }
     }
 
     // Getters and Setters
@@ -191,48 +236,5 @@ public class Table implements PlayerChangeListener {
 
     public List<Player> getPlayers() {
         return players;
-    }
-
-    @Override
-    public void onPlayerChange() {
-
-    }
-
-    @Override
-    public int getNextPlayer() {
-        int amountOfSkips = isSkip() ? 2 : 1;
-        int nextPlayer = -1;
-        final int INDEX_AMOUNT_OF_PLAYERS = getPlayers().size() - 1;
-
-        if (!isReverse()) {
-            if (getPlayerTurn() + amountOfSkips > INDEX_AMOUNT_OF_PLAYERS) {
-                nextPlayer = (getPlayerTurn() + amountOfSkips) - (INDEX_AMOUNT_OF_PLAYERS) - 1;
-            } else {
-                nextPlayer = getPlayerTurn() + amountOfSkips;
-            }
-        } else {
-            if (getPlayerTurn() - amountOfSkips < 0) {
-                int skips = Math.abs(getPlayerTurn() - amountOfSkips);
-                nextPlayer = getPlayers().size() - skips;
-            } else {
-                nextPlayer = getPlayerTurn() - amountOfSkips;
-            }
-        }
-
-        if (nextPlayer < 0 || nextPlayer > getTable().getPlayers().size()) {
-            throw new InvalidNextPlayer();
-        }
-
-        return nextPlayer;
-    }
-
-    @Override
-    public void instantiateNextPlayer() {
-        setPlayerTurn(getNextPlayer());
-
-        // TODO Remove this placeholder and implement a proper AI
-        if (getPlayerByIndex(getPlayerTurn()).isAiEnabled()) {
-            instantiateNextPlayer();
-        }
     }
 }

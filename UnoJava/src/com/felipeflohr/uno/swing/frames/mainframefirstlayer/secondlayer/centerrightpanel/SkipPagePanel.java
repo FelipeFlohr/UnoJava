@@ -64,6 +64,19 @@ public class SkipPagePanel extends JPanel implements ActionListener, CustomGUIUp
         addUIElement((CustomGUIUpdate) this);
     }
 
+    // Public Methods
+    @Override
+    public void update() {
+        currentPage.setText("Current Page: " + getCurrentPage() + "/" + getTotalAmountOfPages());
+        prevPageBtn.setEnabled(isPreviousPageAllowed());
+        nextPageBtn.setEnabled(isNextPageAllowed());
+    }
+
+    @Override
+    public String getComponentName() {
+        return "Skip Page Panel";
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -98,6 +111,7 @@ public class SkipPagePanel extends JPanel implements ActionListener, CustomGUIUp
         setCurrentPage(getCurrentPage() + 1);
     }
 
+    // Private Methods
     private int getTotalAmountOfPages() {
         double gridSize = getCardGridRows() * getCardGridColumns();
         double amountOfCards = getTable().getPlayerByIndex(getCurrentLocalPlayer()).getAmountOfCards();
@@ -113,17 +127,5 @@ public class SkipPagePanel extends JPanel implements ActionListener, CustomGUIUp
     private boolean isNextPageAllowed() {
         int currentPage = getCurrentPage();
         return currentPage + 1 <= getTotalAmountOfPages();
-    }
-
-    @Override
-    public void update() {
-        currentPage.setText("Current Page: " + getCurrentPage() + "/" + getTotalAmountOfPages());
-        prevPageBtn.setEnabled(isPreviousPageAllowed());
-        nextPageBtn.setEnabled(isNextPageAllowed());
-    }
-
-    @Override
-    public String getComponentName() {
-        return "Skip Page Panel";
     }
 }
