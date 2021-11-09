@@ -13,11 +13,11 @@ import static com.felipeflohr.uno.swing.UpdatableElements.updateUIElements;
 public class Table implements PlayerChangeListener {
 
     private Card currentCard;
-    private boolean reverse;
     private Card buyTurnCard;
-    private int buyTurnAmount;
     private String colorSelected;
+    private boolean reverse;
     private boolean skip;
+    private int buyTurnAmount;
     private int playerTurn;
     private final List<Player> players = new ArrayList<>();
 
@@ -48,7 +48,7 @@ public class Table implements PlayerChangeListener {
         int cards = -1;
 
         for (Player player : players) {
-            if (id == -1 & cards == -1) {
+            if (id == -1 && cards == -1) {
                 id = player.getId();
                 cards = player.getDeck().size();
             } else {
@@ -75,14 +75,13 @@ public class Table implements PlayerChangeListener {
                 case "wild2" -> wild2Effect();
                 case "wild4" -> wild4Effect();
             }
+        } else {
+            setBuyTurnCard(null);
+            setBuyTurnAmount(0);
+            setReverse(false);
         }
 
         updateUIElements();
-    }
-
-    @Override
-    public void onPlayerChange() {
-
     }
 
     @Override
@@ -114,12 +113,16 @@ public class Table implements PlayerChangeListener {
     }
 
     @Override
-    public void instantiateNextPlayer() {
+    public void moveToNextPlayer() {
         setPlayerTurn(getNextPlayer());
+        System.out.println("Current player turn now is: " + getPlayerTurn());
+        checkAllPlayersUnoStatus();
 
         // TODO Remove this placeholder and implement a proper AI
         if (getPlayerByIndex(getPlayerTurn()).isAiEnabled()) {
-            instantiateNextPlayer();
+            moveToNextPlayer();
+        } else {
+            System.out.println("----------------");
         }
     }
 
@@ -144,8 +147,9 @@ public class Table implements PlayerChangeListener {
         }
     }
 
+    // Private method(s)
     private void skipEffect() {
-        setSkip(!this.skip);
+        setSkip(true);
     }
 
     private void reverseEffect() {
@@ -162,7 +166,6 @@ public class Table implements PlayerChangeListener {
         setBuyTurnCard(getCurrentCard());
     }
 
-    // Private method(s)
     private void generatePlayers() {
         for (int i = 0; i < getTotalAmountOfPlayers(); i++) {
             if (i == getNonAiPlayer()) {
@@ -171,6 +174,14 @@ public class Table implements PlayerChangeListener {
                 players.add(new AIPlayer(i));
             }
         }
+    }
+
+    private void checkAllPlayersUnoStatus() {
+        getPlayers().parallelStream().forEach(p -> {
+            if (p.isUno() && !p.isUnoAllowed()) {
+                p.setUno(false);
+            }
+        });
     }
 
     // Getters and Setters

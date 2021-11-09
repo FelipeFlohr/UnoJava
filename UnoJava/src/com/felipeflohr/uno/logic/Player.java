@@ -46,6 +46,12 @@ public class Player {
         return deck.size() < 2;
     }
 
+    public void checkUnoStatus() {
+        if (isUno() && !isUnoAllowed()) {
+            setUno(false);
+        }
+    }
+
     public void removeCard(Card card) {
         int cardIndex = -1;
 

@@ -46,7 +46,7 @@ public class CardButton extends JButton implements ActionListener, CustomCardGUI
     // Public Methods
     @Override
     public void onCardClick() {
-        if (getSeparatedPlayerDecks().get(getCurrentPage()).size() <= 1) {
+        if (getSeparatedPlayerDecks().get(getCurrentPage()).size() <= 1 && getCurrentPage() != 0) {
             setCurrentPage(getCurrentPage() - 1);
         }
 
@@ -65,6 +65,7 @@ public class CardButton extends JButton implements ActionListener, CustomCardGUI
         colorSelectorDialog();
 
         card.playCard();
+        getTable().moveToNextPlayer();
         updateUIElements();
     }
 

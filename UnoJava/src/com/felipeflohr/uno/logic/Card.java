@@ -141,7 +141,8 @@ public class Card {
 
         Card card = (Card) o;
 
-        return number.equals(card.number);
+        if (!getNumber().equals(card.getNumber())) return false;
+        return getColor().equals(card.getColor());
     }
 
     @Override

@@ -8,4 +8,8 @@ public class AIPlayer extends Player {
         super(id);
         this.setAiEnabled(true);
     }
+
+    public void DefaultAI() {
+
+    }
 }
