@@ -46,9 +46,18 @@ public class TopPagePanel extends JPanel implements CustomGUIUpdate {
     // Private Methods
     private void setPanelText() {
         if (getTable().everyoneHasTheSameAmountOfCards()) {
-            amountOfCards.setText("Player " + (getTable().getPlayerTurn() + 1) + "/" + getTable().getPlayers().size() + " turn | Everyone has the same amount of cards");
+            amountOfCards.setText("Player "
+                    + (getTable().getPlayerTurn()
+                    + 1)
+                    + "/" + getTable().getPlayers().size()
+                    + " turn | Everyone has the same amount of cards");
         } else {
-            amountOfCards.setText("Player " + (getTable().getPlayerTurn() + 1) + "/" + getTable().getPlayers().size() + " turn | Player #" + getTable().getPlayerIdWithLeastCards() + " has the least amount of cards");
+            amountOfCards.setText("Player "
+                    + (getTable().getPlayerTurn() + 1)
+                    + "/" + getTable().getPlayers().size()
+                    + " turn | Player #"
+                    + (getTable().getPlayerIdWithLeastCards() + 1)
+                    + " has the least amount of cards");
         }
     }
 }
