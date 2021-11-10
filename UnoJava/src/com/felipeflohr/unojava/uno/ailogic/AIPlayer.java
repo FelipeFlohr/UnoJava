@@ -1,5 +1,6 @@
 package com.felipeflohr.unojava.uno.ailogic;
 
+import com.felipeflohr.unojava.exception.AINoConditionAvailableException;
 import com.felipeflohr.unojava.uno.Card;
 import com.felipeflohr.unojava.uno.Player;
 import com.felipeflohr.unojava.uno.Table;
@@ -20,6 +21,7 @@ public class AIPlayer extends Player {
     }
 
     public void defaultAI() {
+        // FIXME Skip status is not setting to null when a card is played
         if (!isAiEnabled()) {
             aiPrint("AI is not enabled. Skipping player #" + getId() + " turn.");
             getTable().moveToNextPlayer();
@@ -75,12 +77,70 @@ public class AIPlayer extends Player {
                         }
                         else {
                             aiPrint("Condition #3 not matched. Moving to Condition 4");
+
+                            aiPrint("\n4. Player has a skip card and it is playable");
+                            if (hasSkip()) {
+                                aiPrint("Condition #4 Matched!");
+                                getSkipCard().playCard();
+                                aiApplyCardEffects();
+                                getTable().moveToNextPlayer();
+                            } else {
+                                aiPrint("Condition #4 not matched. Moving to Condition 5");
+
+                                aiPrint("\n5. Player has a reverse card and it is playable");
+                                if (hasReverse()) {
+                                    aiPrint("Condition #5 Matched!");
+                                    getReverseCard().playCard();
+                                    aiApplyCardEffects();
+                                    getTable().moveToNextPlayer();
+                                } else {
+                                    aiPrint("Condition #5 not matched. Moving to Condition 6");
+
+                                    aiPrint("\n6. Player has any normal card");
+                                    if (hasAnyNormalCard()) {
+                                        aiPrint("Condition #6 Matched!");
+                                        getNormalCard().playCard();
+                                        aiApplyCardEffects();
+                                        getTable().moveToNextPlayer();
+                                    } else {
+                                        aiPrint("Condition #6 not matched. Moving to Condition 7");
+
+                                        aiPrint("\n7. Player has a wild");
+                                        if (hasCard(new Card("wild", "black"))) {
+                                            aiPrint("Condition #7 Matched!");
+                                            Card wild = new Card("wild", "black");
+                                            wild.playCard();
+                                            aiApplyCardEffects();
+                                            getTable().moveToNextPlayer();
+                                        } else {
+                                            aiPrint("Condition #7 not matched. Moving to Condition 8");
+
+                                            aiPrint("\n8. Player has a +2 and it's playable");
+                                            if (hasWild2()) {
+                                                aiPrint("Condition #8 Matched!");
+                                                getWild2Card().playCard();
+                                                aiApplyCardEffects();
+                                                getTable().moveToNextPlayer();
+                                            } else {
+                                                aiPrint("No condition was found for player #" + getId() + ". A exception will be raised");
+                                                throw new AINoConditionAvailableException();
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 }
             } else {
                 aiPrint("There are no playable cards");
-                // TODO There are no playable cards part
+                aiBuyCard();
+                if (getTable().getBuyTurnAmount() <= 0) {
+                    if (atLeastOneCardPlayable()) {
+                        getRandomCard().playCard();
+                    }
+                }
+                getTable().moveToNextPlayer();
             }
         }
     }
@@ -183,15 +243,49 @@ public class AIPlayer extends Player {
     }
 
     private boolean hasWild4or2() {
-        return getDeck().stream().anyMatch(card ->
-                card.getNumber().equals("wild2") || card.getNumber().equals("wild4"));
+        return getDeck().stream()
+                .filter(filter -> filter.isCardPlayable(getTable()))
+                .anyMatch(card -> card.getNumber().equals("wild2") || card.getNumber().equals("wild4"));
+    }
+
+    private boolean hasSkip() {
+        return getDeck().stream()
+                .filter(filter -> filter.isCardPlayable(getTable()))
+                .anyMatch(card -> card.getNumber().equals("skip"));
+    }
+
+    private boolean hasReverse() {
+        return getDeck().stream()
+                .filter(filter -> filter.isCardPlayable(getTable()))
+                .anyMatch(card -> card.getNumber().equals("reverse"));
+    }
+
+    private boolean hasAnyNormalCard() {
+        return getDeck().stream()
+                .filter(filter -> filter.isCardPlayable(getTable()))
+                .anyMatch(card -> !card.isSpecial());
+    }
+
+    private boolean hasWild2() {
+        return getDeck().stream()
+                .filter(filter -> filter.isCardPlayable(getTable()))
+                .anyMatch(card -> card.getNumber().equals("wild2"));
     }
 
     private Card getWild2Card() {
-        Card card;
-        card = getDeck().stream().filter(c1 -> c1.getNumber().equals("wild2")).findFirst().get();
+        return getDeck().stream().filter(c1 -> c1.getNumber().equals("wild2")).findFirst().get();
+    }
 
-        return card;
+    private Card getSkipCard() {
+        return getDeck().stream().filter(c1 -> c1.getNumber().equals("skip")).findFirst().get();
+    }
+
+    private Card getReverseCard() {
+        return getDeck().stream().filter(c1 -> c1.getNumber().equals("reverse")).findFirst().get();
+    }
+
+    private Card getNormalCard() {
+        return getDeck().stream().filter(c1 -> !c1.isSpecial()).findFirst().get();
     }
 
     // AI Print
