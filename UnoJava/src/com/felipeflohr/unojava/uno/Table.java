@@ -77,7 +77,7 @@ public class Table implements PlayerChangeListener {
         } else {
             setBuyTurnCard(null);
             setBuyTurnAmount(0);
-            setReverse(false);
+            setSkip(false);
         }
 
         updateUIElements();
@@ -114,14 +114,11 @@ public class Table implements PlayerChangeListener {
     @Override
     public void moveToNextPlayer() {
         setPlayerTurn(getNextPlayer());
-        System.out.println("Current player turn now is: " + getPlayerTurn());
         checkAllPlayersUnoStatus();
 
         if (getPlayerByIndex(getPlayerTurn()).isAiEnabled()) {
             var aiPlayer =  ((AIPlayer) getPlayerByIndex(getPlayerTurn()));
             aiPlayer.defaultAI();
-        } else {
-            System.out.println("----------------");
         }
     }
 
