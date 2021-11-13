@@ -6,8 +6,6 @@ import com.felipeflohr.unojava.uno.Player;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 import static com.felipeflohr.unojava.globaldefs.GlobalDefinitions.getTable;
@@ -25,7 +23,7 @@ public class AIPlayer extends Player {
         System.out.println("AI Called");
 
         System.out.println("It's player #" + getId() + " turn.");
-        System.out.println("Table: " + getTable());
+        System.out.println(getTable());
 
         getTable().setSkip(false);
 
