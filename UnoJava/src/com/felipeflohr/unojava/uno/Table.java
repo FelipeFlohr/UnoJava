@@ -37,6 +37,7 @@ public class Table {
     public void checkPlayersAmountOfCards() {
         players.parallelStream().forEach(p -> {
             if (p.getDeck().size() == 0) {
+                // TODO Implement a player won warning
                 throw new PlayerNoCardsException("Player ID" + p.getId() + "has no cards");
             }
         });

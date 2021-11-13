@@ -3,7 +3,7 @@ package com.felipeflohr.unojava.uno;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.felipeflohr.unojava.globaldefs.GlobalDefinitions.*;
+import static com.felipeflohr.unojava.globaldefs.GlobalDefinitions.getInitialCardsAmount;
 import static com.felipeflohr.unojava.uno.Card.generateRandomCard;
 
 public class Player {
@@ -11,7 +11,6 @@ public class Player {
     private final List<Card> deck = new ArrayList<>();
     private final int id;
     private boolean uno;
-    private boolean isPlayerTurn;
     private boolean aiEnabled = false;
 
     public Player(int id) {
@@ -96,14 +95,6 @@ public class Player {
 
     public void setAiEnabled(boolean ai) {
         aiEnabled = ai;
-    }
-
-    public boolean isPlayerTurn() {
-        return isPlayerTurn;
-    }
-
-    public void setPlayerTurn(boolean t) {
-        isPlayerTurn = t;
     }
 
     public void setUno(boolean u) {

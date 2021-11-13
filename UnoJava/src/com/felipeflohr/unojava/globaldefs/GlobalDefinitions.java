@@ -9,26 +9,36 @@ public class GlobalDefinitions {
 
     private static final int TOTAL_AMOUNT_OF_PLAYERS = 4;
     private static final int INITIAL_CARDS = 7;
-    private static final boolean AI_ENABLED = true;
-    private static final boolean AI_DEBUG_MESSAGES_ENABLED = true;
     private static final int CHANCE_OF_SPECIAL_CARD = 40;
     private static final int CHANCE_OF_BLACK_SPECIAL_CARD = 35;
     private static final int CARD_ICON_WIDTH = 86;
     private static final int CARD_ICON_HEIGHT = 128;
-    private static final Table TABLE = new Table();
     private static final int CARD_GRID_ROWS = 3;
     private static final int CARD_GRID_COLUMNS = 3;
-    private static int currentLocalPlayer = 0;
-    private static int nonAiPlayer = 0;
-    private static int currentPage = 0;
-    private static CenterPagePanel centerPagePanel; // The panel where the buttons are being hold
     private static final int UNO_MISCLICK_AMOUNT_OF_CARDS = 2;
     private static final int CURRENT_CARD_IMAGE_WIDTH = 256;
     private static final int CURRENT_CARD_IMAGE_HEIGHT = 400;
+    private static int currentLocalPlayer = 0;
+    private static int nonAiPlayer = 0;
+    private static int currentPage = 0;
     private static final boolean PRINT_UPDATE_MESSAGES = false;
     private static final boolean PRINT_ADDED_ELEMENT_MESSAGES = false;
+    private static final boolean AI_ENABLED = true;
+    private static final boolean AI_DEBUG_MESSAGES_ENABLED = true;
+    private static CenterPagePanel centerPagePanel;
+    private static final Table TABLE = new Table();
 
-    // Static getters & setters
+    // Custom static getters & setters
+    public static int getCurrentLocalPlayer() {
+        return currentLocalPlayer;
+    }
+
+    public static void setCurrentLocalPlayer(int playerID) {
+        currentLocalPlayer = playerID;
+        updateUIElements();
+    }
+
+    // Default static getters & setters
     public static int getTotalAmountOfPlayers() {
         return TOTAL_AMOUNT_OF_PLAYERS;
     }
@@ -63,15 +73,6 @@ public class GlobalDefinitions {
 
     public static int getCardIconHeight() {
         return CARD_ICON_HEIGHT;
-    }
-
-    public static int getCurrentLocalPlayer() {
-        return currentLocalPlayer;
-    }
-
-    public static void setCurrentLocalPlayer(int playerID) {
-        currentLocalPlayer = playerID;
-        updateUIElements();
     }
 
     public static int getCardGridRows() {
