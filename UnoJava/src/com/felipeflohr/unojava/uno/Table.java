@@ -10,7 +10,7 @@ import java.util.List;
 import static com.felipeflohr.unojava.globaldefs.GlobalDefinitions.*;
 import static com.felipeflohr.unojava.swing.UpdatableElements.updateUIElements;
 
-public class Table implements PlayerChangeListener {
+public class Table {
 
     private Card currentCard;
     private Card buyTurnCard;
@@ -84,10 +84,9 @@ public class Table implements PlayerChangeListener {
         updateUIElements();
     }
 
-    @Override
     public int getNextPlayer() {
         int amountOfSkips = isSkip() ? 2 : 1;
-        int nextPlayer = -1;
+        int nextPlayer;
         final int INDEX_AMOUNT_OF_PLAYERS = getPlayers().size() - 1;
 
         if (!isReverse()) {
@@ -112,7 +111,6 @@ public class Table implements PlayerChangeListener {
         return nextPlayer;
     }
 
-    @Override
     public void moveToNextPlayer() throws InterruptedException {
         setPlayerTurn(getNextPlayer());
         checkAllPlayersUnoStatus();

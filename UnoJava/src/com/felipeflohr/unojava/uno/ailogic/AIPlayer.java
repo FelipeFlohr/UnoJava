@@ -1,6 +1,7 @@
 package com.felipeflohr.unojava.uno.ailogic;
 
 import com.felipeflohr.unojava.exception.AINoConditionAvailableException;
+import com.felipeflohr.unojava.globaldefs.GlobalDefinitions;
 import com.felipeflohr.unojava.uno.Card;
 import com.felipeflohr.unojava.uno.Player;
 
@@ -52,7 +53,7 @@ public class AIPlayer extends Player {
         aiPrintln("Condition 9 = " + CONDITION_9 + " | Player doesn't has any playable card, so a card will be bought");
 
         // The AI will choose the first condition available
-        if (isAiEnabled()) {
+        if (GlobalDefinitions.isAiEnabled()) {
             if (CONDITION_1) { // Condition 1
                 aiPrintln("\nCondition 1 was taken. A card will be bought. ");
 
@@ -213,7 +214,6 @@ public class AIPlayer extends Player {
 
         if (yellow > prevValue) {
             majorColor = "yellow";
-            prevValue = yellow;
         }
 
         return majorColor;

@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 
 public class LeftMenuPanel extends JPanel implements ActionListener {
 
+    // TODO implement the left menu panel
     private final JButton leaderButton;
     private final JButton startButton;
     private final JButton settingsButton;
