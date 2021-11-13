@@ -68,7 +68,11 @@ public class BottomPagePanel extends JPanel implements ActionListener, CustomGUI
             } else {
                 getTable().getPlayers().get(getCurrentLocalPlayer()).setUno(false);
                 getTable().getPlayers().get(getCurrentLocalPlayer()).buyCard(getUnoMisclickAmountOfCards());
-                getTable().moveToNextPlayer();
+                try {
+                    getTable().moveToNextPlayer();
+                } catch (InterruptedException ex) {
+                    ex.printStackTrace();
+                }
             }
         }
 
@@ -81,7 +85,11 @@ public class BottomPagePanel extends JPanel implements ActionListener, CustomGUI
             }
 
             getTable().cardBoughtEffect();
-            getTable().moveToNextPlayer();
+            try {
+                getTable().moveToNextPlayer();
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
         }
         updateUIElements();
     }

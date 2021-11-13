@@ -3,5 +3,5 @@ package com.felipeflohr.unojava.uno;
 interface PlayerChangeListener {
 
     int getNextPlayer();
-    void moveToNextPlayer();
+    void moveToNextPlayer() throws InterruptedException;
 }

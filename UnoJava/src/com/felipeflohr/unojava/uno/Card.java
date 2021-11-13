@@ -109,7 +109,8 @@ public class Card {
 
             // If there's a color selected turn
         } else if (table.getColorSelected() != null) {
-            isPlayable = getColor().equals(table.getColorSelected()) || getColor().equals("black");
+            boolean blackCardSameNumber = getColor().equals("black") && getNumber().equals(table.getCurrentCard().getNumber());
+            isPlayable = getColor().equals(table.getColorSelected()) || blackCardSameNumber;
         } else if (table.getCurrentCard().getColor().equals("black") && table.getColorSelected() == null) { // If there's a black card on table no color selected
             isPlayable = true;
         } // If there's no matching conditions as these above

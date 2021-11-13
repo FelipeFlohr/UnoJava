@@ -78,6 +78,7 @@ public class Table implements PlayerChangeListener {
             setBuyTurnCard(null);
             setBuyTurnAmount(0);
             setSkip(false);
+            setColorSelected(null);
         }
 
         updateUIElements();
@@ -112,7 +113,7 @@ public class Table implements PlayerChangeListener {
     }
 
     @Override
-    public void moveToNextPlayer() {
+    public void moveToNextPlayer() throws InterruptedException {
         setPlayerTurn(getNextPlayer());
         checkAllPlayersUnoStatus();
 
@@ -146,15 +147,18 @@ public class Table implements PlayerChangeListener {
     // Private method(s)
     private void skipEffect() {
         setSkip(true);
+        setColorSelected(null);
     }
 
     private void reverseEffect() {
         setReverse(!this.reverse);
+        setColorSelected(null);
     }
 
     private void wild2Effect() {
         setBuyTurnAmount(buyTurnAmount += 2);
         setBuyTurnCard(getCurrentCard());
+        setColorSelected(null);
     }
 
     private void wild4Effect() {

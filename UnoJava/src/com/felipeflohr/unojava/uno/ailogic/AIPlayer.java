@@ -20,11 +20,13 @@ public class AIPlayer extends Player {
         this.setAiEnabled(true);
     }
 
-    public void defaultAI() {
+    public void defaultAI() throws InterruptedException {
         System.out.println("==========================");
         System.out.println("AI Called");
 
         System.out.println("It's player #" + getId() + " turn.");
+        System.out.println("Table: " + getTable());
+
         getTable().setSkip(false);
 
         // The AI will be based on conditions
@@ -36,6 +38,7 @@ public class AIPlayer extends Player {
         final boolean CONDITION_6 = hasAnyNormalCard();
         final boolean CONDITION_7 = hasCard(new Card("wild", "black"));
         final boolean CONDITION_8 = hasWild2();
+        final boolean CONDITION_9 = !atLeastOneCardPlayable();
 
         // AI Print about conditions
         aiPrintln("--------------------------");
@@ -48,6 +51,7 @@ public class AIPlayer extends Player {
         aiPrintln("Condition 6 = " + CONDITION_6 + " | Player has any playable normal card (status: " + hasAnyNormalCard() + ")");
         aiPrintln("Condition 7 = " + CONDITION_7 + " | Player has a wild card (status: " + hasCard(new Card("wild", "black")) + ")");
         aiPrintln("Condition 8 = " + CONDITION_8 + " | Player has a +2 card (status: " + hasWild2() + ")");
+        aiPrintln("Condition 9 = " + CONDITION_9 + " | Player doesn't has any playable card, so a card will be bought");
 
         // The AI will choose the first condition available
         if (isAiEnabled()) {
@@ -98,7 +102,21 @@ public class AIPlayer extends Player {
                 aiPrintln("\nCondition 8 was taken. A +2 card will be played");
 
                 getWild2Card().playCard();
+            } else if (CONDITION_9) {
+                aiPrintln("\nCondition 9 was taken. Card(s) will be bought");
+
+                aiBuyCard();
+                if (atLeastOneNormalCardPlayable()) {
+                    aiPrint(". Also, a normal card will be played");
+                    getNormalCard().playCard();
+                }
             } else {
+                System.out.println("Player #" + getId() + " reach out of conditions.");
+                System.out.println("His deck: " + this);
+                System.out.println("Size of the deck: " + getDeck().size());
+                System.out.println("An exception will be thrown within three seconds");
+                Thread.sleep(3000);
+
                 throw new AINoConditionAvailableException("There's no condition available for player #" + getId());
             }
         } else {
@@ -122,6 +140,10 @@ public class AIPlayer extends Player {
 
         Predicate<String> wild4Predicate = card -> card.equals("wild4");
         return playableCards.stream().allMatch(wild4Predicate) && playableCards.size() > 0;
+    }
+
+    private boolean atLeastOneCardPlayable() {
+        return getDeck().stream().anyMatch(card -> card.isCardPlayable(getTable()));
     }
 
     private boolean atLeastOneNormalCardPlayable() {
@@ -240,24 +262,40 @@ public class AIPlayer extends Player {
     }
 
     private Card getWild2Card() {
-        return getDeck().stream().filter(c1 -> c1.getNumber().equals("wild2")).findFirst().get();
+        return getDeck().stream()
+                .filter(c1 -> c1.isCardPlayable(getTable()))
+                .filter(c1 -> c1.getNumber().equals("wild2"))
+                .findFirst()
+                .get();
     }
 
     private Card getSkipCard() {
-        return getDeck().stream().filter(c1 -> c1.getNumber().equals("skip")).findFirst().get();
+        return getDeck().stream()
+                .filter(c1 -> c1.isCardPlayable(getTable()))
+                .filter(c1 -> c1.getNumber().equals("skip"))
+                .findFirst()
+                .get();
     }
 
     private Card getReverseCard() {
-        return getDeck().stream().filter(c1 -> c1.getNumber().equals("reverse")).findFirst().get();
+        return getDeck().stream()
+                .filter(c1 -> c1.isCardPlayable(getTable()))
+                .filter(c1 -> c1.getNumber().equals("reverse")).findFirst()
+                .get();
     }
 
     private Card getNormalCard() {
-        return getDeck().stream().filter(c1 -> !c1.isSpecial()).findFirst().get();
+        return getDeck().stream()
+                .filter(c1 -> !c1.isSpecial())
+                .filter(c1 -> c1.isCardPlayable(getTable()))
+                .findFirst()
+                .get();
     }
 
     private Card getBuyTurnCard() {
         return getDeck().stream()
                 .filter(c1 -> c1.getNumber().equals(getTable().getBuyTurnCard().getNumber()))
+                .filter(c1 -> c1.isCardPlayable(getTable()))
                 .findFirst()
                 .get();
     }

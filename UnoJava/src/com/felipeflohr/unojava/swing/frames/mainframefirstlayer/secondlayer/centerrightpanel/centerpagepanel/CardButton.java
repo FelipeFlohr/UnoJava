@@ -65,7 +65,11 @@ public class CardButton extends JButton implements ActionListener, CustomCardGUI
         colorSelectorDialog();
 
         card.playCard();
-        getTable().moveToNextPlayer();
+        try {
+            getTable().moveToNextPlayer();
+        } catch (InterruptedException ex) {
+            ex.printStackTrace();
+        }
         updateUIElements();
     }
 
