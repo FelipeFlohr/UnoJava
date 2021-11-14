@@ -17,7 +17,7 @@ public class MainFrame extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(WIDTH, HEIGHT);
         setLayout(new BorderLayout());
-        setIconImage(resizeImage("res/cards/+4.PNG", 24, 32));
+        setIconImage(resizeImage(getClass().getResource("/cards/+4.PNG"), 24, 32));
 
         add(new LeftMenuPanel(), BorderLayout.WEST);
         add(new CenterPanel(), BorderLayout.CENTER);

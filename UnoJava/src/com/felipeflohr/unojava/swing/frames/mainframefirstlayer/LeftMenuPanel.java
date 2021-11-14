@@ -32,28 +32,28 @@ public class LeftMenuPanel extends JPanel implements ActionListener {
         startButton = new JButton();
         startButton.setBorder(BorderFactory.createEmptyBorder());
         startButton.setContentAreaFilled(false);
-        startButton.setIcon(new ImageIcon(ResizeImage.resizeImage("res/plus.png", 32, 32)));
+        startButton.setIcon(new ImageIcon(ResizeImage.resizeImage(getClass().getResource("/leftmenu/plus.png"), 32, 32)));
         startButton.setFocusable(false);
         startButton.addActionListener(this);
 
         restartButton = new JButton();
         restartButton.setBorder(BorderFactory.createEmptyBorder());
         restartButton.setContentAreaFilled(false);
-        restartButton.setIcon(new ImageIcon(ResizeImage.resizeImage("res/restart.png", 32, 32)));
+        restartButton.setIcon(new ImageIcon(ResizeImage.resizeImage(getClass().getResource("/leftmenu/restart.png"), 32, 32)));
         restartButton.setFocusable(false);
         restartButton.addActionListener(this);
 
         leaderButton = new JButton();
         leaderButton.setBorder(BorderFactory.createEmptyBorder());
         leaderButton.setContentAreaFilled(false);
-        leaderButton.setIcon(new ImageIcon(ResizeImage.resizeImage("res/trophy.png", 50, 50)));
+        leaderButton.setIcon(new ImageIcon(ResizeImage.resizeImage(getClass().getResource("/leftmenu/trophy.png"), 50, 50)));
         leaderButton.setFocusable(false);
         leaderButton.addActionListener(this);
 
         settingsButton = new JButton();
         settingsButton.setBorder(BorderFactory.createEmptyBorder());
         settingsButton.setContentAreaFilled(false);
-        settingsButton.setIcon(new ImageIcon(ResizeImage.resizeImage("res/settings.png", 32, 32)));
+        settingsButton.setIcon(new ImageIcon(ResizeImage.resizeImage(getClass().getResource("/leftmenu/settings.png"), 32, 32)));
         settingsButton.setFocusable(false);
         settingsButton.addActionListener(this);
 
