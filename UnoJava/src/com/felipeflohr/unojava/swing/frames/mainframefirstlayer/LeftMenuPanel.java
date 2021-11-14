@@ -1,7 +1,5 @@
 package com.felipeflohr.unojava.swing.frames.mainframefirstlayer;
 
-import com.felipeflohr.unojava.tools.ResizeImage;
-
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -12,11 +10,12 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static com.felipeflohr.unojava.tools.ResizeImage.resizeImage;
+
 public class LeftMenuPanel extends JPanel implements ActionListener {
 
     // TODO implement the left menu panel
-    private final JButton leaderButton;
-    private final JButton startButton;
+    private final JButton statusButton;
     private final JButton settingsButton;
     private final JButton restartButton;
 
@@ -29,37 +28,32 @@ public class LeftMenuPanel extends JPanel implements ActionListener {
         setOpaque(true);
         setLayout(new FlowLayout(FlowLayout.CENTER, 1, 30));
 
-        startButton = new JButton();
-        startButton.setBorder(BorderFactory.createEmptyBorder());
-        startButton.setContentAreaFilled(false);
-        startButton.setIcon(new ImageIcon(ResizeImage.resizeImage(getClass().getResource("/leftmenu/plus.png"), 32, 32)));
-        startButton.setFocusable(false);
-        startButton.addActionListener(this);
-
-        restartButton = new JButton();
-        restartButton.setBorder(BorderFactory.createEmptyBorder());
-        restartButton.setContentAreaFilled(false);
-        restartButton.setIcon(new ImageIcon(ResizeImage.resizeImage(getClass().getResource("/leftmenu/restart.png"), 32, 32)));
-        restartButton.setFocusable(false);
-        restartButton.addActionListener(this);
-
-        leaderButton = new JButton();
-        leaderButton.setBorder(BorderFactory.createEmptyBorder());
-        leaderButton.setContentAreaFilled(false);
-        leaderButton.setIcon(new ImageIcon(ResizeImage.resizeImage(getClass().getResource("/leftmenu/trophy.png"), 50, 50)));
-        leaderButton.setFocusable(false);
-        leaderButton.addActionListener(this);
-
+        // Settings Button
         settingsButton = new JButton();
         settingsButton.setBorder(BorderFactory.createEmptyBorder());
         settingsButton.setContentAreaFilled(false);
-        settingsButton.setIcon(new ImageIcon(ResizeImage.resizeImage(getClass().getResource("/leftmenu/settings.png"), 32, 32)));
+        settingsButton.setIcon(new ImageIcon(resizeImage(getClass().getResource("/leftmenu/settings.png"), 32, 32)));
         settingsButton.setFocusable(false);
         settingsButton.addActionListener(this);
 
-        add(startButton);
+        // Status Button
+        statusButton = new JButton();
+        statusButton.setBorder(BorderFactory.createEmptyBorder());
+        statusButton.setContentAreaFilled(false);
+        statusButton.setIcon(new ImageIcon(resizeImage(getClass().getResource("/leftmenu/status.png"), 30, 40)));
+        statusButton.setFocusable(false);
+        statusButton.addActionListener(this);
+
+        // Restart Button
+        restartButton = new JButton();
+        restartButton.setBorder(BorderFactory.createEmptyBorder());
+        restartButton.setContentAreaFilled(false);
+        restartButton.setIcon(new ImageIcon(resizeImage(getClass().getResource("/leftmenu/restart.png"), 32, 32)));
+        restartButton.setFocusable(false);
+        restartButton.addActionListener(this);
+
         add(restartButton);
-        add(leaderButton);
+        add(statusButton);
         add(settingsButton);
     }
 
