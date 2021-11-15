@@ -1,5 +1,7 @@
 package com.felipeflohr.unojava.swing.frames.mainframefirstlayer;
 
+import com.felipeflohr.unojava.swing.frames.warningframes.RestartGameWarning;
+
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -59,6 +61,8 @@ public class LeftMenuPanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Button actions
+        if (e.getSource() == restartButton) {
+            new RestartGameWarning();
+        }
     }
 }

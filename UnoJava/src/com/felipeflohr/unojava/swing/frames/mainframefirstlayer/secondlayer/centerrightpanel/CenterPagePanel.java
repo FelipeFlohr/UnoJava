@@ -66,6 +66,7 @@ public class CenterPagePanel extends JPanel implements CustomGUIUpdate {
 
     // Private Methods
     private void addButtons() {
+        // TODO IndexOutOfBoundsException being thrown here
         getSeparatedPlayerDecks()
                 .get(getCurrentPage())
                 .forEach(c -> add(new CardButton(c, getTable())));
