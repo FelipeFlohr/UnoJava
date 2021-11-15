@@ -23,8 +23,8 @@ public class AIPlayer extends Player {
         System.out.println("==========================");
         System.out.println("AI Called");
 
-        System.out.println("It's player #" + getId() + " turn.");
-        System.out.println(getTable());
+        aiPrintln("It's player #" + getId() + " turn.");
+        aiPrintln(getTable());
 
         getTable().setSkip(false);
 
