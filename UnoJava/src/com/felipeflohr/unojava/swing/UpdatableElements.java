@@ -53,8 +53,5 @@ public class UpdatableElements {
 
     public static void addCardElement(CustomCardGUI cardButton) {
         cardsElements.add(cardButton);
-
-        // TODO Card text
-        if (isPrintAddedElementMessages()) System.out.println("Card button element added to Cards Array: ");
     }
 }
