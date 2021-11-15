@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.felipeflohr.unojava.globaldefs.GlobalDefinitions.getInitialCardsAmount;
+import static com.felipeflohr.unojava.globaldefs.GlobalDefinitions.getUnoMisclickAmountOfCards;
 import static com.felipeflohr.unojava.uno.Card.generateRandomCard;
 
 public class Player {
@@ -42,13 +43,17 @@ public class Player {
     }
 
     public boolean isUnoAllowed() {
-        return deck.size() < 2;
+        return deck.size() <= 2;
     }
 
-    public void checkUnoStatus() {
-        if (isUno() && !isUnoAllowed()) {
+    public void checkUnoStatusBuyCard() {
+        if (isUno() && getDeck().size() == 2) {
             setUno(false);
         }
+    }
+
+    public void unoBuyCards() {
+        buyCard(getUnoMisclickAmountOfCards());
     }
 
     public void removeCard(Card card) {

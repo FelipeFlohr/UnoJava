@@ -26,7 +26,14 @@ public class GlobalDefinitions {
     private static final boolean AI_ENABLED = true;
     private static final boolean AI_DEBUG_MESSAGES_ENABLED = true;
     private static CenterPagePanel centerPagePanel;
-    private static final Table TABLE = new Table();
+    private static Table table = new Table();
+
+    // Methods
+    public static void restartTable() {
+        // TODO Test this method
+        table = new Table();
+        updateUIElements();
+    }
 
     // Custom static getters & setters
     public static int getCurrentLocalPlayer() {
@@ -64,7 +71,7 @@ public class GlobalDefinitions {
     }
 
     public static Table getTable() {
-        return TABLE;
+        return table;
     }
 
     public static int getCardIconWidth() {

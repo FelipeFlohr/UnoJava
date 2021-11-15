@@ -2,7 +2,9 @@ package com.felipeflohr.unojava.swing.frames.mainframefirstlayer.secondlayer.cen
 
 import com.felipeflohr.unojava.exception.InvalidCardIconNumber;
 import com.felipeflohr.unojava.exception.InvalidColorException;
+import com.felipeflohr.unojava.swing.frames.warningframes.ForgotUnoButtonWarning;
 import com.felipeflohr.unojava.uno.Card;
+import com.felipeflohr.unojava.uno.Player;
 import com.felipeflohr.unojava.uno.Table;
 import com.felipeflohr.unojava.swing.frames.colorselectorframe.SelectColorDialog;
 
@@ -62,9 +64,14 @@ public class CardButton extends JButton implements ActionListener, CustomCardGUI
     public void actionPerformed(ActionEvent e) {
         checkColorSelected();
         onCardClick();
-        colorSelectorDialog();
 
-        card.playCard();
+        if (isUnoSafe()) {
+            colorSelectorDialog();
+            card.playCard();
+        } else {
+            getTable().getPlayerByIndex(getTable().getPlayerTurn()).unoBuyCards();
+        }
+
         try {
             getTable().moveToNextPlayer();
         } catch (InterruptedException ex) {
@@ -150,7 +157,6 @@ public class CardButton extends JButton implements ActionListener, CustomCardGUI
     }
 
     private Color getCardColor() {
-
         return switch (this.cardColor) {
             case "black" -> new Color(45, 41, 41);
             case "red" -> new Color(245, 55, 32);
@@ -173,5 +179,17 @@ public class CardButton extends JButton implements ActionListener, CustomCardGUI
         if (getTable().getColorSelected() != null) {
             getTable().setColorSelected(null);
         }
+    }
+
+    private boolean isUnoSafe() {
+        final Player CURRENT_PLAYER = getTable().getPlayerByIndex(getTable().getPlayerTurn());
+
+        if (!CURRENT_PLAYER.isAiEnabled()) {
+            if (CURRENT_PLAYER.getDeck().size() <= 2 && !CURRENT_PLAYER.isUno()) {
+                new ForgotUnoButtonWarning();
+                return false;
+            }
+        }
+        return true;
     }
 }

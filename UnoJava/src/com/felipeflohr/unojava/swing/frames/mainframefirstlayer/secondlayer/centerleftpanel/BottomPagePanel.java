@@ -1,6 +1,7 @@
 package com.felipeflohr.unojava.swing.frames.mainframefirstlayer.secondlayer.centerleftpanel;
 
 import com.felipeflohr.unojava.swing.CustomGUIUpdate;
+import com.felipeflohr.unojava.swing.frames.warningframes.MisclickUnoButtonWarning;
 
 import javax.swing.*;
 import java.awt.*;
@@ -61,13 +62,16 @@ public class BottomPagePanel extends JPanel implements ActionListener, CustomGUI
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        // Uno button
         if (e.getSource() == unoBtn) {
-            // TODO Better Uno Button implementation
             if (getTable().getPlayers().get(getCurrentLocalPlayer()).isUnoAllowed()) {
                 getTable().getPlayers().get(getCurrentLocalPlayer()).setUno(true);
             } else {
+                // A warning will be displayed, then it will move to the next player
                 getTable().getPlayers().get(getCurrentLocalPlayer()).setUno(false);
+                new MisclickUnoButtonWarning();
                 getTable().getPlayers().get(getCurrentLocalPlayer()).buyCard(getUnoMisclickAmountOfCards());
+
                 try {
                     getTable().moveToNextPlayer();
                 } catch (InterruptedException ex) {
@@ -76,6 +80,7 @@ public class BottomPagePanel extends JPanel implements ActionListener, CustomGUI
             }
         }
 
+        // Buy card button
         if (e.getSource() == buyCardBtn) {
             if (getTable().getBuyTurnAmount() > 1) {
                 // Cards will be bought accordingly to the current turn amount
@@ -90,6 +95,7 @@ public class BottomPagePanel extends JPanel implements ActionListener, CustomGUI
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
             }
+            getTable().getPlayerByIndex(getCurrentLocalPlayer()).checkUnoStatusBuyCard();
         }
         updateUIElements();
     }
@@ -130,6 +136,10 @@ public class BottomPagePanel extends JPanel implements ActionListener, CustomGUI
             unoBtn.setEnabled(true);
         } else {
             buyCardBtn.setEnabled(false);
+            unoBtn.setEnabled(false);
+        }
+
+        if (getTable().getPlayerByIndex(getCurrentLocalPlayer()).isUno()) {
             unoBtn.setEnabled(false);
         }
     }
