@@ -30,13 +30,13 @@ public class LeftMenuPanel extends JPanel implements ActionListener {
         setOpaque(true);
         setLayout(new FlowLayout(FlowLayout.CENTER, 1, 30));
 
-        // Settings Button
-        settingsButton = new JButton();
-        settingsButton.setBorder(BorderFactory.createEmptyBorder());
-        settingsButton.setContentAreaFilled(false);
-        settingsButton.setIcon(new ImageIcon(resizeImage(getClass().getResource("/leftmenu/settings.png"), 32, 32)));
-        settingsButton.setFocusable(false);
-        settingsButton.addActionListener(this);
+        // Restart Button
+        restartButton = new JButton();
+        restartButton.setBorder(BorderFactory.createEmptyBorder());
+        restartButton.setContentAreaFilled(false);
+        restartButton.setIcon(new ImageIcon(resizeImage(getClass().getResource("/leftmenu/restart.png"), 32, 32)));
+        restartButton.setFocusable(false);
+        restartButton.addActionListener(this);
 
         // Status Button
         statusButton = new JButton();
@@ -46,13 +46,13 @@ public class LeftMenuPanel extends JPanel implements ActionListener {
         statusButton.setFocusable(false);
         statusButton.addActionListener(this);
 
-        // Restart Button
-        restartButton = new JButton();
-        restartButton.setBorder(BorderFactory.createEmptyBorder());
-        restartButton.setContentAreaFilled(false);
-        restartButton.setIcon(new ImageIcon(resizeImage(getClass().getResource("/leftmenu/restart.png"), 32, 32)));
-        restartButton.setFocusable(false);
-        restartButton.addActionListener(this);
+        // Settings Button
+        settingsButton = new JButton();
+        settingsButton.setBorder(BorderFactory.createEmptyBorder());
+        settingsButton.setContentAreaFilled(false);
+        settingsButton.setIcon(new ImageIcon(resizeImage(getClass().getResource("/leftmenu/settings.png"), 32, 32)));
+        settingsButton.setFocusable(false);
+        settingsButton.addActionListener(this);
 
         add(restartButton);
         add(statusButton);
@@ -61,6 +61,7 @@ public class LeftMenuPanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        // TODO Status and Settings button
         if (e.getSource() == restartButton) {
             new RestartGameWarning();
         }
