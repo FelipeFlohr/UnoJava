@@ -1,5 +1,6 @@
 package com.felipeflohr.unojava.swing.frames.mainframefirstlayer.secondlayer.centerrightpanel;
 
+import com.felipeflohr.unojava.swing.frames.warningframes.PlayerWonWarning;
 import com.felipeflohr.unojava.uno.Card;
 import com.felipeflohr.unojava.swing.CustomGUIUpdate;
 import com.felipeflohr.unojava.swing.frames.mainframefirstlayer.secondlayer.centerrightpanel.centerpagepanel.CardButton;
@@ -66,10 +67,13 @@ public class CenterPagePanel extends JPanel implements CustomGUIUpdate {
 
     // Private Methods
     private void addButtons() {
-        // TODO IndexOutOfBoundsException being thrown here
-        getSeparatedPlayerDecks()
-                .get(getCurrentPage())
-                .forEach(c -> add(new CardButton(c, getTable())));
+        try {
+            getSeparatedPlayerDecks()
+                    .get(getCurrentPage())
+                    .forEach(c -> add(new CardButton(c, getTable())));
+        } catch (IndexOutOfBoundsException e) {
+            new PlayerWonWarning();
+        }
     }
 
     private void removeAllButtons() {

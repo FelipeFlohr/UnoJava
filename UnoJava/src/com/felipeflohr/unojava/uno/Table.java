@@ -2,6 +2,7 @@ package com.felipeflohr.unojava.uno;
 
 import com.felipeflohr.unojava.exception.InvalidNextPlayer;
 import com.felipeflohr.unojava.exception.PlayerNoCardsException;
+import com.felipeflohr.unojava.swing.frames.warningframes.PlayerWonWarning;
 import com.felipeflohr.unojava.uno.ailogic.AIPlayer;
 
 import java.util.ArrayList;
@@ -37,8 +38,11 @@ public class Table {
     public void checkPlayersAmountOfCards() {
         players.parallelStream().forEach(p -> {
             if (p.getDeck().size() == 0) {
-                // TODO Implement a player won warning
-                throw new PlayerNoCardsException("Player ID" + p.getId() + "has no cards");
+                try {
+                    throw new PlayerNoCardsException("Player ID" + p.getId() + "has no cards");
+                } catch (PlayerNoCardsException e) {
+                    new PlayerWonWarning();
+                }
             }
         });
     }

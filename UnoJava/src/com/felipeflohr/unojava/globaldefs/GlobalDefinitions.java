@@ -18,8 +18,8 @@ public class GlobalDefinitions {
     private static final int UNO_MISCLICK_AMOUNT_OF_CARDS = 2;
     private static final int CURRENT_CARD_IMAGE_WIDTH = 256;
     private static final int CURRENT_CARD_IMAGE_HEIGHT = 400;
+    private static final int NON_AI_PLAYER = 0;
     private static int currentLocalPlayer = 0;
-    private static int nonAiPlayer = 0;
     private static int currentPage = 0;
     private static final boolean PRINT_UPDATE_MESSAGES = false;
     private static final boolean PRINT_ADDED_ELEMENT_MESSAGES = false;
@@ -30,7 +30,6 @@ public class GlobalDefinitions {
 
     // Methods
     public static void restartTable() {
-        // TODO Test this method
         table = new Table();
         updateUIElements();
     }
@@ -91,11 +90,7 @@ public class GlobalDefinitions {
     }
 
     public static int getNonAiPlayer() {
-        return nonAiPlayer;
-    }
-
-    public static void setNonAiPlayer(int nonAiPlayer) {
-        GlobalDefinitions.nonAiPlayer = nonAiPlayer;
+        return NON_AI_PLAYER;
     }
 
     public static int getCurrentPage() {

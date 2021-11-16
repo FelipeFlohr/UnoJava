@@ -4,6 +4,7 @@ import com.felipeflohr.unojava.swing.frames.mainframefirstlayer.secondlayer.cent
 
 import javax.swing.JComponent;
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 import java.util.List;
 
 import static com.felipeflohr.unojava.globaldefs.GlobalDefinitions.*;
@@ -20,18 +21,22 @@ public class UpdatableElements {
             if (isPrintUpdateMessages()) System.out.println("Custom updatable element updated: " + e.getComponentName());
         });
 
-        uiElements.forEach(element -> {
-            element.repaint();
-            element.validate();
-            if (isPrintUpdateMessages()) {
-                if (element.getName() != null) {
-                    System.out.println("Updatable element updated: " + element.getName());
-                } else {
-                    System.out.println("Updatable element updated: " + element.getUIClassID());
+        try {
+            uiElements.forEach(element -> {
+                element.repaint();
+                element.validate();
+                if (isPrintUpdateMessages()) {
+                    if (element.getName() != null) {
+                        System.out.println("Updatable element updated: " + element.getName());
+                    } else {
+                        System.out.println("Updatable element updated: " + element.getUIClassID());
+                    }
                 }
-            }
-            getTable().checkPlayersAmountOfCards();
-        });
+                getTable().checkPlayersAmountOfCards();
+            });
+        } catch (ConcurrentModificationException ignored) {
+
+        }
 
         cardsElements.forEach(element -> {
             element.onCardClick();
