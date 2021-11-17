@@ -1,12 +1,12 @@
-package com.felipeflohr.unojava.swing.frames.warningframes;
+package com.felipeflohr.unojava.swing.frames.leftmenuframes;
 
 import javax.swing.JOptionPane;
 
 import static com.felipeflohr.unojava.globaldefs.GlobalDefinitions.restartTable;
 
-public class RestartGameWarning {
+public class RestartGameDialog {
 
-    public RestartGameWarning() {
+    public RestartGameDialog() {
         final String MESSAGE = "Do you want to start a new game?";
         final String TITLE = "Start a new game";
 

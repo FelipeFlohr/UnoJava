@@ -1,6 +1,7 @@
 package com.felipeflohr.unojava.swing.frames.mainframefirstlayer;
 
-import com.felipeflohr.unojava.swing.frames.warningframes.RestartGameWarning;
+import com.felipeflohr.unojava.swing.frames.leftmenuframes.RestartGameDialog;
+import com.felipeflohr.unojava.swing.frames.leftmenuframes.StatusFrame;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -16,10 +17,9 @@ import static com.felipeflohr.unojava.tools.ResizeImage.resizeImage;
 
 public class LeftMenuPanel extends JPanel implements ActionListener {
 
-    // TODO implement the left menu panel
+    private final JButton restartButton;
     private final JButton statusButton;
     private final JButton settingsButton;
-    private final JButton restartButton;
 
     public LeftMenuPanel() {
         final int PANEL_WIDTH = 50;
@@ -61,9 +61,13 @@ public class LeftMenuPanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Status and Settings button
+        // TODO Settings button
         if (e.getSource() == restartButton) {
-            new RestartGameWarning();
+            new RestartGameDialog();
+        }
+
+        if (e.getSource() == statusButton) {
+            new StatusFrame();
         }
     }
 }
