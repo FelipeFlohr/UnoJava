@@ -107,7 +107,7 @@ public class StatusFrame extends JDialog {
     }
 
     private JLabel cardLabel(Card card) {
-        JLabel label = new JLabel(card.getNumber() + ", " + card.getColor());
+        JLabel label = new JLabel(card.getNumber().replace(card.getNumber().charAt(0), card.getNumber().toUpperCase().charAt(0)) + ", " + card.getColor());
         switch (card.getColor()) {
             case "blue" -> label.setForeground(Color.BLUE);
             case "green" -> label.setForeground(Color.GREEN);
