@@ -4,6 +4,10 @@ import javax.swing.JOptionPane;
 
 import static com.felipeflohr.unojava.globaldefs.GlobalDefinitions.restartTable;
 
+/**
+ * The Restart Game dialog. Is invoked when the player clicks the restart button (the one with the plus icon).
+ * @author Felipe Matheus Flohr
+ */
 public class RestartGameDialog {
 
     public RestartGameDialog() {

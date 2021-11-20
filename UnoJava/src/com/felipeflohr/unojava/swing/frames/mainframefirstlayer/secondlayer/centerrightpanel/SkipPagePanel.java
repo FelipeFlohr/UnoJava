@@ -13,6 +13,10 @@ import java.awt.event.ActionListener;
 import static com.felipeflohr.unojava.globaldefs.GlobalDefinitions.*;
 import static com.felipeflohr.unojava.swing.UpdatableElements.*;
 
+/**
+ * The Skip page JPanel. Holds the buttons for skipping or moving back the page.
+ * @author Felipe Matheus Flohr
+ */
 public class SkipPagePanel extends JPanel implements ActionListener, CustomGUIUpdate {
 
     private final JButton prevPageBtn;
@@ -93,6 +97,9 @@ public class SkipPagePanel extends JPanel implements ActionListener, CustomGUIUp
         }
     }
 
+    /**
+     * Will apply the effects when the user clicks to move to the previous page
+     */
     public void onPreviousPage() {
         currentPage.setText("Current Page: " + getCurrentPage() + "/" + getTotalAmountOfPages());
         prevPageBtn.setEnabled(isPreviousPageAllowed());
@@ -102,6 +109,9 @@ public class SkipPagePanel extends JPanel implements ActionListener, CustomGUIUp
         setCurrentPage(getCurrentPage() - 1);
     }
 
+    /**
+     * Will apply the effects when the user clicks to move to the next page
+     */
     public void onNextPage() {
         currentPage.setText("Current Page: " + getCurrentPage() + "/" + getTotalAmountOfPages());
         prevPageBtn.setEnabled(isPreviousPageAllowed());
@@ -112,6 +122,10 @@ public class SkipPagePanel extends JPanel implements ActionListener, CustomGUIUp
     }
 
     // Private Methods
+    /**
+     * Gets the total amount of pages
+     * @return the total amount of pages
+     */
     private int getTotalAmountOfPages() {
         double gridSize = getCardGridRows() * getCardGridColumns();
         double amountOfCards = getTable().getPlayerByIndex(getCurrentLocalPlayer()).getAmountOfCards();
@@ -119,11 +133,19 @@ public class SkipPagePanel extends JPanel implements ActionListener, CustomGUIUp
         return ((int) Math.ceil(amountOfCards / gridSize)) - 1;
     }
 
+    /**
+     * Checks if it is possible to move to the previous page
+     * @return true if it is possible to move back to the previous page
+     */
     private boolean isPreviousPageAllowed() {
         int currentPage = getCurrentPage();
         return currentPage - 1 >= 0;
     }
 
+    /**
+     * Checks if it is possible to move to the next page
+     * @return true if it is possible to move to the next page
+     */
     private boolean isNextPageAllowed() {
         int currentPage = getCurrentPage();
         return currentPage + 1 <= getTotalAmountOfPages();

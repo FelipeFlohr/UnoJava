@@ -5,6 +5,10 @@ import javax.swing.JOptionPane;
 import static com.felipeflohr.unojava.globaldefs.GlobalDefinitions.getTable;
 import static com.felipeflohr.unojava.globaldefs.GlobalDefinitions.restartTable;
 
+/**
+ * A JOptionPane dialog that is invoked when the player forgets to press the Uno button
+ * @author Felipe Matheus Flohr
+ */
 public class PlayerWonWarning {
 
     public PlayerWonWarning() {

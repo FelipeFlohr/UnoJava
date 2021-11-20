@@ -7,6 +7,10 @@ import java.awt.Color;
 
 import static com.felipeflohr.unojava.globaldefs.GlobalDefinitions.getTable;
 
+/**
+ * The Select Color dialog
+ * @author Felipe Matheus Flohr
+ */
 public class SelectColorDialog extends JDialog {
 
     public SelectColorDialog() {

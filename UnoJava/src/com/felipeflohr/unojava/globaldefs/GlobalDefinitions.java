@@ -5,6 +5,9 @@ import com.felipeflohr.unojava.swing.frames.mainframefirstlayer.secondlayer.cent
 
 import static com.felipeflohr.unojava.swing.UpdatableElements.updateUIElements;
 
+/**
+ * Class that holds static variables that represents global game definitions
+ */
 public class GlobalDefinitions {
 
     private static final int CHANCE_OF_SPECIAL_CARD = 40;

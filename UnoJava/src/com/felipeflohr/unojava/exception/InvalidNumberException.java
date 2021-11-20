@@ -1,5 +1,9 @@
 package com.felipeflohr.unojava.exception;
 
+/**
+ * Exception that represents an Invalid Card Number
+ * @author Felipe Matheus Flohr
+ */
 public class InvalidNumberException extends RuntimeException {
 
     public InvalidNumberException() {}

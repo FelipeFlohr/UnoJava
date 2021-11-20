@@ -12,13 +12,25 @@ import java.util.function.Predicate;
 import static com.felipeflohr.unojava.globaldefs.GlobalDefinitions.getTable;
 import static com.felipeflohr.unojava.globaldefs.GlobalDefinitions.isAiDebugMessagesEnabled;
 
+/**
+ * A player-inherited class that defines the behaviour for the AI
+ * @author Felipe Matheus Flohr
+ */
 public class AIPlayer extends Player {
 
+    /**
+     * Constructor for the class. Will set the AI enabled to true when called.
+     * @param id an integer representing the player ID. Must be distinct from other players.
+     */
     public AIPlayer(int id) {
         super(id);
         this.setAiEnabled(true);
     }
 
+    /**
+     * The default AI Behaviour. The AI will make its decision based on the first true condition.
+     * @throws InterruptedException if no condition is reached.
+     */
     public void defaultAI() throws InterruptedException {
         System.out.println("==========================");
         System.out.println("AI Called");
@@ -128,6 +140,10 @@ public class AIPlayer extends Player {
     }
 
     // AI Methods
+    /**
+     * Checks if the only playable card on player's deck is +4
+     * @return true if the only playable card is +4
+     */
     private boolean wild4OnlyPlayableCard() {
         List<String> playableCards = new ArrayList<>();
 
@@ -141,16 +157,27 @@ public class AIPlayer extends Player {
         return playableCards.stream().allMatch(wild4Predicate) && playableCards.size() > 0;
     }
 
+    /**
+     * Checks if at least there is one playable card on the deck
+     * @return true if at least there is one playable card
+     */
     private boolean atLeastOneCardPlayable() {
         return getDeck().stream().anyMatch(card -> card.isCardPlayable(getTable()));
     }
 
+    /**
+     * Checks if at least there is one normal playable card on the deck
+     * @return true if at least there is one normal playable card
+     */
     private boolean atLeastOneNormalCardPlayable() {
         return getDeck().stream()
                 .filter(card -> card.isCardPlayable(getTable()))
                 .anyMatch(card -> !card.isSpecial());
     }
 
+    /**
+     * Will buy one or more cards according to the Table's stats.
+     */
     private void aiBuyCard() {
         if (getTable().getBuyTurnAmount() > 0) {
             buyCard(getTable().getBuyTurnAmount());
@@ -163,6 +190,11 @@ public class AIPlayer extends Player {
         getTable().setBuyTurnAmount(0);
     }
 
+    /**
+     * Checks if player has the specified card on its deck
+     * @param card Card-type object to check if it's present on the deck
+     * @return true if player has the card on the deck
+     */
     private boolean hasCard(Card card) {
         try{
             return getDeck().stream().anyMatch(card::equals);
@@ -171,6 +203,9 @@ public class AIPlayer extends Player {
         }
     }
 
+    /**
+     * Applies the effect of the current card on table
+     */
     private void aiApplyCardEffects() {
         if (getTable().getCurrentCard().getColor().equals("black")) {
             aiPrintln("Applying the AI Card effect");
@@ -180,6 +215,10 @@ public class AIPlayer extends Player {
         }
     }
 
+    /**
+     * Gets the color who appears the most on the player's deck
+     * @return the major color on player's deck
+     */
     private String getPlayerMostColors() {
         String majorColor = "";
         int blue = 0;
@@ -219,36 +258,60 @@ public class AIPlayer extends Player {
         return majorColor;
     }
 
+    /**
+     * Checks if player has +4 or +2
+     * @return true if player has +4 or +2
+     */
     private boolean hasWild4or2() {
         return getDeck().stream()
                 .filter(filter -> filter.isCardPlayable(getTable()))
                 .anyMatch(card -> card.getNumber().equals("wild2") || card.getNumber().equals("wild4"));
     }
 
+    /**
+     * Checks if player has a Skip card
+     * @return true if player has a Skip card
+     */
     private boolean hasSkip() {
         return getDeck().stream()
                 .filter(filter -> filter.isCardPlayable(getTable()))
                 .anyMatch(card -> card.getNumber().equals("skip"));
     }
 
+    /**
+     * Checks if player has a Reverse card
+     * @return true if player has a Reverse card
+     */
     private boolean hasReverse() {
         return getDeck().stream()
                 .filter(filter -> filter.isCardPlayable(getTable()))
                 .anyMatch(card -> card.getNumber().equals("reverse"));
     }
 
+    /**
+     * Checks if player has any normal card
+     * @return true if player has any normal card
+     */
     private boolean hasAnyNormalCard() {
         return getDeck().stream()
                 .filter(filter -> filter.isCardPlayable(getTable()))
                 .anyMatch(card -> !card.isSpecial());
     }
 
+    /**
+     * Checks if player has +2
+     * @return true if player has +2
+     */
     private boolean hasWild2() {
         return getDeck().stream()
                 .filter(filter -> filter.isCardPlayable(getTable()))
                 .anyMatch(card -> card.getNumber().equals("wild2"));
     }
 
+    /**
+     * Checks if player has the buy turn card
+     * @return true if player has the buy turn card
+     */
     private boolean hasBuyTurnCard() {
         try {
             return getDeck().stream()
@@ -259,6 +322,10 @@ public class AIPlayer extends Player {
         }
     }
 
+    /**
+     * Gets a +2 card from player's deck
+     * @return a +2 card
+     */
     private Card getWild2Card() {
         return getDeck().stream()
                 .filter(c1 -> c1.isCardPlayable(getTable()))
@@ -267,6 +334,10 @@ public class AIPlayer extends Player {
                 .get();
     }
 
+    /**
+     * Gets a Skip card from player's deck
+     * @return a Skip card
+     */
     private Card getSkipCard() {
         return getDeck().stream()
                 .filter(c1 -> c1.isCardPlayable(getTable()))
@@ -275,6 +346,10 @@ public class AIPlayer extends Player {
                 .get();
     }
 
+    /**
+     * Gets a Reverse card from player's deck
+     * @return a Reverse card
+     */
     private Card getReverseCard() {
         return getDeck().stream()
                 .filter(c1 -> c1.isCardPlayable(getTable()))
@@ -282,6 +357,10 @@ public class AIPlayer extends Player {
                 .get();
     }
 
+    /**
+     * Gets a normal card from player's deck
+     * @return a Normal card
+     */
     private Card getNormalCard() {
         return getDeck().stream()
                 .filter(c1 -> !c1.isSpecial())
@@ -290,6 +369,10 @@ public class AIPlayer extends Player {
                 .get();
     }
 
+    /**
+     * Gets the buy turn card from player's deck
+     * @return the buy turn card
+     */
     private Card getBuyTurnCard() {
         return getDeck().stream()
                 .filter(c1 -> c1.getNumber().equals(getTable().getBuyTurnCard().getNumber()))
@@ -299,12 +382,20 @@ public class AIPlayer extends Player {
     }
 
     // AI Print
+    /**
+     * Will print AI debug messages
+     * @param message the message to be printed
+     */
     private void aiPrintln(Object message) {
         if (isAiDebugMessagesEnabled()) {
             System.out.println(message);
         }
     }
 
+    /**
+     * Will print AI debug messages
+     * @param message the message to be printed
+     */
     private void aiPrint(Object message) {
         if (isAiDebugMessagesEnabled()) {
             System.out.print(message);

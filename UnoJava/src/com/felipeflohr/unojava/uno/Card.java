@@ -7,12 +7,23 @@ import java.util.Random;
 
 import static com.felipeflohr.unojava.globaldefs.GlobalDefinitions.*;
 
+/**
+ * Represents a card object. The main two attributes are the Number and Color.
+ * @author Felipe Matheus Flohr
+ */
 public class Card {
 
     private final String number;
     private final String color;
     private final boolean special;
 
+    /**
+     * Constructor for the Card class. Defines the color and number of it.
+     * @param number a String representing the number of the card. Valid numbers are: "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "wild2", "reverse", "skip", "wild4", "wild"
+     * @param color a String representing the color of the card. Valid colors are: "black", "blue", "green", "red", "yellow".
+     * @throws InvalidNumberException if the number is invalid.
+     * @throws InvalidColorException if the color is invalid.
+     */
     public Card(String number, String color) throws InvalidNumberException, InvalidColorException {
         this.number = number;
         this.color = color;
@@ -41,6 +52,12 @@ public class Card {
     }
 
     // Static methods
+    /**
+     * Generates a random card. It can be a normal or special. The probability of a special card be generated is specified on the Global Definitions.
+     * @return a random generated Card
+     * @throws InvalidNumberException if the Number is invalid
+     * @throws InvalidColorException if the Color is invalid
+     */
     public static Card generateRandomCard() throws InvalidNumberException, InvalidColorException {
         String sortedColor;
         String sortedNumber;
@@ -79,6 +96,10 @@ public class Card {
         return new Card(sortedNumber, sortedColor);
     }
 
+    /**
+     * Generates a random normal card.
+     * @return a random normal card
+     */
     public static Card generateRandomNormalCard() {
         String sortedColor;
         String sortedNumber;
@@ -96,6 +117,11 @@ public class Card {
         return new Card(sortedNumber, sortedColor);
     }
 
+    /**
+     * Defines if this card is playable or not.
+     * @param table the game's table.
+     * @return true if this card is playable
+     */
     // Public methods
     public boolean isCardPlayable(Table table) {
         boolean isPlayable;
@@ -123,6 +149,9 @@ public class Card {
         return isPlayable;
     }
 
+    /**
+     * Sets this card as the current card on table. Also, apply its effects.
+     */
     public void playCard() {
         getTable().setCurrentCard(this);
         getTable().getPlayerByIndex(getTable().getPlayerTurn()).removeCard(this);
@@ -149,21 +178,34 @@ public class Card {
         return result;
     }
 
+    // To String
+    @Override
+    public String toString() {
+        return "[ " + number + ", " + color + " ]";
+    }
+
+    /**
+     * Getter for the card number
+     * @return number of the card
+     */
     // Getters
     public String getNumber() {
         return number;
     }
 
+    /**
+     * Getter for the card color
+     * @return color of the card
+     */
     public String getColor() {
         return color;
     }
 
+    /**
+     * Getter for the "Special" attribute
+     * @return true if the card is special
+     */
     public boolean isSpecial() {
         return special;
-    }
-
-    @Override
-    public String toString() {
-        return "[ " + number + ", " + color + " ]";
     }
 }

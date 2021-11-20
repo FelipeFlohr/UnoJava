@@ -1,5 +1,9 @@
 package com.felipeflohr.unojava.exception;
 
+/**
+ * Exception that represents a Player with no cards
+ * @author Felipe Matheus Flohr
+ */
 public class PlayerNoCardsException extends RuntimeException {
 
     public PlayerNoCardsException() {}

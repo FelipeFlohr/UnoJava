@@ -8,6 +8,9 @@ import java.awt.BorderLayout;
 
 import static com.felipeflohr.unojava.tools.ResizeImage.resizeImage;
 
+/**
+ * The main Swing frame
+ */
 public class MainFrame extends JFrame {
 
     public MainFrame() {

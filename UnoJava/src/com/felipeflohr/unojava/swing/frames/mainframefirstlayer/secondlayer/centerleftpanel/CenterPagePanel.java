@@ -14,6 +14,10 @@ import static com.felipeflohr.unojava.globaldefs.GlobalDefinitions.*;
 import static com.felipeflohr.unojava.swing.UpdatableElements.addUIElement;
 import static com.felipeflohr.unojava.tools.ResizeImage.resizeImage;
 
+/**
+ * A JPanel to be added to the Left Panel at the Center Direction. Holds the current card on table
+ * @author Felipe Matheus Flohr
+ */
 public class CenterPagePanel extends JPanel implements CustomGUIUpdate {
 
     private final JLabel chosenColorLabel;
@@ -67,11 +71,14 @@ public class CenterPagePanel extends JPanel implements CustomGUIUpdate {
     }
 
     // Private methods
+    /**
+     * Sets the "Chosen Color" text foreground color. Turns Black if the selected color is yellow
+     */
     private void setChosenColorText() {
         String text;
 
         try {
-            if (getTable().getColorSelected().equals("black") || getTable().getColorSelected().equals("yellow")) {
+            if (getTable().getColorSelected().equals("yellow")) {
                 chosenColorLabel.setForeground(Color.BLACK);
             } else {
                 chosenColorLabel.setForeground(Color.WHITE);
@@ -94,6 +101,9 @@ public class CenterPagePanel extends JPanel implements CustomGUIUpdate {
         chosenColorLabel.setText(text);
     }
 
+    /**
+     * Sets the background according to the selected color
+     */
     private void setChosenColorBackground() {
         Color bgColor;
 
@@ -113,6 +123,9 @@ public class CenterPagePanel extends JPanel implements CustomGUIUpdate {
         setBackground(bgColor);
     }
 
+    /**
+     * Sets the card icon according to the current card on table
+     */
     private void setCurrentCardImage() {
         String cardColor = getTable().getCurrentCard().getColor();
         String cardNumber = getTable().getCurrentCard().getNumber();

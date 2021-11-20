@@ -9,6 +9,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 import static com.felipeflohr.unojava.globaldefs.GlobalDefinitions.*;
 import static com.felipeflohr.unojava.swing.UpdatableElements.updateUIElements;
 
+/**
+ * The settings dialog. Is invoked when the player clicks the setting button (the one with the gear icon).
+ * Frame generated using the IntelliJ IDEA's Frame Designer.
+ * @author Felipe Matheus Flohr
+ */
 public class SettingsFrame extends JDialog {
     private JPanel contentPane;
     private JComboBox<String> amountOfPlayersComboBox;

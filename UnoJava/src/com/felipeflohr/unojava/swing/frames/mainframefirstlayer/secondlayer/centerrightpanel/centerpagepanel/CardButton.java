@@ -21,6 +21,10 @@ import static com.felipeflohr.unojava.swing.UpdatableElements.*;
 import static com.felipeflohr.unojava.swing.frames.mainframefirstlayer.secondlayer.centerrightpanel.CenterPagePanel.getSeparatedPlayerDecks;
 import static com.felipeflohr.unojava.tools.ResizeImage.resizeImage;
 
+/**
+ * A JButton class that represents a Card button
+ * @author Felipe Matheus Flohr
+ */
 public class CardButton extends JButton implements ActionListener, CustomCardGUI {
 
     private final Card card;
@@ -28,6 +32,11 @@ public class CardButton extends JButton implements ActionListener, CustomCardGUI
     private final String cardNumber;
     private final String cardColor;
 
+    /**
+     * Constructor for the card button
+     * @param card The card this button will represent
+     * @param table The game's table
+     */
     public CardButton(Card card, Table table) {
         this.card = card;
         this.table = table;
@@ -81,6 +90,10 @@ public class CardButton extends JButton implements ActionListener, CustomCardGUI
     }
 
     // Private Methods
+    /**
+     * Gets the Image of the card. Example: if the card is a +4, then it will return a +4 image.
+     * @return the Image of the card
+     */
     private Image getCardIcon() {
         return switch (cardColor) {
             case "black" -> switch (cardNumber) {
@@ -156,6 +169,10 @@ public class CardButton extends JButton implements ActionListener, CustomCardGUI
         };
     }
 
+    /**
+     * Gets a Color-type object related to the card color
+     * @return Color-type object representing this card color
+     */
     private Color getCardColor() {
         return switch (this.cardColor) {
             case "black" -> new Color(45, 41, 41);
@@ -167,6 +184,9 @@ public class CardButton extends JButton implements ActionListener, CustomCardGUI
         };
     }
 
+    /**
+     * Invokes the color selector dialog
+     */
     private void colorSelectorDialog() {
         if (this.card.getNumber().equals("wild") || this.card.getNumber().equals("wild4")) {
             var colorDialog = new SelectColorDialog();
@@ -175,12 +195,19 @@ public class CardButton extends JButton implements ActionListener, CustomCardGUI
         }
     }
 
+    /**
+     * If there is a selected color, then it will set to null
+     */
     private void checkColorSelected() {
         if (getTable().getColorSelected() != null) {
             getTable().setColorSelected(null);
         }
     }
 
+    /**
+     * Checks if the card played is safe from the Uno Warning
+     * @return true if it is safe from Uno Warning
+     */
     private boolean isUnoSafe() {
         final Player CURRENT_PLAYER = getTable().getPlayerByIndex(getTable().getPlayerTurn());
 

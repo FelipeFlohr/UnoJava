@@ -12,6 +12,10 @@ import static com.felipeflohr.unojava.globaldefs.GlobalDefinitions.*;
 import static com.felipeflohr.unojava.swing.UpdatableElements.addUIElement;
 import static com.felipeflohr.unojava.swing.UpdatableElements.updateUIElements;
 
+/**
+ * A JPanel to be added to the Left Panel at the South Direction. Holds the buy card button, the Uno status label and the Uno button
+ * @author Felipe Matheus Flohr
+ */
 public class BottomPagePanel extends JPanel implements ActionListener, CustomGUIUpdate {
 
     private final JButton unoBtn;
@@ -114,6 +118,9 @@ public class BottomPagePanel extends JPanel implements ActionListener, CustomGUI
     }
 
     // Private methods
+    /**
+     * Sets the text of the Uno status label
+     */
     private void setLabelName() {
         if (getTable().getPlayers().get(getCurrentLocalPlayer()).isUno()) {
             unoLabel.setText("You are Uno!");
@@ -122,6 +129,9 @@ public class BottomPagePanel extends JPanel implements ActionListener, CustomGUI
         }
     }
 
+    /**
+     * Sets the text of the Buy card button
+     */
     private void setBuyCardButtonName() {
         if (getTable().getBuyTurnAmount() > 1) {
             buyCardBtn.setText("Buy " + getTable().getBuyTurnAmount() + " cards");
@@ -130,6 +140,9 @@ public class BottomPagePanel extends JPanel implements ActionListener, CustomGUI
         }
     }
 
+    /**
+     * Will define if the buttons are enabled or not
+     */
     private void setButtonsEnabled() {
         if (getCurrentLocalPlayer() == getTable().getPlayerTurn()) {
             buyCardBtn.setEnabled(true);

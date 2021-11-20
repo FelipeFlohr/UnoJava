@@ -16,6 +16,9 @@ import java.util.List;
 import static com.felipeflohr.unojava.globaldefs.GlobalDefinitions.*;
 import static com.felipeflohr.unojava.swing.UpdatableElements.addUIElement;
 
+/**
+ * A JPanel which holds the Card buttons
+ */
 public class CenterPagePanel extends JPanel implements CustomGUIUpdate {
 
     public CenterPagePanel() {
@@ -39,11 +42,18 @@ public class CenterPagePanel extends JPanel implements CustomGUIUpdate {
         return "Center Page Panel";
     }
 
+    /**
+     * Will remove all the buttons from this JPanel, then re-add them.
+     */
     public void redrawButtons() {
         removeAllButtons();
         addButtons();
     }
 
+    /**
+     * Generates a List containing decks. Each deck represents a page on the UI.
+     * @return a List containing decks.
+     */
     public static List<List<Card>> getSeparatedPlayerDecks() {
         List<List<Card>> playerDecks = new ArrayList<>();
         double gridSize = getCardGridRows() * getCardGridColumns();
@@ -66,6 +76,9 @@ public class CenterPagePanel extends JPanel implements CustomGUIUpdate {
     }
 
     // Private Methods
+    /**
+     * Adds all the player's card as buttons in this JPanel
+     */
     private void addButtons() {
         try {
             getSeparatedPlayerDecks()
@@ -76,6 +89,9 @@ public class CenterPagePanel extends JPanel implements CustomGUIUpdate {
         }
     }
 
+    /**
+     * Remove all the buttons from this JPanel
+     */
     private void removeAllButtons() {
         Arrays.stream(getComponents()).forEach(this::remove);
     }

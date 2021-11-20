@@ -7,6 +7,9 @@ import javax.swing.JPanel;
 import java.awt.Color;
 import java.awt.GridLayout;
 
+/**
+ * A JPanel that serves to hold the main game panels
+ */
 public class CenterPanel extends JPanel {
 
     public CenterPanel() {

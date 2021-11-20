@@ -1,5 +1,9 @@
 package com.felipeflohr.unojava.exception;
 
+/**
+ * Exception that represents an Invalid Next Player
+ * @author Felipe Matheus Flohr
+ */
 public class InvalidNextPlayer extends RuntimeException {
 
     public InvalidNextPlayer() {}

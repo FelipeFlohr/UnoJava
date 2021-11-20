@@ -8,6 +8,10 @@ import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.Color;
 
+/**
+ * A JPanel which serves to hold other JComponents related to the Left Side
+ * @author Felipe Matheus Flohr
+ */
 public class CenterLeftPanel extends JPanel {
 
     public CenterLeftPanel() {

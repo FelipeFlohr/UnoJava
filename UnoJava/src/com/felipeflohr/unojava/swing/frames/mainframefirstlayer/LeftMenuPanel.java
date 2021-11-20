@@ -16,6 +16,10 @@ import java.awt.event.ActionListener;
 
 import static com.felipeflohr.unojava.tools.ResizeImage.resizeImage;
 
+/**
+ * A JPanel that represents the Left Menu where the restart, info and setting buttons are located.
+ * @author Felipe Matheus Flohr
+ */
 public class LeftMenuPanel extends JPanel implements ActionListener {
 
     private final JButton restartButton;

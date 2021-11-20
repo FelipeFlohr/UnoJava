@@ -11,6 +11,10 @@ import java.awt.GridLayout;
 
 import static com.felipeflohr.unojava.globaldefs.GlobalDefinitions.*;
 
+/**
+ * The status dialog. Is invoked when the player clicks the info button.
+ * @author Felipe Matheus Flohr
+ */
 public class StatusFrame extends JDialog {
 
     public StatusFrame() {
@@ -93,6 +97,11 @@ public class StatusFrame extends JDialog {
         setVisible(true);
     }
 
+    /**
+     * Generates a label for a boolean condition
+     * @param value boolean condition
+     * @return a custom JLabel for the boolean condition
+     */
     private JLabel generateLabel(boolean value) {
         JLabel label = new JLabel();
         if (value) {
@@ -106,6 +115,11 @@ public class StatusFrame extends JDialog {
         return label;
     }
 
+    /**
+     * Generates a label for a card value
+     * @param card Card to generate a label
+     * @return a custom label for the card
+     */
     private JLabel cardLabel(Card card) {
         final String CARD_NUMBER = card.getNumber();
         JLabel label = new JLabel(CARD_NUMBER.substring(0,1).toUpperCase() + CARD_NUMBER.substring(1).toLowerCase() + ", " + card.getColor());
@@ -120,6 +134,10 @@ public class StatusFrame extends JDialog {
         return label;
     }
 
+    /**
+     * Generates the buy turn card label
+     * @return returns the buy turn card label
+     */
     private JLabel buyTurnCardLabel() {
         JLabel label = (getTable().getBuyTurnCard() == null) ? new JLabel("none") : new JLabel(getTable().getBuyTurnCard().getNumber() + ", " + getTable().getBuyTurnCard().getColor());
         if (getTable().getBuyTurnCard() != null) {
@@ -135,6 +153,10 @@ public class StatusFrame extends JDialog {
         return label;
     }
 
+    /**
+     * Generates a label based on the selected color
+     * @return a custom label based on the selected color
+     */
     private JLabel colorLabel() {
         final String COLOR_SELECTED = (getTable().getColorSelected() == null) ? "none" : getTable().getColorSelected();
         JLabel label = new JLabel(COLOR_SELECTED);

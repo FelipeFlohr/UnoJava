@@ -1,5 +1,9 @@
 package com.felipeflohr.unojava.exception;
 
+/**
+ * Exception that represents an Invalid Color
+ * @author Felipe Matheus Flohr
+ */
 public class InvalidColorException extends RuntimeException {
 
     public InvalidColorException() {}

@@ -13,6 +13,10 @@ import java.awt.GridLayout;
 import static com.felipeflohr.unojava.globaldefs.GlobalDefinitions.getTable;
 import static com.felipeflohr.unojava.swing.UpdatableElements.addUIElement;
 
+/**
+ * A JPanel to be added to the Left Panel at the North Direction. Holds a Label telling who has the least amount of cards
+ * @author Felipe Matheus Flohr
+ */
 public class TopPagePanel extends JPanel implements CustomGUIUpdate {
 
     private final JLabel amountOfCards;
@@ -44,6 +48,9 @@ public class TopPagePanel extends JPanel implements CustomGUIUpdate {
     }
 
     // Private Methods
+    /**
+     * Sets the label text telling who has the least amount of cards.
+     */
     private void setPanelText() {
         if (getTable().everyoneHasTheSameAmountOfCards()) {
             amountOfCards.setText("Player "
