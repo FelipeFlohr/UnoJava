@@ -21,7 +21,7 @@
               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Amount of Players:"/>
+              <text resource-bundle="resourcebundle/resbundle" key="label.amount.of.players"/>
             </properties>
           </component>
           <component id="f9e1b" class="javax.swing.JComboBox" binding="amountOfPlayersComboBox">
@@ -49,7 +49,8 @@
               <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Initial amount of cards:"/>
+              <labelFor value="8c388"/>
+              <text resource-bundle="resourcebundle/resbundle" key="label.initial.amount.of.cards"/>
             </properties>
           </component>
           <component id="ad65b" class="javax.swing.JButton" binding="initialAmountCardsBtn">
@@ -57,7 +58,7 @@
               <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Apply"/>
+              <text resource-bundle="resourcebundle/resbundle" key="button.apply"/>
             </properties>
             <clientProperties>
               <html.disable class="java.lang.Boolean" value="false"/>
@@ -69,7 +70,7 @@
             </constraints>
             <properties>
               <font name="Arial" size="16" style="1"/>
-              <text value="Parameter:"/>
+              <text resource-bundle="resourcebundle/resbundle" key="label.parameter"/>
             </properties>
           </component>
           <component id="2ac70" class="javax.swing.JLabel">
@@ -78,7 +79,8 @@
             </constraints>
             <properties>
               <font name="Arial" size="16" style="1"/>
-              <text value="Value:"/>
+              <labelFor value="f9e1b"/>
+              <text resource-bundle="resourcebundle/resbundle" key="label.value"/>
             </properties>
           </component>
           <component id="350eb" class="javax.swing.JLabel">
@@ -86,7 +88,8 @@
               <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Card button icon width:"/>
+              <labelFor value="caa86"/>
+              <text resource-bundle="resourcebundle/resbundle" key="label.card.button.icon.width"/>
             </properties>
           </component>
           <component id="ea4b0" class="javax.swing.JLabel">
@@ -95,7 +98,7 @@
             </constraints>
             <properties>
               <font name="Arial" size="16" style="1"/>
-              <text value="Observations:"/>
+              <text resource-bundle="resourcebundle/resbundle" key="label.observations"/>
             </properties>
           </component>
           <component id="ad22" class="javax.swing.JLabel">
@@ -104,7 +107,7 @@
             </constraints>
             <properties>
               <font size="9" style="2"/>
-              <text value="Must be greater than 2 | Default: 7"/>
+              <text resource-bundle="resourcebundle/resbundle" key="label.must.be.greater.than.2.default.7"/>
             </properties>
           </component>
           <component id="caa86" class="javax.swing.JTextField" binding="cardButtonIconWidthTxtField">
@@ -120,7 +123,7 @@
               <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Apply"/>
+              <text resource-bundle="resourcebundle/resbundle" key="button.apply"/>
             </properties>
           </component>
           <component id="888f8" class="javax.swing.JLabel">
@@ -129,7 +132,7 @@
             </constraints>
             <properties>
               <font size="9" style="2"/>
-              <text value="Must be greater than 10 | Default: 86"/>
+              <text resource-bundle="resourcebundle/resbundle" key="label.must.be.greater.than.10.default.86"/>
             </properties>
           </component>
           <component id="c526d" class="javax.swing.JLabel">
@@ -138,7 +141,7 @@
             </constraints>
             <properties>
               <font size="9" style="2"/>
-              <text value="Default: 4"/>
+              <text resource-bundle="resourcebundle/resbundle" key="label.default.4"/>
             </properties>
           </component>
           <component id="ba9b3" class="javax.swing.JLabel">
@@ -146,7 +149,8 @@
               <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Card button icon height:"/>
+              <labelFor value="7a41b"/>
+              <text resource-bundle="resourcebundle/resbundle" key="label.card.button.icon.height"/>
             </properties>
           </component>
           <component id="7a41b" class="javax.swing.JTextField" binding="cardButtonIconHeightTxtField">
@@ -162,7 +166,7 @@
               <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Apply"/>
+              <text resource-bundle="resourcebundle/resbundle" key="button.apply"/>
             </properties>
           </component>
           <component id="5f53b" class="javax.swing.JLabel">
@@ -171,7 +175,7 @@
             </constraints>
             <properties>
               <font size="9" style="2"/>
-              <text value="Must be greater than 10 | Default: 128"/>
+              <text resource-bundle="resourcebundle/resbundle" key="label.must.be.greater.than.10.default.128"/>
             </properties>
           </component>
           <component id="f0988" class="javax.swing.JLabel">
@@ -179,7 +183,8 @@
               <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Card buttons grid - Rows:"/>
+              <labelFor value="458bb"/>
+              <text resource-bundle="resourcebundle/resbundle" key="label.card.buttons.grid.rows"/>
             </properties>
           </component>
           <component id="21d2d" class="javax.swing.JLabel">
@@ -188,7 +193,7 @@
             </constraints>
             <properties>
               <font size="9" style="2"/>
-              <text value="Must be greater than 1 and smaller than 10 | Default: 3"/>
+              <text resource-bundle="resourcebundle/resbundle" key="label.must.be.greater.than.1.and.smaller.than.10.default.3"/>
             </properties>
           </component>
           <component id="458bb" class="javax.swing.JTextField" binding="cardButtonsGridRowsTxtField">
@@ -204,7 +209,7 @@
               <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Apply"/>
+              <text resource-bundle="resourcebundle/resbundle" key="button.apply"/>
             </properties>
           </component>
           <component id="50e3b" class="javax.swing.JLabel">
@@ -212,7 +217,8 @@
               <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Card buttons grid - Columns:"/>
+              <labelFor value="8b1f8"/>
+              <text resource-bundle="resourcebundle/resbundle" key="label.card.buttons.grid.columns"/>
             </properties>
           </component>
           <component id="8b1f8" class="javax.swing.JTextField" binding="cardButtonsGridColumnsTxtField">
@@ -228,7 +234,7 @@
               <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Apply"/>
+              <text resource-bundle="resourcebundle/resbundle" key="button.apply"/>
             </properties>
           </component>
           <component id="a0200" class="javax.swing.JLabel">
@@ -237,7 +243,7 @@
             </constraints>
             <properties>
               <font size="9" style="2"/>
-              <text value="Must be greater than 1 and smaller than 10 | Default: 3"/>
+              <text resource-bundle="resourcebundle/resbundle" key="label.must.be.greater.than.1.and.smaller.than.10.default.3"/>
             </properties>
           </component>
           <component id="147cf" class="javax.swing.JLabel">
@@ -245,7 +251,8 @@
               <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Icon of current card - Width:"/>
+              <labelFor value="1ca65"/>
+              <text resource-bundle="resourcebundle/resbundle" key="label.icon.of.current.card.width"/>
             </properties>
           </component>
           <component id="1ca65" class="javax.swing.JTextField" binding="currentCardWidthTxtField">
@@ -261,7 +268,7 @@
               <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Apply"/>
+              <text resource-bundle="resourcebundle/resbundle" key="button.apply"/>
             </properties>
           </component>
           <component id="b0d0a" class="javax.swing.JLabel">
@@ -270,7 +277,7 @@
             </constraints>
             <properties>
               <font size="9" style="2"/>
-              <text value="Must be greater than 10 | Default: 256"/>
+              <text resource-bundle="resourcebundle/resbundle" key="label.must.be.greater.than.10.default.256"/>
             </properties>
           </component>
           <component id="3af8" class="javax.swing.JLabel">
@@ -278,7 +285,8 @@
               <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Icon of current card - Height:"/>
+              <labelFor value="f7a6e"/>
+              <text resource-bundle="resourcebundle/resbundle" key="label.icon.of.current.card.height"/>
             </properties>
           </component>
           <component id="f7a6e" class="javax.swing.JTextField" binding="currentCardHeightTxtField">
@@ -294,7 +302,7 @@
               <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Apply"/>
+              <text resource-bundle="resourcebundle/resbundle" key="button.apply"/>
             </properties>
           </component>
           <component id="cdd02" class="javax.swing.JLabel">
@@ -303,7 +311,7 @@
             </constraints>
             <properties>
               <font size="9" style="2"/>
-              <text value="Must be greater than 10 | Default: 400"/>
+              <text resource-bundle="resourcebundle/resbundle" key="label.must.be.greater.than.10.default.400"/>
             </properties>
           </component>
           <component id="d27bc" class="javax.swing.JLabel">
@@ -311,7 +319,7 @@
               <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="[DEBUG] Print update messages:"/>
+              <text resource-bundle="resourcebundle/resbundle" key="label.debug.print.update.messages"/>
             </properties>
           </component>
           <component id="9cdfc" class="javax.swing.JCheckBox" binding="printUpdateMessagesCheckBox">
@@ -328,7 +336,7 @@
             </constraints>
             <properties>
               <font size="9" style="2"/>
-              <text value="Default: false"/>
+              <text resource-bundle="resourcebundle/resbundle" key="label.default.false"/>
             </properties>
           </component>
           <component id="b2b15" class="javax.swing.JLabel">
@@ -336,7 +344,7 @@
               <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="[DEBUG] Print added elements:"/>
+              <text resource-bundle="resourcebundle/resbundle" key="label.debug.print.added.elements"/>
             </properties>
           </component>
           <component id="d08c4" class="javax.swing.JCheckBox" binding="printAddedElementsCheckBox">
@@ -353,7 +361,7 @@
             </constraints>
             <properties>
               <font size="9" style="2"/>
-              <text value="Default: false"/>
+              <text resource-bundle="resourcebundle/resbundle" key="label.default.false"/>
             </properties>
           </component>
           <component id="b014f" class="javax.swing.JLabel">
@@ -361,7 +369,7 @@
               <grid row="11" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="[DEBUG] Print AI messages:"/>
+              <text resource-bundle="resourcebundle/resbundle" key="label.debug.print.ai.messages"/>
             </properties>
           </component>
           <component id="8faf0" class="javax.swing.JCheckBox" binding="printAIMessagesCheckBox">
@@ -378,7 +386,7 @@
             </constraints>
             <properties>
               <font size="9" style="2"/>
-              <text value="Default: false"/>
+              <text resource-bundle="resourcebundle/resbundle" key="label.default.false"/>
             </properties>
           </component>
           <component id="6b647" class="javax.swing.JLabel">
@@ -386,7 +394,7 @@
               <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="[DEBUG] AI enabled:"/>
+              <text resource-bundle="resourcebundle/resbundle" key="label.debug.ai.enabled"/>
             </properties>
           </component>
           <component id="c3ac7" class="javax.swing.JCheckBox" binding="aiEnabledCheckBox">
@@ -403,7 +411,7 @@
             </constraints>
             <properties>
               <font size="9" style="2"/>
-              <text value="Default: true"/>
+              <text resource-bundle="resourcebundle/resbundle" key="label.default.true"/>
             </properties>
           </component>
           <component id="9b67f" class="javax.swing.JButton" binding="saveBtn">
@@ -411,7 +419,7 @@
               <grid row="13" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Save and close"/>
+              <text resource-bundle="resourcebundle/resbundle" key="button.button"/>
             </properties>
           </component>
         </children>
@@ -422,7 +430,7 @@
         </constraints>
         <properties>
           <font name="Calibri" size="16" style="1"/>
-          <text value="Some changes will only have effect after restarting the current match"/>
+          <text resource-bundle="resourcebundle/resbundle" key="label.some.changes.will.only.have.effect.after.restarting.the.current.match"/>
         </properties>
       </component>
     </children>
