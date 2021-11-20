@@ -7,24 +7,24 @@ import static com.felipeflohr.unojava.swing.UpdatableElements.updateUIElements;
 
 public class GlobalDefinitions {
 
-    private static final int TOTAL_AMOUNT_OF_PLAYERS = 4;
-    private static final int INITIAL_CARDS = 7;
     private static final int CHANCE_OF_SPECIAL_CARD = 40;
     private static final int CHANCE_OF_BLACK_SPECIAL_CARD = 35;
-    private static final int CARD_ICON_WIDTH = 86;
-    private static final int CARD_ICON_HEIGHT = 128;
-    private static final int CARD_GRID_ROWS = 3;
-    private static final int CARD_GRID_COLUMNS = 3;
     private static final int UNO_MISCLICK_AMOUNT_OF_CARDS = 2;
-    private static final int CURRENT_CARD_IMAGE_WIDTH = 256;
-    private static final int CURRENT_CARD_IMAGE_HEIGHT = 400;
     private static final int NON_AI_PLAYER = 0;
-    private static int currentLocalPlayer = 0;
+    private static final int CURRENT_LOCAL_PLAYER = 0;
+    private static int totalAmountOfPlayers = 4;
+    private static int initialCards = 7;
+    private static int cardIconWidth = 86;
+    private static int cardIconHeight = 128;
+    private static int cardGridRows = 3;
+    private static int cardGridColumns = 3;
+    private static int currentCardImageWidth = 256;
+    private static int currentCardImageHeight = 400;
     private static int currentPage = 0;
-    private static final boolean PRINT_UPDATE_MESSAGES = false;
-    private static final boolean PRINT_ADDED_ELEMENT_MESSAGES = false;
-    private static final boolean AI_ENABLED = true;
-    private static final boolean AI_DEBUG_MESSAGES_ENABLED = true;
+    private static boolean printUpdateMessages = false;
+    private static boolean printAddedElementMessages = false;
+    private static boolean aiEnabled = true;
+    private static boolean aiDebugMessagesEnabled = false;
     private static CenterPagePanel centerPagePanel;
     private static Table table = new Table();
 
@@ -36,29 +36,40 @@ public class GlobalDefinitions {
 
     // Custom static getters & setters
     public static int getCurrentLocalPlayer() {
-        return currentLocalPlayer;
-    }
-
-    public static void setCurrentLocalPlayer(int playerID) {
-        currentLocalPlayer = playerID;
-        updateUIElements();
+        return CURRENT_LOCAL_PLAYER;
     }
 
     // Default static getters & setters
     public static int getTotalAmountOfPlayers() {
-        return TOTAL_AMOUNT_OF_PLAYERS;
+        return totalAmountOfPlayers;
+    }
+
+    public static void setTotalAmountOfPlayers(int amount) {
+        totalAmountOfPlayers = amount;
     }
 
     public static int getInitialCardsAmount() {
-        return INITIAL_CARDS;
+        return initialCards;
+    }
+
+    public static void setInitialCardsAmount(int amount) {
+        initialCards = amount;
     }
 
     public static boolean isAiEnabled() {
-        return AI_ENABLED;
+        return aiEnabled;
+    }
+
+    public static void setAiEnabled(boolean value) {
+        aiEnabled = value;
     }
 
     public static boolean isAiDebugMessagesEnabled() {
-        return AI_DEBUG_MESSAGES_ENABLED;
+        return aiDebugMessagesEnabled;
+    }
+
+    public static void setAiDebugMessagesEnabled(boolean value) {
+        aiDebugMessagesEnabled = value;
     }
 
     public static int getChanceOfSpecialCard() {
@@ -74,19 +85,35 @@ public class GlobalDefinitions {
     }
 
     public static int getCardIconWidth() {
-        return CARD_ICON_WIDTH;
+        return cardIconWidth;
+    }
+
+    public static void setCardIconWidth(int amount) {
+        cardIconWidth = amount;
     }
 
     public static int getCardIconHeight() {
-        return CARD_ICON_HEIGHT;
+        return cardIconHeight;
+    }
+
+    public static void setCardIconHeight(int amount) {
+        cardIconHeight = amount;
     }
 
     public static int getCardGridRows() {
-        return CARD_GRID_ROWS;
+        return cardGridRows;
+    }
+
+    public static void setCardGridRows(int amount) {
+        cardGridRows = amount;
     }
 
     public static int getCardGridColumns() {
-        return CARD_GRID_COLUMNS;
+        return cardGridColumns;
+    }
+
+    public static void setCardGridColumns(int amount) {
+        cardGridColumns = amount;
     }
 
     public static int getNonAiPlayer() {
@@ -114,18 +141,34 @@ public class GlobalDefinitions {
     }
 
     public static int getCurrentCardImageWidth() {
-        return CURRENT_CARD_IMAGE_WIDTH;
+        return currentCardImageWidth;
+    }
+
+    public static void setCurrentCardImageWidth(int amount) {
+        currentCardImageWidth = amount;
     }
 
     public static int getCurrentCardImageHeight() {
-        return CURRENT_CARD_IMAGE_HEIGHT;
+        return currentCardImageHeight;
+    }
+
+    public static void setCurrentCardImageHeight(int amount) {
+        currentCardImageHeight = amount;
     }
 
     public static boolean isPrintUpdateMessages() {
-        return PRINT_UPDATE_MESSAGES;
+        return printUpdateMessages;
+    }
+
+    public static void setPrintUpdateMessages(boolean value) {
+        printUpdateMessages = value;
     }
 
     public static boolean isPrintAddedElementMessages() {
-        return PRINT_ADDED_ELEMENT_MESSAGES;
+        return printAddedElementMessages;
+    }
+
+    public static void setPrintAddedElementMessages(boolean value) {
+        printAddedElementMessages = value;
     }
 }

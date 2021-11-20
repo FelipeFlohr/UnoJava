@@ -1,6 +1,7 @@
 package com.felipeflohr.unojava.swing.frames.mainframefirstlayer;
 
 import com.felipeflohr.unojava.swing.frames.leftmenuframes.RestartGameDialog;
+import com.felipeflohr.unojava.swing.frames.leftmenuframes.SettingsFrame;
 import com.felipeflohr.unojava.swing.frames.leftmenuframes.StatusFrame;
 
 import javax.swing.BorderFactory;
@@ -61,13 +62,16 @@ public class LeftMenuPanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Settings button
         if (e.getSource() == restartButton) {
             new RestartGameDialog();
         }
 
         if (e.getSource() == statusButton) {
             new StatusFrame();
+        }
+
+        if (e.getSource() == settingsButton) {
+            new SettingsFrame();
         }
     }
 }
